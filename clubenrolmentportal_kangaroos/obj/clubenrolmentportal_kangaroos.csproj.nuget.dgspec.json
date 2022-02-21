@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User001\\source\\repos\\700111-2122-group-project-kangaroos\\clubenrolmentportal_kangaroos\\clubenrolmentportal_kangaroos.csproj": {}
+    "\\\\adir.hull.ac.uk\\home\\671\\671987\\Hull\\Development Project\\700111-2122-group-project-kangaroos\\clubenrolmentportal_kangaroos\\clubenrolmentportal_kangaroos.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User001\\source\\repos\\700111-2122-group-project-kangaroos\\clubenrolmentportal_kangaroos\\clubenrolmentportal_kangaroos.csproj": {
+    "\\\\adir.hull.ac.uk\\home\\671\\671987\\Hull\\Development Project\\700111-2122-group-project-kangaroos\\clubenrolmentportal_kangaroos\\clubenrolmentportal_kangaroos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User001\\source\\repos\\700111-2122-group-project-kangaroos\\clubenrolmentportal_kangaroos\\clubenrolmentportal_kangaroos.csproj",
+        "projectUniqueName": "\\\\adir.hull.ac.uk\\home\\671\\671987\\Hull\\Development Project\\700111-2122-group-project-kangaroos\\clubenrolmentportal_kangaroos\\clubenrolmentportal_kangaroos.csproj",
         "projectName": "clubenrolmentportal_kangaroos",
-        "projectPath": "C:\\Users\\User001\\source\\repos\\700111-2122-group-project-kangaroos\\clubenrolmentportal_kangaroos\\clubenrolmentportal_kangaroos.csproj",
-        "packagesPath": "C:\\Users\\User001\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User001\\source\\repos\\700111-2122-group-project-kangaroos\\clubenrolmentportal_kangaroos\\obj\\",
+        "projectPath": "\\\\adir.hull.ac.uk\\home\\671\\671987\\Hull\\Development Project\\700111-2122-group-project-kangaroos\\clubenrolmentportal_kangaroos\\clubenrolmentportal_kangaroos.csproj",
+        "packagesPath": "C:\\Users\\671987\\.nuget\\packages\\",
+        "outputPath": "\\\\adir.hull.ac.uk\\home\\671\\671987\\Hull\\Development Project\\700111-2122-group-project-kangaroos\\clubenrolmentportal_kangaroos\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\User001\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\671987\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -61,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
         }
       }
     }
