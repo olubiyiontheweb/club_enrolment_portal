@@ -13,3 +13,6 @@ namespace clubenrolmentportal_kangaroos.Data
         public string Summary { get; set; }
     }
 }
+
+// will use this later
+// https://github.com/dotnet-presentations/blazor-workshop/blob/master/docs/06-authentication-and-authorization.md
