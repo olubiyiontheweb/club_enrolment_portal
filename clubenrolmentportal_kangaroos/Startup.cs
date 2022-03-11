@@ -26,8 +26,13 @@ namespace clubenrolmentportal_kangaroos
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddControllersWithViews();
+            
             services.AddServerSideBlazor();
+            services.AddAuthentication();
+
             services.AddSingleton<WeatherForecastService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +50,8 @@ namespace clubenrolmentportal_kangaroos
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
