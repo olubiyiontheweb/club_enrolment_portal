@@ -3,6 +3,8 @@
 
 ## The Kangaroos are building a Club Enrolment Portal on this Repo using Blazor(C#)
 
+> https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/managing?tabs=dotnet-core-cli
+
 > https://docs.microsoft.com/en-us/aspnet/core/?utm_source=aspnet-start-page&utm_campaign=vside&view=aspnetcore-6.0
 
 > https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing?view=aspnetcore-6.0
@@ -20,6 +22,14 @@ Install the following packages for applying database migrations:
 > dotnet tool install --global dotnet-ef
 
 > dotnet add package SendGrid
+
+> dotnet ef migrations add Event --namespace clubEnrolmentPortal_TheKangaroos.Data.Event --output-dir Data/Migrations
+
+### Todo
+[]: Edit the user class to add the following properties:
+> dotnet ef migrations add User --namespace clubEnrolmentPortal_TheKangaroos.Data.Models --output-dir Data/Migrations 
+
+> dotnet new razorcomponent -n Events -o Pages
 
 Starting the server
 > dotnet user-secrets set SendGridKey <key>
