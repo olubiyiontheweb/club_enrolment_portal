@@ -15,6 +15,9 @@
 
 > https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-6.0&tabs=visual-studio
 
+Identity tutorial to learn more about Identity and implement
+> https://www.tektutorialshub.com/asp-net-core/asp-net-core-identity-tutorial/
+
 ### Setting up the Repo
 
 Install the following packages for applying database migrations:
@@ -24,6 +27,10 @@ Install the following packages for applying database migrations:
 > dotnet add package SendGrid
 
 > dotnet ef migrations add Event --namespace clubEnrolmentPortal_TheKangaroos.Data.Event --output-dir Data/Migrations
+
+> drop-database
+> dotnet ef database update
+> Add-Migration
 
 ### Todo
 []: Edit the user class to add the following properties:

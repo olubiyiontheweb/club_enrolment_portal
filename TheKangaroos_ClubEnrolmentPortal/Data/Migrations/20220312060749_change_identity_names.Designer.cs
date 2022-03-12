@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TheKangaroos_ClubEnrolmentPortal.Data;
 
 namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220312060749_Change_identity_names")]
+    partial class Change_identity_names
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -151,69 +153,6 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
                     b.ToTable("UserTokens");
                 });
 
-            modelBuilder.Entity("TheKangaroos_ClubEnrolmentPortal.Data.Models.Club", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("OwnerId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OwnerId");
-
-                    b.ToTable("Clubs");
-                });
-
-            modelBuilder.Entity("TheKangaroos_ClubEnrolmentPortal.Data.Models.Event", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CreatedByClubId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Location")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedByClubId");
-
-                    b.ToTable("Events");
-                });
-
             modelBuilder.Entity("TheKangaroos_ClubEnrolmentPortal.Data.Models.User", b =>
                 {
                     b.Property<string>("Id")
@@ -337,38 +276,6 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("TheKangaroos_ClubEnrolmentPortal.Data.Models.Club", b =>
-                {
-                    b.HasOne("TheKangaroos_ClubEnrolmentPortal.Data.Models.User", "Owner")
-                        .WithMany("OwnedClubs")
-                        .HasForeignKey("OwnerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Owner");
-                });
-
-            modelBuilder.Entity("TheKangaroos_ClubEnrolmentPortal.Data.Models.Event", b =>
-                {
-                    b.HasOne("TheKangaroos_ClubEnrolmentPortal.Data.Models.Club", "CreatedByClub")
-                        .WithMany("Events")
-                        .HasForeignKey("CreatedByClubId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CreatedByClub");
-                });
-
-            modelBuilder.Entity("TheKangaroos_ClubEnrolmentPortal.Data.Models.Club", b =>
-                {
-                    b.Navigation("Events");
-                });
-
-            modelBuilder.Entity("TheKangaroos_ClubEnrolmentPortal.Data.Models.User", b =>
-                {
-                    b.Navigation("OwnedClubs");
                 });
 #pragma warning restore 612, 618
         }

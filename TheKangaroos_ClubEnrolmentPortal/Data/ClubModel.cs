@@ -19,10 +19,10 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
         public string Description { get; set; }
         public string Image { get; set; }
 
-        /* [Required]
+        [Required]
         public string OwnerId { get; set; } // reference to owner of the club - User Model
         [ForeignKey("OwnerId")]
-        public User Owner { get; set; } */
+        public User Owner { get; set; }
 
         public List<Event> Events { get; set; }
     }

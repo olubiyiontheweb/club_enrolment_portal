@@ -9,27 +9,27 @@ using TheKangaroos_ClubEnrolmentPortal.Data.Models;
 
 namespace TheKangaroos_ClubEnrolmentPortal.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<User, IdentityRole, string>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
 
+        // Add DbSet properties here for names of tables in the database
         public DbSet<Club> Clubs { get; set; }
-        public override DbSet<IdentityUser> Users { get; set; }
+        public override DbSet<User> Users { get; set; }
         public DbSet<Event> Events { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.HasDefaultSchema("TheKangaroos");
 
-            modelBuilder.HasDefaultSchema("Identity");
-
-            modelBuilder.Entity<IdentityUser>(entity =>
+            modelBuilder.Entity<User>(entity =>
             {
-                entity.ToTable(name: "User");
+                entity.ToTable(name: "Users");
             });
 
             modelBuilder.Entity<IdentityRole>(entity =>
@@ -62,16 +62,16 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data
                 entity.ToTable("UserTokens");
             });
 
-            /* // clubs have one owner
-            modelBuilder.Entity<Club>()
+            // clubs have one owner
+            /* modelBuilder.Entity<Club>()
                 .HasOne(c => c.Owner)
                 .WithMany(u => u.OwnedClubs)
-                .HasForeignKey(c => c.OwnerId); */
+                .HasForeignKey(c => c.OwnerId);
 
-            /* modelBuilder.Entity<User>()
+            modelBuilder.Entity<User>()
                 .HasMany(u => u.OwnedClubs)
                 .WithOne(c => c.Owner)
-                .HasForeignKey(c => c.OwnerId); */
+                .HasForeignKey(c => c.OwnerId);
 
             // clubs have many events
             modelBuilder.Entity<Club>()
@@ -83,7 +83,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data
             modelBuilder.Entity<Event>()
                 .HasOne(e => e.CreatedByClub)
                 .WithMany(c => c.Events)
-                .HasForeignKey(e => e.CreatedByClubId);
+                .HasForeignKey(e => e.CreatedByClubId); */
         }
     }
 }
