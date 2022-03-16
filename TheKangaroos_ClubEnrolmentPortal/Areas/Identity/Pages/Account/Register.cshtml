@@ -3,65 +3,78 @@
 @{
     ViewData["Title"] = "Register";
 }
-
-<h1>@ViewData["Title"]</h1>
-
-<div class="row">
-    <div class="col-md-4">
-        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h4>Create a new account.</h4>
-            <hr />
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Input.Email"></label>
-                <input asp-for="Input.Email" class="form-control" />
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.Password"></label>
-                <input asp-for="Input.Password" class="form-control" />
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.ConfirmPassword"></label>
-                <input asp-for="Input.ConfirmPassword" class="form-control" />
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <button type="submit" class="btn btn-primary">Register</button>
-        </form>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h4>Use another service to register.</h4>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                            for details on setting up this ASP.NET application to support logging in via external services.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
+<div class="register_box">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-6 register_box_left d-none d-none d-lg-flex">
+            <h2>Club Enrollment Portal</h2>
+            <img src="../../images/casual-life-3d-likes.png" class="landing-bg" />
+            <h5>
+                Just a few clicks away from the ultimate club experience
+            </h5>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-6 register_box_right">
+            <div>
+                <h3 class="mb-1 text-white">Register With Us</h3>
+                <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <div class="form-group row">
+                        <div class="col-12 col-lg-6 mt-3">
+                            <label for="first_name">First Name</label>
+                            <input type="text" class="form-control" placeholder="First name" id="first_name">
                         </div>
-                    </form>
-                }
-            }
-        </section>
+                        <div class="col-12 col-lg-6 mt-3">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" class="form-control" placeholder="Last name" id="last_name">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="my-1 mr-2" for="gender">Gender</label>
+                        <select class="custom-select my-1 mr-sm-2" id="gender">
+                            <option selected>Choose...</option>
+                            <option value="1">Female</option>
+                            <option value="2">Male</option>
+                            <option value="3">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.Email"></label>
+                        <input asp-for="Input.Email" class="form-control" placeholder="example@school.ac.uk" />
+                        <span asp-validation-for="Input.Email" class="text-tertiary"></span>
+                        @*<label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="example@school.ac.uk">*@
+                        @*<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>*@
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.Password"></label>
+                        <input asp-for="Input.Password" class="form-control" />
+                        <span asp-validation-for="Input.Password" class="text-tertiary"></span>
+                        @*<label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1"
+                            placeholder="6+ Characters, Atleast 1 number">*@
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.ConfirmPassword"></label>
+                        <input asp-for="Input.ConfirmPassword" class="form-control" />
+                        <span asp-validation-for="Input.ConfirmPassword" class="text-tertiary"></span>
+                        @*<input type="password" class="form-control" id="exampleInputPassword2"
+                            placeholder="Enter Password Again">*@
+                    </div>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <div class="text-center mt-3 mb-0">
+                        <button type="submit" class="btn custom-button bg-fourth">Create Account</button>
+                    </div>
+                </form>
+                <p class="mt-4 text-center">Already a member? <a class="font-weight-bold text-white"
+                        href="login"><u>Login Here</u></a></p>
+            </div>
+
+        </div>
     </div>
 </div>
 
+
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+<partial name="_ValidationScriptsPartial" />
 }
