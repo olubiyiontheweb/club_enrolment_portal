@@ -4,8 +4,8 @@
             <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
         </Found>
         <NotFound>
-            <LayoutView Layout="@typeof(MainLayout)">
-                <p>Sorry, there's nothing at this address.</p>
+            <LayoutView Layout="@typeof(GuestLayout)">
+                <PageNotFound />
             </LayoutView>
         </NotFound>
     </Router>
