@@ -1,0 +1,112 @@
+@page "/dashboard"
+
+<div class="row">
+    <div class="col-12 col-xl-9">
+        <h3 class="font-weight-bold text-secondary">Dashboard</h3>
+        <hr>
+        <div class="club-news">
+            <h4 class="mb-3">Latest News from my Clubs</h4>
+            <div class="row">
+                @foreach (var item in news)
+                {
+                    <div class="col-6 col-lg-3">
+                        <div class="card mb-3 p-3">
+                            <h5>@item.Title</h5>
+                            <p class="mb-0">
+                                @item.Description
+                            </p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <hr>
+
+    </div>
+    <div class="col-12 col-xl-3">
+        <div class="dashboard-right bg-light p-3">
+            <div class="event-list">
+                <h5 class="text-center font-weight-bold text-secondary mb-3">Upcoming Events</h5>
+                @foreach (var item in events)
+                {
+                    <div class="p-3 event-card mb-2">
+                        <div class="event-date">
+                            <h4 class="mb-0">@item.Date.Day</h4>
+                            <p class="mb-0">@item.Date.ToString("MMM")</p>
+                        </div>
+                        <div class="event-detail">
+                            <p class="mb-1 font-weight-bold">@item.Title</p>
+                            <p class="mb-0">@item.Location</p>
+                        </div>
+                    </div>
+                }
+                <div class="text-center mt-3">View All Events</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    int i = 0;
+    IList<Item> news = new List<Item>
+        {
+            new Item {
+            Title = "Title 1",
+            Type = "Event",
+            Description = "Demo Description"
+            },
+            new Item {
+            Title = "Title 2",
+            Type = "Announcement",
+            Description = "Demo Description"
+            },
+            new Item {
+            Title = "Title 3",
+            Type = "Event",
+            Description = "Demo Description"
+            },
+            new Item {
+            Title = "Title 4",
+            Type = "Announcement",
+            Description = "Demo Description"
+            },
+            new Item {
+            Title = "Title 4",
+            Type = "Announcement",
+            Description = "Demo Description"
+            }
+        };
+
+        IList<Event> events = new List<Event>
+        {
+            new Event {
+            Title = "Welcome Week",
+            Date = new DateTime(2021, 9, 21),
+            Location = "Asylum"
+            },
+            new Event {
+            Title = "Women's History Month 2022",
+            Date = new DateTime(2021, 5, 1),
+            Location = "Robert Blackburn 229"
+            },
+        };
+    
+
+    class Event{
+        public string Title {get;set;}
+        public DateTime Date {get;set;}
+        public string Location {get;set;}
+    }
+
+    class Item
+    {
+        public string Title { get; set; }
+        public string Type { get; set; }
+        public string Description { get; set; }
+    }
+
+    private void indexChanged(int index)
+    {
+        Console.WriteLine("Index Changed: " + index);
+    }
+}
