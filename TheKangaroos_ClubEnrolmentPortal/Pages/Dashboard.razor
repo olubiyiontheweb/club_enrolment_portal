@@ -47,7 +47,6 @@
 </div>
 
 @code {
-    int i = 0;
     IList<Item> news = new List<Item>
         {
             new Item {
@@ -77,7 +76,7 @@
             }
         };
 
-        IList<Event> events = new List<Event>
+    IList<Event> events = new List<Event>
         {
             new Event {
             Title = "Welcome Week",
@@ -103,10 +102,5 @@
         public string Title { get; set; }
         public string Type { get; set; }
         public string Description { get; set; }
-    }
-
-    private void indexChanged(int index)
-    {
-        Console.WriteLine("Index Changed: " + index);
     }
 }

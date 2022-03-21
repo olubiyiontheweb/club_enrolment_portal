@@ -12,6 +12,17 @@
     --fifth-color: #2374AB;
 }
 
+.nav-item svg{
+    margin-right: 0.5rem;
+    vertical-align: text-top;
+    top: -2px;
+    position: relative;
+}
+
+.svg-inline--fa{
+    width: 2rem;
+}
+
 .page_not_found{
     display: flex;
     flex-direction: column;

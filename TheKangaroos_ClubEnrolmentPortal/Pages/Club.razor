@@ -3,9 +3,23 @@
 @using TheKangaroos_ClubEnrolmentPortal.Data.Models
 
 <h3>Club</h3>
-
+<hr>
 <p> This would show details of individual clubs</p>
+
+@it.Description
 
 @code {
 
+
+Item it = new Item{
+    Title = "Cc",
+    Description = "Des",
+    ImageUrl = "tng"
+};
+class Item
+    {
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string ImageUrl  { get; set; }
+    }
 }
