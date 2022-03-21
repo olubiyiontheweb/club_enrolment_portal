@@ -55,6 +55,8 @@ namespace TheKangaroos_ClubEnrolmentPortal
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<User>>();
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddSingleton<WeatherForecastService>();
+            services.AddAntDesign();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
