@@ -5,7 +5,7 @@
         <h3 class="font-weight-bold text-secondary">Dashboard</h3>
         <hr>
         <div class="club-news">
-            <h4 class="mb-3">Latest News from my Clubs</h4>
+            <h4 class="font-weight-bold text-secondary mb-3">Latest Club News</h4>
             <div class="row">
                 @foreach (var item in news)
                 {
@@ -21,15 +21,31 @@
             </div>
         </div>
         <hr>
+        <div class="club-news">
+            <h4 class="font-weight-bold text-secondary mb-3">Upcoming Events</h4>
+            <div class="row">
+                @foreach (var item in news)
+                {
+                    <div class="col-6 col-lg-3">
+                        <div class="card mb-3 p-3">
+                            <h5>@item.Title</h5>
+                            <p class="mb-0">
+                                @item.Description
+                            </p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
 
     </div>
     <div class="col-12 col-xl-3">
         <div class="dashboard-right bg-light p-3">
             <div class="event-list">
-                <h5 class="text-center font-weight-bold text-secondary mb-3">Upcoming Events</h5>
+                <h5 class="text-center font-weight-bold text-secondary mb-3">My Events</h5>
                 @foreach (var item in events)
                 {
-                    <div class="p-3 event-card mb-2">
+                    <div class="p-2 event-card mb-3">
                         <div class="event-date">
                             <h4 class="mb-0">@item.Date.Day</h4>
                             <p class="mb-0">@item.Date.ToString("MMM")</p>
