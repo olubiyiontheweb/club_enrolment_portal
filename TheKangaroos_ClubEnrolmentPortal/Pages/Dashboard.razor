@@ -26,29 +26,36 @@
             <div class="row">
                 @foreach (var item in events)
                 {
-                    <EventItem Title="@item.Title" Date="@item.Date" Location="@item.Location" ImageUrl="@item.ImageUrl"/>
+                    <EventItem Title="@item.Title" Date="@item.Date" Location="@item.Location" ImageUrl="@item.ImageUrl" Price="@item.Price"/>
                 }
             </div>
         </div>
 
     </div>
     <div class="col-12 col-xl-3">
-        <div class="dashboard-right bg-light p-3">
+        <div class="dashboard-right bg-fifth-color-light shadow p-3">
             <div class="event-list">
                 <h5 class="text-center font-weight-bold text-secondary mb-3">My Events</h5>
-                @foreach (var item in events)
+                @if (events.Count !=0)
                 {
-                    <div class="p-2 event-card mb-3">
-                        <div class="event-date">
-                            <h4 class="mb-0">@item.Date.Day</h4>
-                            <p class="mb-0">@item.Date.ToString("MMM")</p>
-                        </div>
-                        <div class="event-detail">
-                            <p class="mb-1 font-weight-bold">@item.Title</p>
-                            <p class="mb-0">@item.Location</p>
-                        </div>
-                    </div>
+                    @foreach (var item in events)
+                        {
+                            <div class="p-2 event-card mb-3">
+                                <div class="event-date">
+                                    <h4 class="mb-0">@item.Date.Day</h4>
+                                    <p class="mb-0">@item.Date.ToString("MMM")</p>
+                                </div>
+                                <div class="event-detail">
+                                    <p class="mb-1 font-weight-bold">@item.Title</p>
+                                    <p class="mb-0">@item.Location</p>
+                                </div>
+                            </div>
+                        }
                 }
+                else{
+                    <p class="text-center">You are not registered for any event.</p>
+                }
+                
                 <div class="text-center mt-3">View All Events</div>
             </div>
         </div>
@@ -91,14 +98,30 @@
             Title = "Welcome Week",
             Date = new DateTime(2021, 9, 21),
             Location = "Asylum",
+            Price = 2.0,
             ImageUrl = "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
             },
             new Event {
             Title = "Women's History Month 2022",
             Date = new DateTime(2021, 5, 1),
             Location = "Robert Blackburn 229",
+            Price = 0.0,
             ImageUrl = "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
 
+            },
+            new Event {
+            Title = "Welcome Week",
+            Date = new DateTime(2021, 9, 21),
+            Location = "Asylum",
+            Price = 2.0,
+            ImageUrl = "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+            },
+            new Event {
+            Title = "Women's History Month 2022",
+            Date = new DateTime(2021, 5, 1),
+            Location = "Robert Blackburn 229",
+            Price = 0,
+            ImageUrl = "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
             },
         };
     
@@ -107,6 +130,7 @@
         public string Title {get;set;}
         public DateTime Date {get;set;}
         public string Location {get;set;}
+        public double Price {get;set;}
         public string ImageUrl  { get; set; }
     }
 
