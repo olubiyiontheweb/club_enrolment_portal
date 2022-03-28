@@ -28,9 +28,14 @@ Admins can generate only notices for their clubs
 
 All users can generate enquiries
 
+User can view all clubs, events?
+
 
 User pay for tickets
 
 Tickets are orders
 
 Tickets will have payments
+
+
+Location will have Name, Maps Link, IsBooked boolean, 

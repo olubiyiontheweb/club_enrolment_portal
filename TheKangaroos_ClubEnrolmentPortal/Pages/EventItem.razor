@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="text-white text-center mt-2">
-                <button class="btn btn-outline-light font-weight-bold">Get Tickets</button>
+                <a class="btn btn-outline-light font-weight-bold" href="events/@id.ToString()">Get Tickets</a>
             </div>
 
         </div>
@@ -36,6 +36,9 @@
 </div>
 
 @code{
+
+    [Parameter]
+    public int id {get;set;}
     [Parameter]
     public string Title {get;set;}
     

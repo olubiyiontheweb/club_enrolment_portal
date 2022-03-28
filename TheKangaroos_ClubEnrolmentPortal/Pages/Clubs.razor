@@ -1,4 +1,4 @@
-﻿@page "/clubs-list"
+﻿@page "/clubs"
 
 @using TheKangaroos_ClubEnrolmentPortal.Data.Models
 
@@ -26,7 +26,7 @@
                                 <h5 class="card-title">@item.Title</h5>
                                 <p class="card-text">@item.Description.Substring(0, 200)...</p>
                                 <div class="text-center"> 
-                                    <a href="club/@item.id" class="btn btn-outline-secondary-color">Find out more</a>
+                                    <a href="clubs/@item.id" class="btn btn-outline-secondary-color">Find out more</a>
                                 </div>
                             </div>
                     </div>
@@ -86,6 +86,7 @@
             ImageUrl = null
         },
     };
+
     class ClubModel
     {
         public int id { get; set; }
@@ -93,6 +94,4 @@
         public string Description { get; set; }
         public string ImageUrl { get; set; }
     }
-
-
 }

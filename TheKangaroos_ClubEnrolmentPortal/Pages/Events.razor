@@ -1,4 +1,4 @@
-﻿@page "/events-list"
+﻿@page "/events"
 
 @using TheKangaroos_ClubEnrolmentPortal.Data.Models
 
@@ -10,7 +10,7 @@
     <div class="row">
         @foreach (var item in events)
         {
-            <EventItem Title="@item.Title" Date="@item.Date" Location="@item.Location" ImageUrl="@item.ImageUrl" Price="@item.Price"/>
+            <EventItem id="@item.id" Title="@item.Title" Date="@item.Date" Location="@item.Location" ImageUrl="@item.ImageUrl" Price="@item.Price"/>
         }
     </div>
 </div>
@@ -64,6 +64,7 @@
             Club = "Hull University Computer Club"
         },
     };
+    
     class EventModel
         {
             public int id {get;set;}
