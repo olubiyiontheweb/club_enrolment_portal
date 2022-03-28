@@ -32,6 +32,9 @@ Install the following packages for applying database migrations:
 > dotnet ef database update
 > Add-Migration
 
+# blazor sample repo
+https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/blazor/samples/5.0/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/AddContact.razor
+
 ### Todo
 []: Edit the user class to add the following properties:
 > dotnet ef migrations add User --namespace clubEnrolmentPortal_TheKangaroos.Data.Models --output-dir Data/Migrations 

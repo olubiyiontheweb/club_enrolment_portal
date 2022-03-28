@@ -9,6 +9,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
     public class Event
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
 
         [Required]

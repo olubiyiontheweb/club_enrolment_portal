@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Extensions.Configuration;
 
 using TheKangaroos_ClubEnrolmentPortal.Data.Models;
 
@@ -11,10 +12,9 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data
 {
     public class ApplicationDbContext : IdentityDbContext<User, IdentityRole, string>
     {
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
-        {
-        }
+            : base(options) { }
 
         // Add DbSet properties here for names of tables in the database
         public DbSet<Club> Clubs { get; set; }
