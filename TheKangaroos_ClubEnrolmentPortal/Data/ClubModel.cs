@@ -16,13 +16,12 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
         [Required]
         [StringLength(50, ErrorMessage = "You must enter a valid club name")]
         public string Name { get; set; }
+
         public string Description { get; set; }
+
         public string Image { get; set; }
 
-        [Required]
-        public string OwnerId { get; set; } // reference to owner of the club - User Model
-        [ForeignKey("OwnerId")]
-        public User Owner { get; set; }
+        public List<Membership> ClubMembers { get; set; }
 
         public List<Event> Events { get; set; }
     }

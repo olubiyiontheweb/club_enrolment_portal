@@ -44,7 +44,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Areas.Identity.Pages.Account
 
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
-        public class InputModel
+        public class InputModel: UserRegister
         {
             [Required]
             [EmailAddress]
@@ -75,7 +75,13 @@ namespace TheKangaroos_ClubEnrolmentPortal.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = Input.Email, Email = Input.Email };
+                var user = new User { 
+                    UserName = Input.Email, 
+                    Email = Input.Email, 
+                    FirstName = Input.FirstName, 
+                    LastName = Input.LastName, 
+                    DateOfBirth = Input.DateOfBirth, 
+                    };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

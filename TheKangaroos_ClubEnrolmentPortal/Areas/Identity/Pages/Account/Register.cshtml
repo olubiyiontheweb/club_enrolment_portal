@@ -18,17 +18,19 @@
                 <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
                     <div class="form-group row">
                         <div class="col-12 col-lg-6 mt-3">
-                            <label for="first_name">First Name</label>
-                            <input type="text" class="form-control" placeholder="First name" id="first_name">
+                            <label asp-for="Input.FirstName">First Name</label>
+                            <input asp-for="Input.FirstName" class="form-control" placeholder="First name" id="first_name">
+                            <span asp-validation-for="Input.FirstName" class="text-tertiary"></span>
                         </div>
                         <div class="col-12 col-lg-6 mt-3">
-                            <label for="last_name">Last Name</label>
-                            <input type="text" class="form-control" placeholder="Last name" id="last_name">
+                            <label asp-for="Input.LastName">Last Name</label>
+                            <input asp-for="Input.LastName" class="form-control" placeholder="Last name" id="last_name">
+                            <span asp-validation-for="Input.LastName" class="text-tertiary"></span>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label class="my-1 mr-2" for="gender">Gender</label>
-                        <select class="custom-select my-1 mr-sm-2" id="gender">
+                        <label asp-for="Input.Gender" class="my-1 mr-2">Gender</label>
+                        <select class="custom-select my-1 mr-sm-2" asp-for="Input.Gender">
                             <option selected>Choose...</option>
                             <option value="1">Female</option>
                             <option value="2">Male</option>

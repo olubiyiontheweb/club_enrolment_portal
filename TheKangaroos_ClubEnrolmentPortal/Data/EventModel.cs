@@ -28,21 +28,10 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
         public Club CreatedByClub { get; set; }
     }
 
-    public class EventCreation : Event { }
+    public class EventCreation { }
 
     public class EventEdit
     {
-        public int Id { get; set; }
-
-        [Required]
-        [StringLength(50, ErrorMessage = "You must enter a valid event name")]
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public string Location { get; set; }
-        public string Image { get; set; }
-        public string ClubId { get; set; } // reference to the club Model
     }
 
     public class QueryEvent
@@ -53,9 +42,6 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
     // query for events in a club
     public class QueryEvents
     {
-        public string ClubId { get; set; }
-        public string StartDate { get; set; }
-        public string EndDate { get; set; }
     }
 
     public class DeleteEvent

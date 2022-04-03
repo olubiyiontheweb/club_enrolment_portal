@@ -7,12 +7,12 @@
 <h3>Event</h3>
 
 <p> This is the events page, customize as you see fit. </p>
-<button class="btn btn-primary" @onclick="addOneEvent">Create Event</button>
+@* <button class="btn btn-primary" @onclick="addOneEvent">Create Event</button> *@
 
 @code {
     private void addOneEvent()
     {
-        var newEventOperation = new EventOperations();
-        newEventOperation.AddEvent(newEventOperation.trialEventData);
+        @* var newEventOperation = new EventOperations();
+        newEventOperation.AddEvent(newEventOperation.trialEventData); *@
     }
 }

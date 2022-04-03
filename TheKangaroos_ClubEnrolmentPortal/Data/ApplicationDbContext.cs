@@ -21,6 +21,20 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data
         public override DbSet<User> Users { get; set; }
         public DbSet<Event> Events { get; set; }
 
+        public DbSet<Attendee> Attendees { get; set; }
+
+        public DbSet<Enquiry> Enquiries { get; set; }
+
+        public DbSet<Enrolment> Enrolments { get; set; }
+
+        public DbSet<Payment> Payments { get; set; }
+        
+        public DbSet<Ticket> Tickets { get; set; }
+
+        public DbSet<Venue> Venues { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

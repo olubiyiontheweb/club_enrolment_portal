@@ -1,6 +1,6 @@
-Clubs
+Clubs - done
 
-clubs have events
+clubs have events - done
 
 events require venues
 
@@ -11,6 +11,8 @@ each event requires a ticket
 User can signup for an event
 
 A user must be a member of a club to attend events and get a ticket
+
+a user can be member of multiple clubs
 
 Clubs have admins, members
 
