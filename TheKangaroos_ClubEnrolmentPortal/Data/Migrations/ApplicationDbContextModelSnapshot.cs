@@ -164,6 +164,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
             modelBuilder.Entity("TheKangaroos_ClubEnrolmentPortal.Data.Models.Club", b =>
                 {
                     b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Description")
@@ -242,6 +243,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
             modelBuilder.Entity("TheKangaroos_ClubEnrolmentPortal.Data.Models.Membership", b =>
                 {
                     b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ClubId")
@@ -322,6 +324,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -440,7 +443,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
                     b.HasOne("TheKangaroos_ClubEnrolmentPortal.Data.Models.Club", "CreatedByClub")
                         .WithMany("Events")
                         .HasForeignKey("CreatedByClubId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("CreatedByClub");
@@ -451,13 +454,13 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
                     b.HasOne("TheKangaroos_ClubEnrolmentPortal.Data.Models.Club", "Club")
                         .WithMany("Members")
                         .HasForeignKey("ClubId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("TheKangaroos_ClubEnrolmentPortal.Data.Models.User", "User")
                         .WithMany("Memberships")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Club");

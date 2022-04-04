@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
 {
-    public partial class newEntitiesAndChanges : Migration
+    public partial class club_user_membership : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,6 +11,11 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
                 name: "FK_Clubs_Users_OwnerId",
                 schema: "TheKangaroos",
                 table: "Clubs");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Events_Clubs_CreatedByClubId",
+                schema: "TheKangaroos",
+                table: "Events");
 
             migrationBuilder.DropIndex(
                 name: "IX_Clubs_OwnerId",
@@ -28,7 +33,8 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
                 table: "Users",
                 type: "nvarchar(50)",
                 maxLength: 50,
-                nullable: true,
+                nullable: false,
+                defaultValue: "",
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)",
                 oldNullable: true);
@@ -113,15 +119,13 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
                         column: x => x.ClubId,
                         principalSchema: "TheKangaroos",
                         principalTable: "Clubs",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Memberships_Users_UserId",
                         column: x => x.UserId,
                         principalSchema: "TheKangaroos",
                         principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -183,10 +187,24 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
                 schema: "TheKangaroos",
                 table: "Memberships",
                 column: "UserId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Events_Clubs_CreatedByClubId",
+                schema: "TheKangaroos",
+                table: "Events",
+                column: "CreatedByClubId",
+                principalSchema: "TheKangaroos",
+                principalTable: "Clubs",
+                principalColumn: "Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Events_Clubs_CreatedByClubId",
+                schema: "TheKangaroos",
+                table: "Events");
+
             migrationBuilder.DropTable(
                 name: "Attendees",
                 schema: "TheKangaroos");
@@ -237,8 +255,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
                 nullable: true,
                 oldClrType: typeof(string),
                 oldType: "nvarchar(50)",
-                oldMaxLength: 50,
-                oldNullable: true);
+                oldMaxLength: 50);
 
             migrationBuilder.AlterColumn<string>(
                 name: "FirstName",
@@ -271,6 +288,16 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
                 column: "OwnerId",
                 principalSchema: "TheKangaroos",
                 principalTable: "Users",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Events_Clubs_CreatedByClubId",
+                schema: "TheKangaroos",
+                table: "Events",
+                column: "CreatedByClubId",
+                principalSchema: "TheKangaroos",
+                principalTable: "Clubs",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
         }

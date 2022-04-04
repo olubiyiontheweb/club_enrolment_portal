@@ -14,12 +14,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+ 
 using TheKangaroos_ClubEnrolmentPortal.Areas.Identity;
 using TheKangaroos_ClubEnrolmentPortal.Data;
 using TheKangaroos_ClubEnrolmentPortal.Data.Models;
 using TheKangaroos_ClubEnrolmentPortal.Services;
-using TheKangaroos_ClubEnrolmentPortal.Data.Controllers;
 
 namespace TheKangaroos_ClubEnrolmentPortal
 {

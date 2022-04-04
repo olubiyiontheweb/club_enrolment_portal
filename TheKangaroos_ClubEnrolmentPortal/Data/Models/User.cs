@@ -24,11 +24,22 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
         [PersonalData]
         public string FirstName { get; set; }
 
+        [Required]
         [StringLength(50, ErrorMessage = "Last Name too long, please reduce")]
         [DataType(DataType.Text)]
         [Display(Name = "Last Name")]
         [PersonalData]
         public string LastName { get; set; }
+
+        // concatenate first and last name
+        [NotMapped]
+        public string FullName
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
 
         [DataType(DataType.ImageUrl)]
         [Display(Name = "Profile Picture")]
@@ -44,8 +55,8 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
         [DataType(DataType.Text)]
         public string Gender { get; set; }
 
-        // users can be members of multiple clubs
-        public ICollection<Membership> Memberships { get; set; }
+        // users can be members of multiple clubs        
+        public ICollection<Membership> Memberships {get; set;}
     }
 
     public class UserRegister {

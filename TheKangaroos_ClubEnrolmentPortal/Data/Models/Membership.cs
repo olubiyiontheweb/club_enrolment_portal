@@ -11,16 +11,21 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
     public class Membership
     {
         [Key]
-        public string Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public string Id { get; set; } //= Guid.NewGuid().ToString();
 
         [Required]
-        public string UserId { get; set; } // reference to the user Model
-        [ForeignKey("UserId")]
+        [ForeignKey("User")]
+        #nullable enable
+        public string? UserId { get; set; } // reference to the user Model   
+        #nullable disable     
         public User User { get; set; }
 
         [Required]
-        public string ClubId { get; set; } // reference to the club Model
-        [ForeignKey("ClubId")]
+        [ForeignKey("Club")]
+        #nullable enable 
+        public string? ClubId { get; set; } // reference to the club Model
+        #nullable disable
         public Club Club { get; set; }
     }
 }

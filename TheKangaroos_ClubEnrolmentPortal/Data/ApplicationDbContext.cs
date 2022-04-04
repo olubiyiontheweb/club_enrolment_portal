@@ -19,6 +19,9 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data
         // Add DbSet properties here for names of tables in the database
         public DbSet<Club> Clubs { get; set; }
         public override DbSet<User> Users { get; set; }
+
+        public DbSet<Membership> Memberships { get; set; }
+
         public DbSet<Event> Events { get; set; }
 
         public DbSet<Attendee> Attendees { get; set; }
@@ -26,8 +29,6 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data
         public DbSet<Enquiry> Enquiries { get; set; }
 
         public DbSet<Enrolment> Enrolments { get; set; }
-
-        public DbSet<Membership> Memberships { get; set; }
 
         public DbSet<Payment> Payments { get; set; }
         
@@ -84,37 +85,40 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data
             modelBuilder.Entity<Club>()
                 .HasMany(c => c.Events)
                 .WithOne(e => e.CreatedByClub)
-                .HasForeignKey(e => e.CreatedByClubId);
+                .HasForeignKey(e => e.CreatedByClubId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             // events are created by a club
             modelBuilder.Entity<Event>()
                 .HasOne(e => e.CreatedByClub)
                 .WithMany(c => c.Events)
-                .HasForeignKey(e => e.CreatedByClubId);
-
-            // clubs have many events
-            modelBuilder.Entity<Club>()
-                .HasMany(c => c.Members)
-                .WithOne(m => m.Club)
-                .HasForeignKey(m => m.ClubId);
+                .OnDelete(DeleteBehavior.NoAction);
 
             // users have many memberships
             modelBuilder.Entity<User>()
                 .HasMany(u => u.Memberships)
                 .WithOne(m => m.User)
-                .HasForeignKey(m => m.UserId);
+                .HasForeignKey(m => m.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
 
-            // memberships have one user
+            // clubs have many members
+            modelBuilder.Entity<Club>()
+                .HasMany(m => m.Members)
+                .WithOne(m => m.Club)
+                .HasForeignKey(c => c.ClubId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            // memberships has one user
             modelBuilder.Entity<Membership>()
                 .HasOne(m => m.User)
                 .WithMany(u => u.Memberships)
-                .HasForeignKey(m => m.UserId);
+                .OnDelete(DeleteBehavior.NoAction);
 
             // memberships have one club
             modelBuilder.Entity<Membership>()
                 .HasOne(m => m.Club)
                 .WithMany(c => c.Members)
-                .HasForeignKey(e => e.ClubId);
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }
