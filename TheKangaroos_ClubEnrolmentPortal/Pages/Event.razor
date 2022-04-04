@@ -1,11 +1,82 @@
-﻿@page "/event"
+﻿@page "/events/{id}"
+@* @page "/event" *@
 
 @using TheKangaroos_ClubEnrolmentPortal.Data.Models
-
-<h3>Event</h3>
-
-<p> This is the events page, customize as you see fit. </p>
+<div class="detail-page">
+    <div class="header shadow">
+        <div class="content">
+            <h1 class="page-heading">@eventItem.Title</h1>
+        </div>
+        @if (@eventItem.ImageUrl != null){
+            <img class="header-img" src="@eventItem.ImageUrl">
+        }
+    </div>
+    <div class="row">
+        <div class="col-12 col-xl-9">
+            <div class="card border-none shadow px-3 pt-3 mb-4">
+                <div class="row">
+                    <div class="col-12 col-lg-3 col-lg-text-left">
+                        <p>Date</p>
+                        <p >
+                            <h6 class="font-weight-bold">
+                                @eventItem.Date.DayOfWeek
+                                @eventItem.Date.ToLongDateString()
+                            </h6>
+                        </p>
+                    </div>
+                    <div class="col-12 col-lg-2 col-lg-text-center">
+                        <p>Time</p>
+                        <p>
+                            <h6 class="font-weight-bold">
+                                @eventItem.Date.ToString("hh:mm") @eventItem.Date.ToString("tt")
+                            </h6>
+                        </p>
+                    </div>
+                    <div class="col-12 col-lg-5 col-lg-text-center">
+                        <p>Venue</p>
+                        <p><h6 class="font-weight-bold">@eventItem.Location</h6></p>
+                    </div>
+                    <div class="col-12 col-lg-2 col-lg-text-right">
+                        <p>Price</p>
+                        <p>
+                            <h6 class="font-weight-bold">
+                                <i class="fa-solid fa-sterling-sign"></i> @eventItem.Price.ToString("0.00")
+                            </h6>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            @*<hr>*@
+            <h5 class="font-weight-bold text-secondary">Event Details</h5>
+            <p class="description"></p>
+        </div>
+        <div class="col-12 col-xl-3">
+            <div class="sidebar bg-fifth-color-light shadow p-3">
+                <h4 class="font-weight-bold text-secondary text-center mb-4">Get Tickets</h4>
+            </div>
+        </div>
+    </div>
+</div>
 
 @code {
-
+    [Parameter]
+    public string id {get;set;}
+    EventModel eventItem = new EventModel{
+        id = 1,
+        Title = "Welcome Week",
+        Date = new DateTime(2021, 9, 21),
+        Location = "Robert Blackburn Room No. 405",
+        Price = 2.2,
+        ImageUrl = "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+        Club = "Hull University Computer Club"
+    };
+    class EventModel{
+        public int id {get;set;}
+        public string Title {get;set;}
+        public DateTime Date {get;set;}
+        public string Location {get;set;}
+        public double Price {get;set;}
+        public string ImageUrl  { get; set; }
+        public string Club {get;set;}
+    }
 }
