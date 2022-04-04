@@ -27,6 +27,8 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data
 
         public DbSet<Enrolment> Enrolments { get; set; }
 
+        public DbSet<Membership> Memberships { get; set; }
+
         public DbSet<Payment> Payments { get; set; }
         
         public DbSet<Ticket> Tickets { get; set; }
@@ -76,16 +78,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data
                 entity.ToTable("UserTokens");
             });
 
-            // clubs have one owner
-            /* modelBuilder.Entity<Club>()
-                .HasOne(c => c.Owner)
-                .WithMany(u => u.OwnedClubs)
-                .HasForeignKey(c => c.OwnerId);
-
-            modelBuilder.Entity<User>()
-                .HasMany(u => u.OwnedClubs)
-                .WithOne(c => c.Owner)
-                .HasForeignKey(c => c.OwnerId);
+            // relationships
 
             // clubs have many events
             modelBuilder.Entity<Club>()
@@ -97,7 +90,31 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data
             modelBuilder.Entity<Event>()
                 .HasOne(e => e.CreatedByClub)
                 .WithMany(c => c.Events)
-                .HasForeignKey(e => e.CreatedByClubId); */
+                .HasForeignKey(e => e.CreatedByClubId);
+
+            // clubs have many events
+            modelBuilder.Entity<Club>()
+                .HasMany(c => c.Members)
+                .WithOne(m => m.Club)
+                .HasForeignKey(m => m.ClubId);
+
+            // users have many memberships
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.Memberships)
+                .WithOne(m => m.User)
+                .HasForeignKey(m => m.UserId);
+
+            // memberships have one user
+            modelBuilder.Entity<Membership>()
+                .HasOne(m => m.User)
+                .WithMany(u => u.Memberships)
+                .HasForeignKey(m => m.UserId);
+
+            // memberships have one club
+            modelBuilder.Entity<Membership>()
+                .HasOne(m => m.Club)
+                .WithMany(c => c.Members)
+                .HasForeignKey(e => e.ClubId);
         }
     }
 }

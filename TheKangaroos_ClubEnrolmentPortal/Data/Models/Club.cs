@@ -21,9 +21,9 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
 
         public string Image { get; set; }
 
-        public List<Membership> ClubMembers { get; set; }
+        public ICollection<Membership> Members { get; set; }
 
-        public List<Event> Events { get; set; }
+        public ICollection<Event> Events { get; set; }
     }
 
     public class ClubCreation : Club { }

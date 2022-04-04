@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
 {
-    public partial class newEntities : Migration
+    public partial class newEntitiesAndChanges : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,6 +21,44 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
                 name: "OwnerId",
                 schema: "TheKangaroos",
                 table: "Clubs");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "LastName",
+                schema: "TheKangaroos",
+                table: "Users",
+                type: "nvarchar(50)",
+                maxLength: 50,
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)",
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<string>(
+                name: "FirstName",
+                schema: "TheKangaroos",
+                table: "Users",
+                type: "nvarchar(50)",
+                maxLength: 50,
+                nullable: false,
+                defaultValue: "",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)",
+                oldNullable: true);
+
+            migrationBuilder.AddColumn<DateTime>(
+                name: "DateOfBirth",
+                schema: "TheKangaroos",
+                table: "Users",
+                type: "datetime2",
+                nullable: false,
+                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+
+            migrationBuilder.AddColumn<string>(
+                name: "Gender",
+                schema: "TheKangaroos",
+                table: "Users",
+                type: "nvarchar(max)",
+                nullable: true);
 
             migrationBuilder.CreateTable(
                 name: "Attendees",
@@ -58,7 +97,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Membership",
+                name: "Memberships",
                 schema: "TheKangaroos",
                 columns: table => new
                 {
@@ -68,16 +107,16 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Membership", x => x.Id);
+                    table.PrimaryKey("PK_Memberships", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Membership_Clubs_ClubId",
+                        name: "FK_Memberships_Clubs_ClubId",
                         column: x => x.ClubId,
                         principalSchema: "TheKangaroos",
                         principalTable: "Clubs",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Membership_Users_UserId",
+                        name: "FK_Memberships_Users_UserId",
                         column: x => x.UserId,
                         principalSchema: "TheKangaroos",
                         principalTable: "Users",
@@ -134,15 +173,15 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Membership_ClubId",
+                name: "IX_Memberships_ClubId",
                 schema: "TheKangaroos",
-                table: "Membership",
+                table: "Memberships",
                 column: "ClubId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Membership_UserId",
+                name: "IX_Memberships_UserId",
                 schema: "TheKangaroos",
-                table: "Membership",
+                table: "Memberships",
                 column: "UserId");
         }
 
@@ -161,7 +200,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
                 schema: "TheKangaroos");
 
             migrationBuilder.DropTable(
-                name: "Membership",
+                name: "Memberships",
                 schema: "TheKangaroos");
 
             migrationBuilder.DropTable(
@@ -179,6 +218,37 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
             migrationBuilder.DropTable(
                 name: "Venues",
                 schema: "TheKangaroos");
+
+            migrationBuilder.DropColumn(
+                name: "DateOfBirth",
+                schema: "TheKangaroos",
+                table: "Users");
+
+            migrationBuilder.DropColumn(
+                name: "Gender",
+                schema: "TheKangaroos",
+                table: "Users");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "LastName",
+                schema: "TheKangaroos",
+                table: "Users",
+                type: "nvarchar(max)",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(50)",
+                oldMaxLength: 50,
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<string>(
+                name: "FirstName",
+                schema: "TheKangaroos",
+                table: "Users",
+                type: "nvarchar(max)",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(50)",
+                oldMaxLength: 50);
 
             migrationBuilder.AddColumn<string>(
                 name: "OwnerId",

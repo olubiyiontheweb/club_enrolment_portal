@@ -10,8 +10,8 @@ using TheKangaroos_ClubEnrolmentPortal.Data;
 namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220403144431_newEntities")]
-    partial class newEntities
+    [Migration("20220404001641_newEntitiesAndChanges")]
+    partial class newEntitiesAndChanges
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,7 +19,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
             modelBuilder
                 .HasDefaultSchema("TheKangaroos")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.12")
+                .HasAnnotation("ProductVersion", "5.0.15")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -260,7 +260,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Membership");
+                    b.ToTable("Memberships");
                 });
 
             modelBuilder.Entity("TheKangaroos_ClubEnrolmentPortal.Data.Models.Order", b =>
@@ -451,13 +451,13 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
             modelBuilder.Entity("TheKangaroos_ClubEnrolmentPortal.Data.Models.Membership", b =>
                 {
                     b.HasOne("TheKangaroos_ClubEnrolmentPortal.Data.Models.Club", "Club")
-                        .WithMany("ClubMembers")
+                        .WithMany("Members")
                         .HasForeignKey("ClubId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TheKangaroos_ClubEnrolmentPortal.Data.Models.User", "User")
-                        .WithMany("ClubMembership")
+                        .WithMany("Memberships")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -469,14 +469,14 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Migrations
 
             modelBuilder.Entity("TheKangaroos_ClubEnrolmentPortal.Data.Models.Club", b =>
                 {
-                    b.Navigation("ClubMembers");
-
                     b.Navigation("Events");
+
+                    b.Navigation("Members");
                 });
 
             modelBuilder.Entity("TheKangaroos_ClubEnrolmentPortal.Data.Models.User", b =>
                 {
-                    b.Navigation("ClubMembership");
+                    b.Navigation("Memberships");
                 });
 #pragma warning restore 612, 618
         }

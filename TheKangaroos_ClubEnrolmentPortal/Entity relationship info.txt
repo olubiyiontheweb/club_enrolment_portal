@@ -16,6 +16,8 @@ a user can be member of multiple clubs
 
 Clubs have admins, members
 
+Are Admins sitewide or club specific?
+
 Admins can create events
 
 Member can apply or attend events
@@ -26,10 +28,13 @@ Admin can create annoucements
 
 Annoucements have types: notice, enquiry
 
+What are news? and what is the difference between news and annoucements?
+
+Are annoucements notices club specific or sitewide?
+
 Admins can generate only notices for their clubs
 
 All users can generate enquiries
-
 
 User pay for tickets
 

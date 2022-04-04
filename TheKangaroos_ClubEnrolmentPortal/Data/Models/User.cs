@@ -45,7 +45,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
         public string Gender { get; set; }
 
         // users can be members of multiple clubs
-        public List<Membership> ClubMembership { get; set; }
+        public ICollection<Membership> Memberships { get; set; }
     }
 
     public class UserRegister {
