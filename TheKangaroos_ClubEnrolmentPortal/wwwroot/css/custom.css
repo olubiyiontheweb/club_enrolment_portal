@@ -98,6 +98,10 @@
     color: var(--fifth-color) !important;
 }
 
+.text-fifth-light {
+    color: var(--fifth-color-light) !important;
+}
+
 .border-none {
     border: none !important;
 }
@@ -246,7 +250,7 @@
 
 .custom-button {
     font-weight: 600;
-    padding: 3% 7%;
+    padding: 2% 5%;
     font-size: 1.2rem;
     border-radius: 0%;
     color: var(--fifth-color);
@@ -273,6 +277,30 @@
     /*font-size: 1.1rem;*/
     /*transition: font-size 0.3s*/
 }
+
+/*login page*/
+.login_box {
+    position: relative;
+    width: 80%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--fifth-color);
+    padding: 2%;
+    color: #fff;
+    box-shadow: 10px 10px var(--secondary-color);
+}
+
+@media screen and (min-width: 1200px) {
+    .login_box {
+       width: 30%;
+    }
+}
+
+/*end login page css*/
 
 /*Dashboard page*/
 @media screen and (min-width: 1200px) {
