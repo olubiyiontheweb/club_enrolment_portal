@@ -1,0 +1,5 @@
+﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="/" Path="C:\Users\User001\source\repos\700111-2122-group-project-kangaroos\TheKangaroos_ClubEnrolmentPortal\obj\Debug\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="/Identity" Path="C:\Users\User001\.nuget\packages\microsoft.aspnetcore.identity.ui\5.0.12\staticwebassets\V4\" />
+  <ContentRoot BasePath="_content/AntDesign" Path="C:\Users\User001\.nuget\packages\antdesign\0.10.5\build\..\staticwebassets\" />
+</StaticWebAssets>
