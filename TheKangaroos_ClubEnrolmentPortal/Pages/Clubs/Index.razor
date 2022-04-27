@@ -1,0 +1,97 @@
+@page "/clubList"
+
+@using TheKangaroos_ClubEnrolmentPortal.Data.Models
+
+<h3 class="font-weight-bold text-secondary">Club List</h3>
+
+<p class="font-weight-bold"> Browse through all the clubs we have available. If you want to start your own club, you can
+<a href="club/register" class="text-secondary">Register one here</a>.</p>
+<hr>
+<div class="row">
+        @foreach (var item in clubs)
+        {
+            <div class="col-12 col-lg-6 col-xl-3 mb-4">
+                    <div class="card">
+                        <div class="card-banner">
+                            @if (@item.ImageUrl != null)
+                            {
+                                <img class="card-img-top" src="@item.ImageUrl" alt="@item.Title">
+                            }
+                            else{
+                                <img src="../images/casual-life-3d-reward-badge-with-two-ribbons.png" class="card-img-top">
+                            }
+                        </div>
+                       
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Title</h5>
+                                <p class="card-text">@item.Description.Substring(0, 200)...</p>
+                                <div class="text-center"> 
+                                    <a href="clubDetail/@item.id" class="btn btn-outline-secondary-color">Find out more</a>
+                                </div>
+                            </div>
+                    </div>
+            </div>
+        }
+</div>
+
+@code {
+
+    IList<ClubModel> clubs = new List<ClubModel>{
+        new ClubModel {
+            id = 1,
+            Title = "Hull University Computer Club",
+            Description = "We're the student-run Computer Science Society at Hull, set up with the aim of providing engaging and academically supporting activities and events for students with an interest in Computing. This basically means our role is to make life outside of the course as fun and interesting as possible, organising both social and technical events for you. We're the student-run Computer Science Society at Hull, set up with the aim of providing engaging and academically supporting activities and events for students with an interest in Computing. This basically means our role is to make life outside of the course as fun and interesting as possible, organising both social and technical events for you.",
+            ImageUrl = "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+        },
+        new ClubModel {
+            id = 2,
+            Title = "Hull University Table Tennis Club",
+            Description = "Brand new for the new academic year Hull Sport are pleased to bring you Table Tennis as part of our on campus programme! Fancy yourself as a bit of a holiday champion? Or you just fancy a regular casual based session? Well look no further we have you covered. The on campus programme will start 27th September 2021.",
+            ImageUrl = null
+        },
+        new ClubModel {
+            id = 1,
+            Title = "Hull University Computer Club",
+            Description = "We're the student-run Computer Science Society at Hull, set up with the aim of providing engaging and academically supporting activities and events for students with an interest in Computing. This basically means our role is to make life outside of the course as fun and interesting as possible, organising both social and technical events for you. We're the student-run Computer Science Society at Hull, set up with the aim of providing engaging and academically supporting activities and events for students with an interest in Computing. This basically means our role is to make life outside of the course as fun and interesting as possible, organising both social and technical events for you.",
+            ImageUrl = "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+        },
+        new ClubModel {
+            id = 2,
+            Title = "Hull University Table Tennis Club",
+            Description = "Brand new for the new academic year Hull Sport are pleased to bring you Table Tennis as part of our on campus programme! Fancy yourself as a bit of a holiday champion? Or you just fancy a regular casual based session? Well look no further we have you covered. The on campus programme will start 27th September 2021.",
+            ImageUrl = null
+        },
+        new ClubModel {
+            id = 1,
+            Title = "Hull University Computer Club",
+            Description = "We're the student-run Computer Science Society at Hull, set up with the aim of providing engaging and academically supporting activities and events for students with an interest in Computing. This basically means our role is to make life outside of the course as fun and interesting as possible, organising both social and technical events for you. We're the student-run Computer Science Society at Hull, set up with the aim of providing engaging and academically supporting activities and events for students with an interest in Computing. This basically means our role is to make life outside of the course as fun and interesting as possible, organising both social and technical events for you.",
+            ImageUrl = "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+        },
+        new ClubModel {
+            id = 2,
+            Title = "Hull University Table Tennis Club",
+            Description = "Brand new for the new academic year Hull Sport are pleased to bring you Table Tennis as part of our on campus programme! Fancy yourself as a bit of a holiday champion? Or you just fancy a regular casual based session? Well look no further we have you covered. The on campus programme will start 27th September 2021.",
+            ImageUrl = null
+        },
+        new ClubModel {
+            id = 1,
+            Title = "Hull University Computer Club",
+            Description = "We're the student-run Computer Science Society at Hull, set up with the aim of providing engaging and academically supporting activities and events for students with an interest in Computing. This basically means our role is to make life outside of the course as fun and interesting as possible, organising both social and technical events for you. We're the student-run Computer Science Society at Hull, set up with the aim of providing engaging and academically supporting activities and events for students with an interest in Computing. This basically means our role is to make life outside of the course as fun and interesting as possible, organising both social and technical events for you.",
+            ImageUrl = "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+        },
+        new ClubModel {
+            id = 2,
+            Title = "Hull University Table Tennis Club",
+            Description = "Brand new for the new academic year Hull Sport are pleased to bring you Table Tennis as part of our on campus programme! Fancy yourself as a bit of a holiday champion? Or you just fancy a regular casual based session? Well look no further we have you covered. The on campus programme will start 27th September 2021.",
+            ImageUrl = null
+        },
+    };
+
+    class ClubModel
+    {
+        public int id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string ImageUrl { get; set; }
+    }
+}

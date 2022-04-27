@@ -3,67 +3,71 @@
 @{
     ViewData["Title"] = "Register";
 }
-<div class="register_box">
-    <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-6 register_box_left d-none d-none d-lg-flex">
-            <h2>Club Enrollment Portal</h2>
-            <img src="../../images/casual-life-3d-likes.png" class="landing-bg" />
-            <h5>
-                Just a few clicks away from the ultimate club experience
-            </h5>
-        </div>
-        <div class="col-sm-12 col-md-12 col-lg-6 register_box_right">
-            <div>
-                <h3 class="mb-1 text-white">Register With Us</h3>
-                <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                    <div class="form-group row">
-                        <div class="col-12 col-lg-6 mt-3">
-                            <label asp-for="Input.FirstName">First Name</label>
-                            <input asp-for="Input.FirstName" class="form-control" placeholder="First name" id="first_name">
-                            <span asp-validation-for="Input.FirstName" class="text-tertiary"></span>
-                        </div>
-                        <div class="col-12 col-lg-6 mt-3">
-                            <label asp-for="Input.LastName">Last Name</label>
-                            <input asp-for="Input.LastName" class="form-control" placeholder="Last name" id="last_name">
-                            <span asp-validation-for="Input.LastName" class="text-tertiary"></span>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label asp-for="Input.Gender" class="my-1 mr-2">Gender</label>
-                        <select class="custom-select my-1 mr-sm-2" asp-for="Input.Gender">
-                            <option selected>Choose...</option>
-                            <option value="1">Female</option>
-                            <option value="2">Male</option>
-                            <option value="3">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Input.Email"></label>
-                        <input asp-for="Input.Email" class="form-control" placeholder="example@school.ac.uk" />
-                        @*<span asp-validation-for="Input.Email" class="text-tertiary"></span>*@
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Input.Password"></label>
-                        <input asp-for="Input.Password" class="form-control" />
-                        @*<span asp-validation-for="Input.Password" class="text-tertiary"></span>*@
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Input.ConfirmPassword"></label>
-                        <input asp-for="Input.ConfirmPassword" class="form-control" />
-                        <span asp-validation-for="Input.ConfirmPassword" class="text-tertiary"></span>
-                        @*<input type="password" class="form-control" id="exampleInputPassword2"
-                            placeholder="Enter Password Again">*@
-                    </div>
-                    <div asp-validation-summary="All" class="text-fifth-light"></div>
-
-                    <div class="text-center mt-3 mb-0">
-                        <button type="submit" class="btn custom-button bg-fourth">Create Account</button>
-                    </div>
-                </form>
-                <p class="mt-4 text-center">Already a member? <a class="font-weight-bold text-white"
-                        href="login"><u>Login Here</u></a></p>
+<div class="guest-div">
+    <div class="register_box">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-6 register_box_left d-none d-none d-lg-flex">
+                <h2>Club Enrollment Portal</h2>
+                <img src="../../images/casual-life-3d-likes.png" class="landing-bg" />
+                <h5>
+                    Just a few clicks away from the ultimate club experience
+                </h5>
             </div>
+            <div class="col-sm-12 col-md-12 col-lg-6 register_box_right">
+                <div>
+                    <h3 class="mb-1 text-white">Register With Us</h3>
+                    <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                        <div class="form-group row">
+                            <div class="col-12 col-lg-6 mt-3">
+                                <label asp-for="Input.FirstName">First Name</label>
+                                <input asp-for="Input.FirstName" class="form-control" placeholder="First name"
+                                    id="first_name">
+                                <span asp-validation-for="Input.FirstName" class="text-tertiary"></span>
+                            </div>
+                            <div class="col-12 col-lg-6 mt-3">
+                                <label asp-for="Input.LastName">Last Name</label>
+                                <input asp-for="Input.LastName" class="form-control" placeholder="Last name"
+                                    id="last_name">
+                                <span asp-validation-for="Input.LastName" class="text-tertiary"></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Input.Gender" class="my-1 mr-2">Gender</label>
+                            <select class="custom-select my-1 mr-sm-2" asp-for="Input.Gender">
+                                <option selected>Choose...</option>
+                                <option value="1">Female</option>
+                                <option value="2">Male</option>
+                                <option value="3">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Input.Email"></label>
+                            <input asp-for="Input.Email" class="form-control" placeholder="example@school.ac.uk" />
+                            @*<span asp-validation-for="Input.Email" class="text-tertiary"></span>*@
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Input.Password"></label>
+                            <input asp-for="Input.Password" class="form-control" />
+                            @*<span asp-validation-for="Input.Password" class="text-tertiary"></span>*@
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Input.ConfirmPassword"></label>
+                            <input asp-for="Input.ConfirmPassword" class="form-control" />
+                            <span asp-validation-for="Input.ConfirmPassword" class="text-tertiary"></span>
+                            @*<input type="password" class="form-control" id="exampleInputPassword2"
+                                placeholder="Enter Password Again">*@
+                        </div>
+                        <div asp-validation-summary="All" class="text-fifth-light"></div>
 
+                        <div class="text-center mt-3 mb-0">
+                            <button type="submit" class="btn custom-button bg-fourth">Create Account</button>
+                        </div>
+                    </form>
+                    <p class="mt-4 text-center">Already a member? <a class="font-weight-bold text-white"
+                            href="login"><u>Login Here</u></a></p>
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
