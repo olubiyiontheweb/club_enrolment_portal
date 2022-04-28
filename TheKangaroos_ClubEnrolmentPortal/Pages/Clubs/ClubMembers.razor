@@ -1,0 +1,27 @@
+@page "/clubDetail/{id}/members"
+
+@using TheKangaroos_ClubEnrolmentPortal.Data.Models
+@using TheKangaroos_ClubEnrolmentPortal.Data.Services
+@inject MembershipService MembershipService
+
+<div>
+    <h3 class="text-secondary font-weight-bold">See All Members for @members[0].Club.Name</h3>
+    @for(int i=0;i<members.Count();i++){
+        Membership item = members[i];
+        <div>
+            <span class="mr-2">@(i+1))</span>@item.User.UserName
+        </div> 
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string id { get; set; }
+
+    private List<Membership> members;
+
+    protected override void OnInitialized()
+    {
+        members = MembershipService.GetMembersByClubIdAsync(id);
+    }
+}

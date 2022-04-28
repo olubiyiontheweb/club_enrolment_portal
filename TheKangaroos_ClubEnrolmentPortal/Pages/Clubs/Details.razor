@@ -4,11 +4,25 @@
 @using TheKangaroos_ClubEnrolmentPortal.Data.Models
 @using TheKangaroos_ClubEnrolmentPortal.Data.Services
 @inherits OwningComponentBase<ClubService>
+@inject NavigationManager MyNavigationManager
+@inject MembershipService MembershipService
 
 <div class="detail-page">
     <div class="header shadow">
         <div class="content">
             <h1 class="page-heading">@club.Name</h1>
+            <div class="membership">
+                @if (IsMember())
+                {
+                    <span><i class="fa-solid fa-circle-check text-success mr-2"></i>Member</span>
+                }
+                else
+                {
+                    <span><i class="fa-solid fa-circle-xmark text-danger mr-2"></i>Non-Member <a class="ml-2 btn-link"
+                        @onclick="ApplyMembership"><u>Join this Club</u></a></span>
+                }
+            </div>
+
         </div>
         @if (@club.Image != null)
         {
@@ -29,6 +43,10 @@
                         TicketsAvailable="@item.TicketsAvailable" />
                     }
                 </div>
+            </div>
+            <hr>
+            <div>
+                <a href="clubDetail/@club.Id/members">See All Members</a>
             </div>
         </div>
         <div class="col-12 col-xl-3">
@@ -55,16 +73,41 @@
 </div>
 
 @code {
+    [CascadingParameter]
+    private Task<AuthenticationState> AuthenticationStateTask { get; set; }
     [Parameter]
     public string id { get; set; }
-
     private Club club;
     private List<Event> events;
+    private string userId { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateTask;
+        userId = authState.User.Identity.Name;
+    }
 
     protected override void OnInitialized()
     {
         club = Service.GetClubByIdAsync(id);
         events = Service.GetEventsByClubIdAsync(id);
+    }
+
+    private bool IsMember()
+    {
+        return MembershipService.IsMember("384eb7b7-0dba-42f4-84d8-1b384b9ada37", id);
+    }
+
+    private void ApplyMembership()
+    {
+        Console.WriteLine(userId);
+        Membership membership = new Membership
+        {
+            @*UserId = userId,*@
+            UserId = "384eb7b7-0dba-42f4-84d8-1b384b9ada37",
+            ClubId = id,
+        };
+        MembershipService.PostMembershipAsync(membership);
+        MyNavigationManager.NavigateTo(MyNavigationManager.Uri, true);
     }
 
     IList<News> news = new List<News>

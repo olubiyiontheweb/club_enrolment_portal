@@ -60,6 +60,7 @@ namespace TheKangaroos_ClubEnrolmentPortal
             services.AddSingleton<WeatherForecastService>();
             services.AddScoped<ClubService>();
             services.AddScoped<EventService>();
+            services.AddScoped<MembershipService>();
             services.AddAntDesign();
 
         }
