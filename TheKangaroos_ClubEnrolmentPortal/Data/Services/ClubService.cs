@@ -21,5 +21,10 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
         {
             return _context.Clubs.ToList();
         }
+
+        public Club GetClubByIdAsync(string id)
+        {
+            return _context.Clubs.FirstOrDefault(c => c.Id == id);
+        }
     }
 }
