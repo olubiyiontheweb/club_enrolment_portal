@@ -8,19 +8,19 @@
                 </div>
                 <div class="ml-1">
                     <h5 class="text-white font-weight-bold ml-2">@Name</h5>
-                    <span><i class="fa-solid fa-clock"></i>
+                    <span class="ml-3"><i class="fa-solid fa-clock"></i>
                         @*StartDate.ToString("MM/dd/yyyy") *@
                         @StartDate.ToString("hh:mm") @StartDate.ToString("tt")</span>
-                    <span class="ml-2"><i class="fa-solid fa-location-dot"></i> @Location</span>
-                    <span class="ml-2"><i class="fa-solid fa-sterling-sign"></i>&nbsp;
-                        @if (@TicketsAvailable == 0)
+                    <span class="ml-3"><i class="fa-solid fa-location-dot"></i> @Location</span>
+                    <span class="ml-3"><i class="fa-solid fa-user"></i>&nbsp;
+                        @if (@TicketsAvailable > 0)
                         {
-                            <span>Free</span>
+                            <span>@TicketsAvailable</span>
                         }
                         else
                         {
                             @*@Price.ToString("0.00");*@
-                            <span>Limited</span>
+                            <span>Unlimited</span>
                         }
                     </span>
                 </div>
