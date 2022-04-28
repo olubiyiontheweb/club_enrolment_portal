@@ -1,0 +1,46 @@
+@page "/club/register"
+@page "/club/edit/{id}"
+@inject NavigationManager MyNavigationManager
+
+@if (MyNavigationManager.Uri.Contains("register"))
+{
+    <h3 class="text-center font-weight-bold text-secondary">Register a New Club</h3>
+}
+else
+{
+    <h3 class="text-center font-weight-bold text-secondary">Edit Club</h3>
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-12 col-lg-6">
+        <div class="card p-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Club.Name" class="control-label text-secondary font-weight-bold">Club Name</label>
+                    <input asp-for="Club.Name" class="form-control" />
+                    <span asp-validation-for="Club.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Club.Description" class="control-label text-secondary font-weight-bold">Club
+                        Description</label>
+                    <input asp-for="Club.Description" class="form-control" />
+                    <span asp-validation-for="Club.Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Club.Image" class="control-label text-secondary font-weight-bold">Club Logo</label>
+                    <input type="file" asp-for="Club.Image" class="form-control-file" />
+                    <span asp-validation-for="Club.Image" class="text-danger"></span>
+                </div>
+                <div class="form-group text-center">
+                    <input type="submit" value="Register" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string id { get; set; }
+}

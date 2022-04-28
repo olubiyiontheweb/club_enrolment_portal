@@ -12,35 +12,280 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-        "HashCode": -766934964,
+        "HashCode": -901973723,
         "Kind": "Components.Component",
-        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Dashboard",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Clubs.Details",
         "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Dashboard"
+            "TagName": "Details"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "id",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "id"
+            }
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Dashboard"
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Clubs.Details"
         }
       },
       {
-        "HashCode": 378063590,
+        "HashCode": -1558416689,
         "Kind": "Components.Component",
-        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Dashboard",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Clubs.Details",
         "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "TheKangaroos_ClubEnrolmentPortal.Pages.Dashboard"
+            "TagName": "TheKangaroos_ClubEnrolmentPortal.Pages.Clubs.Details"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "id",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "id"
+            }
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Dashboard",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Clubs.Details",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1394727126,
+        "Kind": "Components.Component",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Clubs.Form",
+        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Form"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "id",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "id"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Clubs.Form"
+        }
+      },
+      {
+        "HashCode": 823849027,
+        "Kind": "Components.Component",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Clubs.Form",
+        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TheKangaroos_ClubEnrolmentPortal.Pages.Clubs.Form"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "id",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "id"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Clubs.Form",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 1795109956,
+        "Kind": "Components.Component",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Clubs.Index",
+        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Clubs.Index"
+        }
+      },
+      {
+        "HashCode": 717016083,
+        "Kind": "Components.Component",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Clubs.Index",
+        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TheKangaroos_ClubEnrolmentPortal.Pages.Clubs.Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Clubs.Index",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -132334419,
+        "Kind": "Components.Component",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Events.Details",
+        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Details"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "id",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "id"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Events.Details"
+        }
+      },
+      {
+        "HashCode": 971501496,
+        "Kind": "Components.Component",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Events.Details",
+        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TheKangaroos_ClubEnrolmentPortal.Pages.Events.Details"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "id",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "id"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Events.Details",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1281248733,
+        "Kind": "Components.Component",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Events.Form",
+        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Form"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "id",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "id"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Events.Form"
+        }
+      },
+      {
+        "HashCode": -809576944,
+        "Kind": "Components.Component",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Events.Form",
+        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TheKangaroos_ClubEnrolmentPortal.Pages.Events.Form"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "id",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "id"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Events.Form",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 701325385,
+        "Kind": "Components.Component",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Events.Index",
+        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Events.Index"
+        }
+      },
+      {
+        "HashCode": 1531179070,
+        "Kind": "Components.Component",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Events.Index",
+        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TheKangaroos_ClubEnrolmentPortal.Pages.Events.Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Events.Index",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -78,35 +323,35 @@
         }
       },
       {
-        "HashCode": -604145146,
+        "HashCode": -766934964,
         "Kind": "Components.Component",
-        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Landing",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Dashboard",
         "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Landing"
+            "TagName": "Dashboard"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Landing"
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Dashboard"
         }
       },
       {
-        "HashCode": -1625872723,
+        "HashCode": 378063590,
         "Kind": "Components.Component",
-        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Landing",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Dashboard",
         "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "TheKangaroos_ClubEnrolmentPortal.Pages.Landing"
+            "TagName": "TheKangaroos_ClubEnrolmentPortal.Pages.Dashboard"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Landing",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Dashboard",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -244,39 +489,6 @@
         }
       },
       {
-        "HashCode": 1756259210,
-        "Kind": "Components.Component",
-        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Index",
-        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Index"
-        }
-      },
-      {
-        "HashCode": 1947284352,
-        "Kind": "Components.Component",
-        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Index",
-        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "TheKangaroos_ClubEnrolmentPortal.Pages.Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Index",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": -1236890706,
         "Kind": "Components.Component",
         "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.FetchData",
@@ -310,35 +522,68 @@
         }
       },
       {
-        "HashCode": 1000754389,
+        "HashCode": 1756259210,
         "Kind": "Components.Component",
-        "Name": "TheKangaroos_ClubEnrolmentPortal.Shared.NavMenu",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Index",
         "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "NavMenu"
+            "TagName": "Index"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Shared.NavMenu"
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Index"
         }
       },
       {
-        "HashCode": 1096437905,
+        "HashCode": 1947284352,
         "Kind": "Components.Component",
-        "Name": "TheKangaroos_ClubEnrolmentPortal.Shared.NavMenu",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Index",
         "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "TheKangaroos_ClubEnrolmentPortal.Shared.NavMenu"
+            "TagName": "TheKangaroos_ClubEnrolmentPortal.Pages.Index"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Shared.NavMenu",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Index",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -604145146,
+        "Kind": "Components.Component",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Landing",
+        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Landing"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Landing"
+        }
+      },
+      {
+        "HashCode": -1625872723,
+        "Kind": "Components.Component",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Pages.Landing",
+        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TheKangaroos_ClubEnrolmentPortal.Pages.Landing"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Pages.Landing",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -439,6 +684,72 @@
         }
       },
       {
+        "HashCode": -1679986099,
+        "Kind": "Components.Component",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Shared.LoginDisplay",
+        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "LoginDisplay"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Shared.LoginDisplay"
+        }
+      },
+      {
+        "HashCode": 1036923724,
+        "Kind": "Components.Component",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Shared.LoginDisplay",
+        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TheKangaroos_ClubEnrolmentPortal.Shared.LoginDisplay"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Shared.LoginDisplay",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1715510982,
+        "Kind": "Components.Component",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Shared.PageNotFound",
+        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "PageNotFound"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Shared.PageNotFound"
+        }
+      },
+      {
+        "HashCode": -1467683967,
+        "Kind": "Components.Component",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Shared.PageNotFound",
+        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TheKangaroos_ClubEnrolmentPortal.Shared.PageNotFound"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Shared.PageNotFound",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": 1605329560,
         "Kind": "Components.Component",
         "Name": "TheKangaroos_ClubEnrolmentPortal.Shared.RedirectToLogin",
@@ -468,6 +779,59 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Shared.RedirectToLogin",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -471551790,
+        "Kind": "Components.Component",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Shared.SurveyPrompt",
+        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "SurveyPrompt"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Shared.SurveyPrompt"
+        }
+      },
+      {
+        "HashCode": 937096411,
+        "Kind": "Components.Component",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Shared.SurveyPrompt",
+        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TheKangaroos_ClubEnrolmentPortal.Shared.SurveyPrompt"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Shared.SurveyPrompt",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -568,121 +932,35 @@
         }
       },
       {
-        "HashCode": -1715510982,
+        "HashCode": 1000754389,
         "Kind": "Components.Component",
-        "Name": "TheKangaroos_ClubEnrolmentPortal.Shared.PageNotFound",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Shared.NavMenu",
         "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "PageNotFound"
+            "TagName": "NavMenu"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Shared.PageNotFound"
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Shared.NavMenu"
         }
       },
       {
-        "HashCode": -1467683967,
+        "HashCode": 1096437905,
         "Kind": "Components.Component",
-        "Name": "TheKangaroos_ClubEnrolmentPortal.Shared.PageNotFound",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.Shared.NavMenu",
         "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "TheKangaroos_ClubEnrolmentPortal.Shared.PageNotFound"
+            "TagName": "TheKangaroos_ClubEnrolmentPortal.Shared.NavMenu"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Shared.PageNotFound",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1679986099,
-        "Kind": "Components.Component",
-        "Name": "TheKangaroos_ClubEnrolmentPortal.Shared.LoginDisplay",
-        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "LoginDisplay"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Shared.LoginDisplay"
-        }
-      },
-      {
-        "HashCode": 1036923724,
-        "Kind": "Components.Component",
-        "Name": "TheKangaroos_ClubEnrolmentPortal.Shared.LoginDisplay",
-        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "TheKangaroos_ClubEnrolmentPortal.Shared.LoginDisplay"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Shared.LoginDisplay",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -471551790,
-        "Kind": "Components.Component",
-        "Name": "TheKangaroos_ClubEnrolmentPortal.Shared.SurveyPrompt",
-        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Shared.SurveyPrompt"
-        }
-      },
-      {
-        "HashCode": 937096411,
-        "Kind": "Components.Component",
-        "Name": "TheKangaroos_ClubEnrolmentPortal.Shared.SurveyPrompt",
-        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "TheKangaroos_ClubEnrolmentPortal.Shared.SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Shared.SurveyPrompt",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Shared.NavMenu",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -100882,6 +101160,11 @@
       "FileKind": "component"
     },
     {
+      "FilePath": "c:\\Users\\User001\\source\\repos\\700111-2122-group-project-kangaroos\\TheKangaroos_ClubEnrolmentPortal\\Pages\\Events\\Form.razor",
+      "TargetPath": "Pages\\Events\\Form.razor",
+      "FileKind": "component"
+    },
+    {
       "FilePath": "c:\\Users\\User001\\source\\repos\\700111-2122-group-project-kangaroos\\TheKangaroos_ClubEnrolmentPortal\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -101005,6 +101288,11 @@
       "FilePath": "c:\\Users\\User001\\source\\repos\\700111-2122-group-project-kangaroos\\TheKangaroos_ClubEnrolmentPortal\\Areas\\Identity\\Pages\\Account\\_StatusMessage.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\_StatusMessage.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User001\\source\\repos\\700111-2122-group-project-kangaroos\\TheKangaroos_ClubEnrolmentPortal\\Pages\\Clubs\\Form.razor",
+      "TargetPath": "Pages\\Clubs\\Form.razor",
+      "FileKind": "component"
     },
     {
       "FilePath": "c:\\Users\\User001\\source\\repos\\700111-2122-group-project-kangaroos\\TheKangaroos_ClubEnrolmentPortal\\Pages\\Memberships\\Create.cshtml",
@@ -101147,6 +101435,11 @@
       "FileKind": "component"
     },
     {
+      "FilePath": "c:\\Users\\User001\\source\\repos\\700111-2122-group-project-kangaroos\\TheKangaroos_ClubEnrolmentPortal\\Pages\\Clubs\\Index.razor",
+      "TargetPath": "Pages\\Clubs\\Index.razor",
+      "FileKind": "component"
+    },
+    {
       "FilePath": "c:\\Users\\User001\\source\\repos\\700111-2122-group-project-kangaroos\\TheKangaroos_ClubEnrolmentPortal\\Pages\\Index.razor",
       "TargetPath": "Pages\\Index.razor",
       "FileKind": "component"
@@ -101172,6 +101465,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\User001\\source\\repos\\700111-2122-group-project-kangaroos\\TheKangaroos_ClubEnrolmentPortal\\Pages\\Events\\Details.razor",
+      "TargetPath": "Pages\\Events\\Details.razor",
+      "FileKind": "component"
+    },
+    {
       "FilePath": "c:\\Users\\User001\\source\\repos\\700111-2122-group-project-kangaroos\\TheKangaroos_ClubEnrolmentPortal\\Pages\\FetchData.razor",
       "TargetPath": "Pages\\FetchData.razor",
       "FileKind": "component"
@@ -101180,6 +101478,11 @@
       "FilePath": "c:\\Users\\User001\\source\\repos\\700111-2122-group-project-kangaroos\\TheKangaroos_ClubEnrolmentPortal\\Pages\\Events\\Details.cshtml",
       "TargetPath": "Pages\\Events\\Details.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User001\\source\\repos\\700111-2122-group-project-kangaroos\\TheKangaroos_ClubEnrolmentPortal\\Pages\\Clubs\\Details.razor",
+      "TargetPath": "Pages\\Clubs\\Details.razor",
+      "FileKind": "component"
     },
     {
       "FilePath": "c:\\Users\\User001\\source\\repos\\700111-2122-group-project-kangaroos\\TheKangaroos_ClubEnrolmentPortal\\Pages\\Clubs\\Index.cshtml",
@@ -101240,6 +101543,11 @@
       "FilePath": "c:\\Users\\User001\\source\\repos\\700111-2122-group-project-kangaroos\\TheKangaroos_ClubEnrolmentPortal\\Pages\\Events\\Edit.cshtml",
       "TargetPath": "Pages\\Events\\Edit.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User001\\source\\repos\\700111-2122-group-project-kangaroos\\TheKangaroos_ClubEnrolmentPortal\\Pages\\Events\\Index.razor",
+      "TargetPath": "Pages\\Events\\Index.razor",
+      "FileKind": "component"
     },
     {
       "FilePath": "c:\\Users\\User001\\source\\repos\\700111-2122-group-project-kangaroos\\TheKangaroos_ClubEnrolmentPortal\\Views\\Events\\Create.cshtml",

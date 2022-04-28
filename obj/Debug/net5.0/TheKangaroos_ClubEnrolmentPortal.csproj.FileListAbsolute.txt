@@ -256,3 +256,15 @@ C:\Users\User001\source\repos\700111-2122-group-project-kangaroos\TheKangaroos_C
 C:\Users\User001\source\repos\700111-2122-group-project-kangaroos\TheKangaroos_ClubEnrolmentPortal\obj\Debug\net5.0\Razor\Pages\FetchData.razor.g.cs
 C:\Users\User001\source\repos\700111-2122-group-project-kangaroos\TheKangaroos_ClubEnrolmentPortal\obj\Debug\net5.0\Razor\Shared\RedirectToLogin.razor.g.cs
 C:\Users\User001\source\repos\700111-2122-group-project-kangaroos\TheKangaroos_ClubEnrolmentPortal\obj\Debug\net5.0\Razor\Pages\Error.cshtml.g.cs
+C:\Users\User001\source\repos\700111-2122-group-project-kangaroos\TheKangaroos_ClubEnrolmentPortal\obj\Debug\net5.0\RazorDeclaration\Pages\Clubs\Details.razor.g.cs
+C:\Users\User001\source\repos\700111-2122-group-project-kangaroos\TheKangaroos_ClubEnrolmentPortal\obj\Debug\net5.0\RazorDeclaration\Pages\Clubs\Form.razor.g.cs
+C:\Users\User001\source\repos\700111-2122-group-project-kangaroos\TheKangaroos_ClubEnrolmentPortal\obj\Debug\net5.0\RazorDeclaration\Pages\Clubs\Index.razor.g.cs
+C:\Users\User001\source\repos\700111-2122-group-project-kangaroos\TheKangaroos_ClubEnrolmentPortal\obj\Debug\net5.0\RazorDeclaration\Pages\Events\Details.razor.g.cs
+C:\Users\User001\source\repos\700111-2122-group-project-kangaroos\TheKangaroos_ClubEnrolmentPortal\obj\Debug\net5.0\RazorDeclaration\Pages\Events\Form.razor.g.cs
+C:\Users\User001\source\repos\700111-2122-group-project-kangaroos\TheKangaroos_ClubEnrolmentPortal\obj\Debug\net5.0\RazorDeclaration\Pages\Events\Index.razor.g.cs
+C:\Users\User001\source\repos\700111-2122-group-project-kangaroos\TheKangaroos_ClubEnrolmentPortal\obj\Debug\net5.0\Razor\Pages\Clubs\Details.razor.g.cs
+C:\Users\User001\source\repos\700111-2122-group-project-kangaroos\TheKangaroos_ClubEnrolmentPortal\obj\Debug\net5.0\Razor\Pages\Clubs\Form.razor.g.cs
+C:\Users\User001\source\repos\700111-2122-group-project-kangaroos\TheKangaroos_ClubEnrolmentPortal\obj\Debug\net5.0\Razor\Pages\Clubs\Index.razor.g.cs
+C:\Users\User001\source\repos\700111-2122-group-project-kangaroos\TheKangaroos_ClubEnrolmentPortal\obj\Debug\net5.0\Razor\Pages\Events\Details.razor.g.cs
+C:\Users\User001\source\repos\700111-2122-group-project-kangaroos\TheKangaroos_ClubEnrolmentPortal\obj\Debug\net5.0\Razor\Pages\Events\Form.razor.g.cs
+C:\Users\User001\source\repos\700111-2122-group-project-kangaroos\TheKangaroos_ClubEnrolmentPortal\obj\Debug\net5.0\Razor\Pages\Events\Index.razor.g.cs
