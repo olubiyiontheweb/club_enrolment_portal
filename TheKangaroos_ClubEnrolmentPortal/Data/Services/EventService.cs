@@ -18,7 +18,8 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
 
         public async Task<Club[]> GetClubs()
         {
-            return await _context.Clubs.ToArrayAsync();
+            Club[] clubs = await _context.Clubs.ToArrayAsync();
+            return clubs;
         }
         
         /* 
