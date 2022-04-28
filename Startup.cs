@@ -18,8 +18,9 @@ using System.Threading.Tasks;
 using TheKangaroos_ClubEnrolmentPortal.Areas.Identity;
 using TheKangaroos_ClubEnrolmentPortal.Data;
 using TheKangaroos_ClubEnrolmentPortal.Data.Models;
+using TheKangaroos_ClubEnrolmentPortal.Data.Services;
 using TheKangaroos_ClubEnrolmentPortal.Services;
-
+using TheKangaroos_ClubEnrolmentPortal.Data.Controllers;
 namespace TheKangaroos_ClubEnrolmentPortal
 {
     public class Startup
@@ -57,6 +58,7 @@ namespace TheKangaroos_ClubEnrolmentPortal
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<User>>();
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddSingleton<WeatherForecastService>();
+            services.AddScoped<EventService>();
             services.AddAntDesign();
 
         }

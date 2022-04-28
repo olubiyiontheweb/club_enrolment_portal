@@ -588,6 +588,39 @@
         }
       },
       {
+        "HashCode": -432973211,
+        "Kind": "Components.Component",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.App",
+        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.App"
+        }
+      },
+      {
+        "HashCode": -1092721764,
+        "Kind": "Components.Component",
+        "Name": "TheKangaroos_ClubEnrolmentPortal.App",
+        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TheKangaroos_ClubEnrolmentPortal.App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.App",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": 1405081290,
         "Kind": "Components.Component",
         "Name": "TheKangaroos_ClubEnrolmentPortal.Shared.GuestLayout",
@@ -961,39 +994,6 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.Shared.NavMenu",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -432973211,
-        "Kind": "Components.Component",
-        "Name": "TheKangaroos_ClubEnrolmentPortal.App",
-        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.App"
-        }
-      },
-      {
-        "HashCode": -1092721764,
-        "Kind": "Components.Component",
-        "Name": "TheKangaroos_ClubEnrolmentPortal.App",
-        "AssemblyName": "TheKangaroos_ClubEnrolmentPortal",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "TheKangaroos_ClubEnrolmentPortal.App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TheKangaroos_ClubEnrolmentPortal.App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
