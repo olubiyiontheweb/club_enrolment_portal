@@ -26,6 +26,12 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
+        public async Task<Event[]> ListOfEvents()
+        {
+            var applicationDbContext = _context.Events.Include(e => e.CreatedByClub);
+            return await applicationDbContext.ToArrayAsync();
+        }
+
         // GET: Events/Details/5
         public async Task<IActionResult> Details(string id)
         {
