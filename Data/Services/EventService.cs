@@ -16,10 +16,16 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
             _context = context;
         }
 
-        public async Task<Event[]> ListOfEvents()
+        public async Task<Club[]> GetClubs()
         {
-            var applicationDbContext = _context.Events.Include(e => e.CreatedByClub);                      
-            return await applicationDbContext.ToArrayAsync();
+            return await _context.Clubs.ToArrayAsync();
         }
+        
+        /* 
+        {
+            return _context.Clubs.In
+            #var applicationDbContext = _context.Events.Include(e => e.CreatedByClub);                      
+            #return await applicationDbContext.ToArrayAsync();
+        } */
     }
 }
