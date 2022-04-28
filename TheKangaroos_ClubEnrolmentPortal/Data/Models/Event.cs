@@ -1,7 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using TheKangaroos_ClubEnrolmentPortal.Data.Models;
 
 
 namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
@@ -24,6 +23,8 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
         public string Location { get; set; }
         
         public string Image { get; set; }
+
+        //public Venue Venue { get; set; }
 
         // events belong to a club and are created by the club
         [Required]
