@@ -1,6 +1,12 @@
 @page "/event/create"
 @page "/event/edit/{id}"
+@using TheKangaroos_ClubEnrolmentPortal.Data.Models
+@using TheKangaroos_ClubEnrolmentPortal.Data.Services
 @inject NavigationManager MyNavigationManager
+@inherits OwningComponentBase<EventService>
+@inject ClubService ClubService
+
+@inject NavigationManager NavManager
 
 @if (MyNavigationManager.Uri.Contains("create"))
 {
@@ -14,52 +20,89 @@ else
 <div class="row justify-content-center mt-5">
     <div class="col-12 col-lg-6">
         <div class="card p-4">
-            <form method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <EditForm Model="@newevents" OnValidSubmit="@HandleValidSubmit">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+
                 <div class="form-group">
-                    <label asp-for="Event.Name" class="control-label">Event Name</label>
-                    <input asp-for="Event.Name" class="form-control" />
-                    <span asp-validation-for="Event.Name" class="text-danger"></span>
+                    <label for="Name" class="control-label  text-secondary font-weight-bold">Event Name</label>
+                    <InputText id="Name" class="form-control" @bind-Value="newevents.Name" />
                 </div>
                 <div class="form-group">
-                    <label asp-for="Event.Description" class="control-label">Description</label>
-                    <input asp-for="Event.Description" class="form-control" />
-                    <span asp-validation-for="Event.Description" class="text-danger"></span>
+                    <label for="Description" class="control-label  text-secondary font-weight-bold">Event
+                        Description</label>
+                    <InputTextArea id="Description" class="form-control" @bind-Value="newevents.Description" />
                 </div>
                 <div class="form-group">
-                    <label asp-for="Event.StartDate" class="control-label">Start Date</label>
-                    <input asp-for="Event.StartDate" class="form-control" type="datetime-local"/>
-                    <span asp-validation-for="Event.StartDate" class="text-danger"></span>
+                    <label for="StartDate" class="control-label  text-secondary font-weight-bold">Start Date</label>
+                    <InputDate type="datetime-local" id="StartDate" class="form-control"
+                        @bind-Value="newevents.StartDate" />
                 </div>
                 <div class="form-group">
-                    <label asp-for="Event.EndDate" class="control-label">End Date</label>
-                    <input asp-for="Event.EndDate" class="form-control" type="datetime-local"/>
-                    <span asp-validation-for="Event.EndDate" class="text-danger"></span>
+                    <label for="EndDate" class="control-label  text-secondary font-weight-bold">End Date</label>
+                    <InputDate type="datetime-local" id="EndDate" class="form-control" @bind-Value="newevents.EndDate" />
                 </div>
                 <div class="form-group">
-                    <label asp-for="Event.Location" class="control-label">Location</label>
-                    <input asp-for="Event.Location" class="form-control" />
-                    <span asp-validation-for="Event.Location" class="text-danger"></span>
+                    <label for="Location" class="control-label  text-secondary font-weight-bold">Event Location</label>
+                    <InputText id="Location" class="form-control" @bind-Value="newevents.Location" />
                 </div>
                 <div class="form-group">
-                    <label asp-for="Event.Image" class="control-label">Event Banner</label>
-                    <input asp-for="Event.Image" class="form-control-file" type="file" />
-                    <span asp-validation-for="Event.Image" class="text-danger"></span>
+                    <label for="Image" class="control-label  text-secondary font-weight-bold">Event Banner</label>
+                    <InputFile id="Image" class="form-control-file" @bind-Value="newevents.Image" />
                 </div>
                 <div class="form-group">
-                    <label asp-for="Event.CreatedByClubId" class="control-label">Club</label>
-                    <select asp-for="Event.CreatedByClubId" class="form-control"
-                        asp-items="ViewBag.CreatedByClubId"></select>
+                    <label for="CreatedByClubId" class="control-label">Club</label>
+                    <InputSelect id="department" @bind-Value="@newevents.CreatedByClubId" class="form-control">
+                    <option>----</option>
+                        @foreach (var club in clubs)
+                        {
+                            <option value="@club.Id">@club.Name</option>
+                        }
+                    </InputSelect>
                 </div>
                 <div class="form-group text-center">
                     <input type="submit" value="Create" class="btn btn-primary" />
                 </div>
-            </form>
+            </EditForm>
         </div>
     </div>
 </div>
 
 @code {
+    private Event newevents = new Event();
+
+    private void HandleValidSubmit()
+    {
+        Console.WriteLine("Valid");
+        Event events = new Event
+        {
+            Name = newevents.Name,
+            Description = newevents.Description,
+            StartDate = newevents.StartDate,
+            EndDate = newevents.EndDate,
+            Location = newevents.Location,
+            Image = newevents.Image,
+            CreatedByClubId = newevents.CreatedByClubId,
+        };
+        if (MyNavigationManager.Uri.Contains("create"))
+        {
+            Service.PostEventAsync(events);
+            NavManager.NavigateTo("/eventList", true);
+        }
+        else
+        {
+            NavManager.NavigateTo("/eventDetail/{id}", true);
+        }
+
+    }
+
+    private List<Club> clubs;
+
+    protected override void OnInitialized()
+    {
+        clubs = ClubService.GetClubsAsync();
+    }
+
     [Parameter]
     public string id { get; set; }
 }

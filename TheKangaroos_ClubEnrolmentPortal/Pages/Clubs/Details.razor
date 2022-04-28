@@ -10,8 +10,9 @@
         <div class="content">
             <h1 class="page-heading">@club.Name</h1>
         </div>
-        @if (@club.Image != null){
-        <img class="header-img" src="@club.Image">
+        @if (@club.Image != null)
+        {
+            <img class="header-img" src="@club.Image">
         }
     </div>
     <div class="row">
@@ -23,7 +24,9 @@
                 <div class="row">
                     @foreach (var item in events)
                     {
-                        <EventItem Title="@item.Title" Date="@item.Date" Location="@item.Location" ImageUrl="@item.ImageUrl" Price="@item.Price"/>
+                        <EventItem id="@item.Id" Name="@item.Name" StartDate="@item.StartDate" EndDate="@item.EndDate"
+                        Location="@item.Location" Image="@item.Image" CreatedByClub="@item.CreatedByClub"
+                        TicketsAvailable="@item.TicketsAvailable" />
                     }
                 </div>
             </div>
@@ -48,114 +51,56 @@
             </div>
         </div>
     </div>
-    
+
 </div>
 
 @code {
     [Parameter]
-    public string id {get;set;}
+    public string id { get; set; }
 
     private Club club;
+    private List<Event> events;
 
     protected override void OnInitialized()
     {
         club = Service.GetClubByIdAsync(id);
+        events = Service.GetEventsByClubIdAsync(id);
     }
 
-    @*ClubModel club = new ClubModel{
-        id = 1,
-        Title = "Hull University Computer Club",
-        Description = "We're the student-run Computer Science Society at Hull, set up with the aim of providing engaging and academically supporting activities and events for students with an interest in Computing. This basically means our role is to make life outside of the course as fun and interesting as possible, organising both social and technical events for you. We're the student-run Computer Science Society at Hull, set up with the aim of providing engaging and academically supporting activities and events for students with an interest in Computing. This basically means our role is to make life outside of the course as fun and interesting as possible, organising both social and technical events for you.",
-        ImageUrl = "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-    };*@
-
     IList<News> news = new List<News>
-        {
-            new News {
-            id = 1,
-            Title = "Title 1",
-            Type = "Event",
-            Description = "Demo Description"
-            },
-            new News {
-            id = 2,
-            Title = "Title 2",
-            Type = "Announcement",
-            Description = "Demo Description"
-            },
-            new News {
-            id = 3,
-            Title = "Title 3",
-            Type = "Event",
-            Description = "Demo Description"
-            },
-            new News {
-            id = 4,
-            Title = "Title 4",
-            Type = "Announcement",
-            Description = "Demo Description"
-            },
-        };
-    
-    IList<Event> events = new List<Event>
-        {
-            new Event {
-            id = 1,
-            Title = "Welcome Week",
-            Date = new DateTime(2021, 9, 21),
-            Location = "Asylum",
-            Price = 2.2,
-            ImageUrl = "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-            },
-            new Event {
-            id = 2,
-            Title = "Women's History Month 2022",
-            Date = new DateTime(2021, 5, 1),
-            Location = "Robert Blackburn 229",
-            Price = 2.0,
-            @*ImageUrl = "https://images.unsplash.com/photo-1496337589254-7e19d01cec44?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"*@
-            },
-            new Event {
-            id = 3,
-            Title = "Welcome Week",
-            Date = new DateTime(2021, 9, 21),
-            Location = "Asylum",
-            Price = 0,
-            ImageUrl = "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-            },
-            new Event {
-            id = 4,
-            Title = "Women's History Month 2022",
-            Date = new DateTime(2021, 5, 1),
-            Location = "Robert Blackburn 229",
-            Price = 0.0,
-            @*ImageUrl = "https://images.unsplash.com/photo-1496337589254-7e19d01cec44?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"*@
-            },
-        };
-
-    class ClubModel
-        {
-            public int id {get;set;}
-            public string Title { get; set; }
-            public string Description { get; set; }
-            public string ImageUrl  { get; set; }
-        }
+{
+new News {
+id = 1,
+Title = "Title 1",
+Type = "Event",
+Description = "Demo Description"
+},
+new News {
+id = 2,
+Title = "Title 2",
+Type = "Announcement",
+Description = "Demo Description"
+},
+new News {
+id = 3,
+Title = "Title 3",
+Type = "Event",
+Description = "Demo Description"
+},
+new News {
+id = 4,
+Title = "Title 4",
+Type = "Announcement",
+Description = "Demo Description"
+},
+};
 
     class News
-        {
-            public int id {get;set;}
+    {
+        public int id { get; set; }
 
-            public string Title { get; set; }
-            public string Type { get; set; }
-            public string Description { get; set; }
-        }
-
-    class Event{
-        public int id {get;set;}
-        public string Title {get;set;}
-        public DateTime Date {get;set;}
-        public string Location {get;set;}
-        public double Price {get;set;}
-        public string ImageUrl  { get; set; }
+        public string Title { get; set; }
+        public string Type { get; set; }
+        public string Description { get; set; }
     }
 }

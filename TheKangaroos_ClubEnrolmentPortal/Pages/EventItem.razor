@@ -1,3 +1,5 @@
+@using TheKangaroos_ClubEnrolmentPortal.Data.Models
+
 <div class="col-12 col-xl-6 mb-4">
     <div class="event-card-big card">
         <div class="card-contents">
@@ -54,5 +56,5 @@
     [Parameter]
     public int TicketsAvailable { get; set; }
     [Parameter]
-    public string CreatedByClubId { get; set; }
+    public Club CreatedByClub { get; set; }
 }

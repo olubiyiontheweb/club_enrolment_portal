@@ -19,12 +19,12 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
 
         public List<Event> GetEventsAsync()
         {
-            return _context.Events.ToList();
+            return _context.Events.Include(e => e.CreatedByClub).ToList();
         }
 
         public Event GetEventByIdAsync(string id)
         {
-            return _context.Events.FirstOrDefault(e => e.Id == id);
+            return _context.Events.Include(e => e.CreatedByClub).FirstOrDefault(e => e.Id == id);
         }
 
         public Event PostEventAsync(Event @event)
