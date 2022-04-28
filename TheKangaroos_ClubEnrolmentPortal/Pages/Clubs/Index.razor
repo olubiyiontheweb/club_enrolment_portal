@@ -1,6 +1,8 @@
 @page "/clubList"
 
 @using TheKangaroos_ClubEnrolmentPortal.Data.Models
+@using TheKangaroos_ClubEnrolmentPortal.Data.Services
+@inject EventService GetList
 
 <h3 class="font-weight-bold text-secondary">Club List</h3>
 
@@ -10,7 +12,8 @@
 <div class="row">
         @foreach (var item in clubs)
         {
-            <div class="col-12 col-lg-6 col-xl-3 mb-4">
+            <div>@item</div>
+            @*<div class="col-12 col-lg-6 col-xl-3 mb-4">
                     <div class="card">
                         <div class="card-banner">
                             @if (@item.ImageUrl != null)
@@ -30,13 +33,19 @@
                                 </div>
                             </div>
                     </div>
-            </div>
+            </div>*@
         }
 </div>
 
 @code {
+    private Club[] clubs;
 
-    IList<ClubModel> clubs = new List<ClubModel>{
+    protected override async Task OnInitializedAsync()
+    {
+        clubs = await GetList.GetClubs();
+    }
+
+    @*IList<ClubModel> clubs = new List<ClubModel>{
         new ClubModel {
             id = 1,
             Title = "Hull University Computer Club",
@@ -93,5 +102,5 @@
         public string Title { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
-    }
+    }*@
 }
