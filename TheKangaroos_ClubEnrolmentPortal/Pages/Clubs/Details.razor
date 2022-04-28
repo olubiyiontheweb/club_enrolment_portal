@@ -2,14 +2,16 @@
 @* @page "/club" *@
 
 @using TheKangaroos_ClubEnrolmentPortal.Data.Models
+@using TheKangaroos_ClubEnrolmentPortal.Data.Services
+@inherits OwningComponentBase<ClubService>
 
 <div class="detail-page">
     <div class="header shadow">
         <div class="content">
-            <h1 class="page-heading">@club.Title</h1>
+            <h1 class="page-heading">@club.Name</h1>
         </div>
-        @if (@club.ImageUrl != null){
-        <img class="header-img" src="@club.ImageUrl">
+        @if (@club.Image != null){
+        <img class="header-img" src="@club.Image">
         }
     </div>
     <div class="row">
@@ -53,12 +55,19 @@
     [Parameter]
     public string id {get;set;}
 
-    ClubModel club = new ClubModel{
+    private Club club;
+
+    protected override void OnInitialized()
+    {
+        club = Service.GetClubByIdAsync(id);
+    }
+
+    @*ClubModel club = new ClubModel{
         id = 1,
         Title = "Hull University Computer Club",
         Description = "We're the student-run Computer Science Society at Hull, set up with the aim of providing engaging and academically supporting activities and events for students with an interest in Computing. This basically means our role is to make life outside of the course as fun and interesting as possible, organising both social and technical events for you. We're the student-run Computer Science Society at Hull, set up with the aim of providing engaging and academically supporting activities and events for students with an interest in Computing. This basically means our role is to make life outside of the course as fun and interesting as possible, organising both social and technical events for you.",
         ImageUrl = "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-    };
+    };*@
 
     IList<News> news = new List<News>
         {
