@@ -26,5 +26,19 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
         {
             return _context.Clubs.FirstOrDefault(c => c.Id == id);
         }
+
+        public Club PostClubAsync(Club club)
+        {
+            _context.Clubs.Add(club);
+            _context.SaveChanges();
+            return club;
+        }
+
+        public Club PutClubAsync(Club club)
+        {
+            _context.Clubs.Update(club);
+            _context.SaveChanges();
+            return club;
+        }
     }
 }
