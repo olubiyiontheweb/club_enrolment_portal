@@ -58,7 +58,7 @@ namespace TheKangaroos_ClubEnrolmentPortal
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<User>>();
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddSingleton<WeatherForecastService>();
-            services.AddScoped<EventService>();
+            services.AddScoped<ClubService>();
             services.AddAntDesign();
 
         }

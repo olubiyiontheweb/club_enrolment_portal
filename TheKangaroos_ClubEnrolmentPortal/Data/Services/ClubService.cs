@@ -8,11 +8,11 @@ using TheKangaroos_ClubEnrolmentPortal.Data.Models;
 
 namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
 {
-    public class EventService
+    public class ClubService
     {
         private readonly ApplicationDbContext _context;
 
-        public EventService(ApplicationDbContext context)
+        public ClubService(ApplicationDbContext context)
         {
             _context = context;
         }    
