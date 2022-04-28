@@ -11,7 +11,7 @@ using System;
 using TheKangaroos_ClubEnrolmentPortal;
 using Microsoft.Extensions.Configuration;
 
-namespace TheKangaroos_ClubEnrolmentPortal.Services
+namespace TheKangaroos_ClubEnrolmentPortal.ExternalServices
 {
     public class EmailSender : IEmailSender
     {

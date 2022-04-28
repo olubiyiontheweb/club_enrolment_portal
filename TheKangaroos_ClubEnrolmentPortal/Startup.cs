@@ -19,7 +19,7 @@ using TheKangaroos_ClubEnrolmentPortal.Areas.Identity;
 using TheKangaroos_ClubEnrolmentPortal.Data;
 using TheKangaroos_ClubEnrolmentPortal.Data.Models;
 using TheKangaroos_ClubEnrolmentPortal.Data.Services;
-using TheKangaroos_ClubEnrolmentPortal.Services;
+using TheKangaroos_ClubEnrolmentPortal.ExternalServices;
 using TheKangaroos_ClubEnrolmentPortal.Data.Controllers;
 namespace TheKangaroos_ClubEnrolmentPortal
 {
@@ -59,6 +59,7 @@ namespace TheKangaroos_ClubEnrolmentPortal
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddSingleton<WeatherForecastService>();
             services.AddScoped<ClubService>();
+            services.AddScoped<EventService>();
             services.AddAntDesign();
 
         }

@@ -40,5 +40,10 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
             _context.SaveChanges();
             return club;
         }
+
+        public List<Event> GetEventsByClubIdAsync(string id)
+        {
+            return _context.Events.Where(e => e.CreatedByClubId == id).ToList();
+        }
     }
 }

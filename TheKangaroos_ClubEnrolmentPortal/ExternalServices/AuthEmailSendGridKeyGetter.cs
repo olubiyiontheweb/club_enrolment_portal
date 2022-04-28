@@ -1,4 +1,4 @@
-namespace TheKangaroos_ClubEnrolmentPortal.Services
+namespace TheKangaroos_ClubEnrolmentPortal.ExternalServices
 {
     public class AuthEmailSendGridKeyGetter
     {
