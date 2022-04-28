@@ -2,7 +2,8 @@
 
 @using TheKangaroos_ClubEnrolmentPortal.Data.Models
 @using TheKangaroos_ClubEnrolmentPortal.Data.Services
-@inject EventService GetList
+@inherits OwningComponentBase<EventService>
+@* @inject EventService GetList *@
 
 <h3 class="font-weight-bold text-secondary">Club List</h3>
 
@@ -12,7 +13,7 @@
 <div class="row">
         @foreach (var item in clubs)
         {
-            <div>@item</div>
+            <div>@item.Name</div>
             @*<div class="col-12 col-lg-6 col-xl-3 mb-4">
                     <div class="card">
                         <div class="card-banner">
@@ -38,12 +39,18 @@
 </div>
 
 @code {
-    private Club[] clubs;
+    private List<Club> clubs;
 
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
-        clubs = await GetList.GetClubs();
+        clubs = Service.GetClubsAsync();
     }
+
+    @* protected override async Task OnInitializedAsync()
+    {
+        //clubs =await GetList.GetClubsAsync();
+        System.Console.WriteLine(clubs);
+    } *@
 
     @*IList<ClubModel> clubs = new List<ClubModel>{
         new ClubModel {

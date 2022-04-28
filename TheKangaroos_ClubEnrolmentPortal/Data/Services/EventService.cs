@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,19 +15,11 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
         public EventService(ApplicationDbContext context)
         {
             _context = context;
-        }
+        }    
 
-        public async Task<Club[]> GetClubs()
+        public List<Club> GetClubsAsync()
         {
-            Club[] clubs = await _context.Clubs.ToArrayAsync();
-            return clubs;
+            return _context.Clubs.ToList();
         }
-        
-        /* 
-        {
-            return _context.Clubs.In
-            #var applicationDbContext = _context.Events.Include(e => e.CreatedByClub);                      
-            #return await applicationDbContext.ToArrayAsync();
-        } */
     }
 }
