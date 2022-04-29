@@ -22,6 +22,11 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
             return _context.Notices.ToList();
         }
 
+        /* public Notice GetNoticesFromAllMembershipsAsync()
+        {
+            return _context.Notices.not
+        } */
+
         public List<Notice> GetNoticesByClubIdAsync(string id)
         {
             return _context.Notices.Include(e => e.CreatedByClub).Where(e => e.CreatedByClubId == id).ToList();
@@ -30,6 +35,11 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
         public List<Notice> GetNoticesByUserIdAsync(string id)
         {
             return _context.Notices.Include(e => e.CreatedByUser).Where(e => e.CreatedByUserId == id).ToList();
+        }
+
+        public Notice GetNoticeByIdAsync(string id)
+        {
+            return _context.Notices.Where(e => e.Id == id).FirstOrDefault();
         }
 
         public Notice CreateNoticeAsync(Notice @notice)
