@@ -12,16 +12,20 @@
         <div class="club-news">
             <h4 class="font-weight-bold text-secondary mb-3">Latest Club News</h4>
             <div class="row">
-                @foreach (var item in news)
+                @if (news.Count < 0)
                 {
-                    <div class="col-6 col-lg-3">
-                        <div class="card mb-3 p-3">
-                            <h5>@item.Title</h5>
-                            <p class="mb-0">
-                                @item.Description
-                            </p>
+                    @for (int i = 0; i < 7 && i < news.Count; i++)
+                    {
+                        Item item = news[i];
+                        <div class="col-6 col-lg-3">
+                            <div class="card mb-3 p-3">
+                                <h5>@item.Title</h5>
+                                <p class="mb-0">
+                                    @item.Description
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                    }
                 }
             </div>
         </div>
@@ -32,7 +36,7 @@
                 <a class="text-secondary font-weight-bold" href="eventList">View All Events</a>
             </div>
             <div class="row">
-                @for (int i = 0; i < events.Count(); i++)
+                @for (int i = 0; i < 5 && i < events.Count(); i++)
                 {
                     Event item = events[i];
                     <EventItem id="@item.Id" Name="@item.Name" StartDate="@item.StartDate" EndDate="@item.EndDate"

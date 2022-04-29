@@ -36,15 +36,30 @@
             <p class="description">@club.Description</p>
             <hr>
             <div class="events">
-                <h4 class="font-weight-bold text-secondary">Upcoming Events</h4>
+                <div class="d-flex justify-content-between">
+                    <h4 class="font-weight-bold text-secondary">Upcoming Events</h4>
+                    <a href="clubDetail/@club.Id/events">View All Events</a>
+                </div>
                 <div class="row">
+                    @{
+                        int count = 0;
+                    }
                     @foreach (var item in events)
                     {
-                        <EventItem id="@item.Id" Name="@item.Name" StartDate="@item.StartDate" EndDate="@item.EndDate"
+                        @if (item.StartDate > DateTime.Now)
+                        {
+                            count += 1;
+                            <EventItem id="@item.Id" Name="@item.Name" StartDate="@item.StartDate" EndDate="@item.EndDate"
                         Location="@item.Location" Image="@item.Image" CreatedByClub="@item.CreatedByClub"
                         TicketsAvailable="@item.TicketsAvailable" />
+                        }
                     }
+
                 </div>
+                @if (count == 0)
+                {
+                    <p class="text-secondary">No Upcoming events for this club</p>
+                }
             </div>
             <hr>
             <div>
@@ -53,21 +68,28 @@
         </div>
         <div class="col-12 col-xl-3">
             <div class="sidebar bg-fifth-color-light shadow p-3">
-                <h4 class="font-weight-bold text-secondary text-center mb-4">Club News</h4>
-                @foreach (var item in news)
+                <h4 class="font-weight-bold text-secondary text-center mb-4">Notices</h4>
+                @if (news.Count > 0)
                 {
-                    <div class="hover-card card mb-3 p-3 border-none">
-                        <div class="card-content">
-                            <h5>@item.Title</h5>
-                            <p class="mb-0">
-                                @item.Description
-                            </p>
+                    @for (int i = 0; i < 4 && i < news.Count(); i++)
+                    {
+                        News item = news[i];
+                        <div class="hover-card card mb-3 p-3 border-none">
+                            <div class="card-content">
+                                <h5>@item.Title</h5>
+                                <p class="mb-0">
+                                    @item.Description
+                                </p>
+                            </div>
+                            <div class="hover-card-view-all">
+                                Read More
+                            </div>
                         </div>
-                        <div class="hover-card-view-all">
-                            Read More
-                        </div>
-                    </div>
+                    }
                 }
+                <div class="text-center">
+                    <a href="noticeList">View All Notices</a>
+                </div>
             </div>
         </div>
     </div>
@@ -86,7 +108,6 @@
     {
         var authState = await AuthenticationStateTask;
         userId = authState.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        Console.WriteLine(userId);
     }
 
     protected override void OnInitialized()
