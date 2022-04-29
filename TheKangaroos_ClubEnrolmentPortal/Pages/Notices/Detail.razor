@@ -1,0 +1,45 @@
+@page "/notice/{id}"
+@using TheKangaroos_ClubEnrolmentPortal.Data.Models
+@using TheKangaroos_ClubEnrolmentPortal.Data.Services
+@inject NoticeService NoticeService
+
+<div>
+    <h3 class="text-secondary">@notice.Title</h3>
+    <p>Notice Type -
+        @if (notice.isAnnouncement)
+        {
+            <span class="ml-3 badge badge-success">Announcement</span>
+        }
+        else if (notice.isEnquiry)
+        {
+            <span class="ml-3 badge badge-secondary">Enquiry</span>
+        }
+    </p>
+    <p>Created By -
+        @if (notice.CreatedByClubId.Length != 0)
+        {
+            <span class="ml-3">@notice.CreatedByClub.Name</span>
+        }
+        else
+        {
+            <span class="ml-3">@notice.CreatedByUser.UserName</span>
+        }
+    </p>
+    <p>@notice.Description</p>
+    @*@if (notice.Image.Length != 0)
+    {
+        <img src="@notice.Image" class="img-fluid" />
+    }*@
+</div>
+
+@code {
+    [Parameter]
+    public string id { get; set; }
+
+    private Notice notice;
+
+    protected override void OnInitialized()
+    {
+        notice = NoticeService.GetNoticeByIdAsync(id);
+    }
+}

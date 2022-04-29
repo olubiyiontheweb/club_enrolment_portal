@@ -55,7 +55,6 @@ else
     {
         var authState = await AuthenticationStateTask;
         userId = authState.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        Console.WriteLine(userId);
         clubs = MembershipService.GetClubsByUserIdAsync(userId);
     }
     private List<Membership> clubs;

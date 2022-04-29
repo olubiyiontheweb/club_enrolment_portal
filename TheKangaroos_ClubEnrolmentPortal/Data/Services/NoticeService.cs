@@ -46,7 +46,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
 
         public Notice GetNoticeByIdAsync(string id)
         {
-            return _context.Notices.Where(e => e.Id == id).FirstOrDefault();
+            return _context.Notices.Include(e => e.CreatedByClub).Include(e => e.CreatedByUser).Where(e => e.Id == id).FirstOrDefault();
         }
 
         public Notice CreateNoticeAsync(Notice @notice)

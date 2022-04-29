@@ -23,8 +23,8 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
         public string Description { get; set; }
 
         // true when created by user
-        public bool isAnnouncement { get; set; } = false;
-        public bool isEnquiry { get; set; } = true;
+        public bool isAnnouncement { get; set; }
+        public bool isEnquiry { get; set; }
 
         public string Image { get; set; }
 
