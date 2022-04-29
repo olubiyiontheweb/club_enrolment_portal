@@ -4,6 +4,7 @@
 @using TheKangaroos_ClubEnrolmentPortal.Data.Services
 @inject MembershipService MembershipService
 
+
 <h3 class="text-secondary font-weight-bold text-center">Member List</h3>
 @if (members.Count() == 0)
 {
@@ -45,15 +46,16 @@ else
 }
 
 @code {
+    
     [Parameter]
     public string id { get; set; }
+    
 
     private List<Membership> members;
 
     protected override void OnInitialized()
     {
         members = MembershipService.GetMembersByClubIdAsync(id);
-        Console.WriteLine(members.Count());
     }
 
     private void removeMembership(Membership membershipId)

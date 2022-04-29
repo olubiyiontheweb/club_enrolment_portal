@@ -3,6 +3,8 @@
 @using TheKangaroos_ClubEnrolmentPortal.Data.Models
 @using TheKangaroos_ClubEnrolmentPortal.Data.Services
 @inject MembershipService MembershipService
+@using System.Security.Claims
+
 
 <h3 class="font-weight-bold text-secondary">My Clubs</h3>
 @if (clubs.Count == 0)
@@ -45,10 +47,19 @@ else
 }
 
 @code {
+    [CascadingParameter]
+    private Task<AuthenticationState> AuthenticationStateTask { get; set; }
+
+    private string userId { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateTask;
+        userId = authState.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    }
     private List<Membership> clubs;
 
     protected override void OnInitialized()
     {
-        clubs = MembershipService.GetClubsByUserIdAsync("384eb7b7-0dba-42f4-84d8-1b384b9ada37");
+        clubs = MembershipService.GetClubsByUserIdAsync(userId);
     }
 }

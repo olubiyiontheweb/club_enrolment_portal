@@ -6,6 +6,8 @@
 @inherits OwningComponentBase<ClubService>
 @inject NavigationManager MyNavigationManager
 @inject MembershipService MembershipService
+@using System.Security.Claims
+
 
 <div class="detail-page">
     <div class="header shadow">
@@ -83,7 +85,8 @@
     protected override async Task OnInitializedAsync()
     {
         var authState = await AuthenticationStateTask;
-        userId = authState.User.Identity.Name;
+        userId = authState.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        Console.WriteLine(userId);
     }
 
     protected override void OnInitialized()
@@ -94,16 +97,15 @@
 
     private bool IsMember()
     {
-        return MembershipService.IsMember("384eb7b7-0dba-42f4-84d8-1b384b9ada37", id);
+        return MembershipService.IsMember(userId, id);
     }
 
     private void ApplyMembership()
     {
-        Console.WriteLine(userId);
         Membership membership = new Membership
         {
             @*UserId = userId,*@
-            UserId = "384eb7b7-0dba-42f4-84d8-1b384b9ada37",
+            UserId = userId,
             ClubId = id,
         };
         MembershipService.PostMembershipAsync(membership);
