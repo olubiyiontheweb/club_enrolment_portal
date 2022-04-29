@@ -55,11 +55,8 @@ else
     {
         var authState = await AuthenticationStateTask;
         userId = authState.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-    }
-    private List<Membership> clubs;
-
-    protected override void OnInitialized()
-    {
+        Console.WriteLine(userId);
         clubs = MembershipService.GetClubsByUserIdAsync(userId);
     }
+    private List<Membership> clubs;
 }
