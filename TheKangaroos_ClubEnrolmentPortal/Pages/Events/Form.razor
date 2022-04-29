@@ -110,6 +110,8 @@ else
         var authState = await AuthenticationStateTask;
         userId = authState.User.FindFirst(ClaimTypes.NameIdentifier).Value;
         clubs = MembershipService.GetClubsByUserIdAsync(userId);
+        newevents.StartDate = DateTime.Now;
+        newevents.EndDate = DateTime.Now;
     }
 
     private List<Membership> clubs;
