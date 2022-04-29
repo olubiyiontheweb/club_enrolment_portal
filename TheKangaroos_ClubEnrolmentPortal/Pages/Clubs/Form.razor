@@ -36,7 +36,9 @@ else
                 <div class="form-group">
                     <label for="Image" class="control-label text-secondary font-weight-bold">Club
                         Image</label>
-                    <InputFile type="file" @bind-Value="newclub.Image" class="form-control-file" />
+                    @*<InputFile type="file" @bind-Value="newclub.Image" class="form-control-file" />*@
+                    <InputText type="file" @bind-Value="newclub.Image" class="form-control" />
+
                 </div>
                 <div class="form-group text-center">
                     <input type="submit" value="Register" class="btn btn-primary" />
