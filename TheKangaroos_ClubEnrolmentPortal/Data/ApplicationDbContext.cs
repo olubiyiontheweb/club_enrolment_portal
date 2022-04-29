@@ -139,6 +139,20 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data
                 .WithOne(n => n.CreatedByUser)
                 .HasForeignKey(n => n.CreatedByUserId)
                 .OnDelete(DeleteBehavior.NoAction);
+
+            // clubs have many notices
+            modelBuilder.Entity<Club>()
+                .HasMany(c => c.Notices)
+                .WithOne(n => n.CreatedByClub)
+                .HasForeignKey(n => n.CreatedByClubId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            // events have many tickets
+           /*  modelBuilder.Entity<Event>()
+                .HasMany(e => e.Tickets)
+                .WithOne(t => t.Event)
+                .HasForeignKey(t => t.EventId)
+                .OnDelete(DeleteBehavior.NoAction);      */       
         }
     }
 }
