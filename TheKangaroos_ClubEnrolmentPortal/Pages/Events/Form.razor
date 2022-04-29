@@ -57,6 +57,10 @@ else
 
                 </div>
                 <div class="form-group">
+                    <label for="Price" class="control-label  text-secondary font-weight-bold">Price</label>
+                    <InputText id="Price" class="form-control" @bind-Value="newevents.Price" />
+                </div>
+                <div class="form-group">
                     <label for="CreatedByClubId" class="control-label">Club</label>
                     <InputSelect id="department" @bind-Value="@newevents.CreatedByClubId" class="form-control">
                         <option>----</option>
@@ -88,6 +92,7 @@ else
             EndDate = newevents.EndDate,
             Location = newevents.Location,
             Image = newevents.Image,
+            Price = newevents.Price,
             CreatedByClubId = newevents.CreatedByClubId,
         };
         if (MyNavigationManager.Uri.Contains("create"))

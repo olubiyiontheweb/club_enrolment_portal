@@ -4,6 +4,9 @@
 @using TheKangaroos_ClubEnrolmentPortal.Data.Services
 @inject ClubService ClubService
 @inject EventService EventService
+@inject NoticeService NoticeService
+@using System.Security.Claims
+
 
 <div class="row">
     <div class="col-12 col-xl-9">
@@ -11,18 +14,25 @@
         <hr>
         <div class="club-news">
             <h4 class="font-weight-bold text-secondary mb-3">Latest Club News</h4>
-            @if (news.Count > 0)
+            @if (notices.Count > 0)
             {
                 <div class="row">
-                    @for (int i = 0; i < 5 && i < news.Count; i++)
+                    @for (int i = 0; i < 5 && i < notices.Count; i++)
                     {
-                        Item item = news[i];
+                        Notice item = notices[i];
                         <div class="col-6 col-lg-4">
-                            <div class="card mb-3 p-3">
-                                <h5>@item.Title</h5>
-                                <p class="mb-0">
-                                    @item.Description
-                                </p>
+                            <div class="hover-card card mb-3 p-3">
+                                <div class="card-content">
+                                    <h5 class="text-secondary">@item.Title</h5>
+                                    <p class="mb-0">
+                                        @item.Description
+                                    </p>
+                                    <p class="mb-0">Created by - @item.CreatedByClub.Name</p>
+
+                                </div>
+                                <div class="hover-card-view-all">
+                                    <a href="notice/@item.Id" class="text-white">Read More</a>
+                                </div>
                             </div>
                         </div>
                     }
@@ -45,9 +55,9 @@
                     Event item = events[i];
                     @if (item.StartDate > DateTime.Now)
                     {
-                        <EventItem id="@item.Id" Name="@item.Name" StartDate="@item.StartDate" EndDate="@item.EndDate"
+                    <EventItem id="@item.Id" Name="@item.Name" StartDate="@item.StartDate" EndDate="@item.EndDate"
                     Location="@item.Location" Image="@item.Image" CreatedByClub="@item.CreatedByClub"
-                    TicketsAvailable="@item.TicketsAvailable" />
+                    TicketsAvailable="@item.TicketsAvailable" Price="@item.Price" />
                     }
                 }
             </div>
@@ -57,11 +67,11 @@
     <div class="col-12 col-xl-3">
         <div class="dashboard-right bg-fifth-color-light shadow p-3">
             <div class="event-list">
-                <h5 class="text-center font-weight-bold text-secondary mb-3">My Events</h5>
-                @if (events.Count != 0)
+                <h5 class="text-center font-weight-bold text-secondary mb-3">My Club Events</h5>
+                @if (myclubevents.Count != 0)
                 {
 
-                    @foreach (var item in events)
+                    @foreach (var item in myclubevents)
                     {
                         <div class="p-2 event-card mb-3">
                             <div class="event-date">
@@ -89,45 +99,23 @@
 
 @code {
     private List<Event> events;
+    private List<Event> myclubevents;
 
     protected override void OnInitialized()
     {
         events = EventService.GetEventsAsync();
     }
 
-    IList<Item> news = new List<Item>
-{
-new Item {
-Title = "Title 1",
-Type = "Event",
-Description = "Demo Description"
-},
-new Item {
-Title = "Title 2",
-Type = "Announcement",
-Description = "Demo Description"
-},
-new Item {
-Title = "Title 3",
-Type = "Event",
-Description = "Demo Description"
-},
-new Item {
-Title = "Title 4",
-Type = "Announcement",
-Description = "Demo Description"
-},
-new Item {
-Title = "Title 4",
-Type = "Announcement",
-Description = "Demo Description"
-}
-};
+    [CascadingParameter]
+    private Task<AuthenticationState> AuthenticationStateTask { get; set; }
 
-    class Item
+    private string userId { get; set; }
+    List<Notice> notices;
+    protected override async Task OnInitializedAsync()
     {
-        public string Title { get; set; }
-        public string Type { get; set; }
-        public string Description { get; set; }
+        var authState = await AuthenticationStateTask;
+        userId = authState.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        notices = NoticeService.GetNoticesFromAllUserMembershipsAsync(userId);
+        myclubevents = EventService.GetEventsFromAllUserMembershipsAsync(userId);
     }
 }

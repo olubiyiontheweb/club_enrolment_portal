@@ -31,7 +31,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
         [Required]
         [StringLength(250, ErrorMessage = "You must enter a valid event price")]
         [DataType(DataType.Currency)]
-        public float Price { get; set; } = 0.0f;
+        public string Price { get; set; }
 
         // events belong to a club and are created by the club
         [Required]
