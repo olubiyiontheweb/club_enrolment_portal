@@ -27,6 +27,25 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
             return _context.Events.Include(e => e.CreatedByClub).FirstOrDefault(e => e.Id == id);
         }
 
+        public List<Event> GetEventsFromAllUserMembershipsAsync(string userId)
+        {
+            List<Event> allEvents = new List<Event>();
+            List<Membership> memberships = _context.Memberships.Where(e => e.UserId == userId).ToList();
+            foreach (Membership membership in memberships)
+            {
+                allEvents.AddRange(_context.Events.Where(e => e.CreatedByClubId == membership.ClubId).ToList());
+            }
+            
+            return allEvents;
+        }
+
+        public Event CreateEventAsync(Event @event)
+        {
+            _context.Events.Add(@event);
+            _context.SaveChanges();
+            return @event;
+        }
+
         public Event PostEventAsync(Event @event)
         {
             _context.Events.Add(@event);
