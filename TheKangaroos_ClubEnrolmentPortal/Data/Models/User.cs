@@ -57,6 +57,10 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
 
         // users can be members of multiple clubs        
         public ICollection<Membership> Memberships {get; set;}
+
+        public ICollection<Notice> Notices {get; set;} 
+
+        public bool IsAdmin { get; set; } = false;
     }
 
     public class UserRegister {

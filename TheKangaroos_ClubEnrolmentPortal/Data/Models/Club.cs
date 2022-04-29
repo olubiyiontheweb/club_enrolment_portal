@@ -25,5 +25,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
         public ICollection<Membership> Members { get; set; }
 
         public ICollection<Event> Events { get; set; }
+
+        public ICollection<Notice> Notices { get; set; }
     }
 }

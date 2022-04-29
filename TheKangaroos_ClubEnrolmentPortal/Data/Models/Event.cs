@@ -23,6 +23,8 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
         public string Location { get; set; }
         
         public string Image { get; set; }
+
+        // no of seats available
         public int TicketsAvailable { get; set; }
 
         //public Venue Venue { get; set; }

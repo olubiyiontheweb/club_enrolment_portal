@@ -38,6 +38,8 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data
 
         public DbSet<Order> Orders { get; set; }
 
+        public DbSet<Notice> Notices { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -118,6 +120,24 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data
             modelBuilder.Entity<Membership>()
                 .HasOne(m => m.Club)
                 .WithMany(c => c.Members)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            // notices belong to one clubs or users
+            modelBuilder.Entity<Notice>()
+                .HasOne(n => n.CreatedByClub)
+                .WithMany(c => c.Notices)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Notice>()
+                .HasOne(n => n.CreatedByUser)
+                .WithMany(u => u.Notices)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            // users have many notices
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.Notices)
+                .WithOne(n => n.CreatedByUser)
+                .HasForeignKey(n => n.CreatedByUserId)
                 .OnDelete(DeleteBehavior.NoAction);
         }
     }
