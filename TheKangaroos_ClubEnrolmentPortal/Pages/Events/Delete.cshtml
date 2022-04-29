@@ -49,10 +49,22 @@
             @Html.DisplayFor(model => model.Event.Image)
         </dd>
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Event.TicketsAvailable)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Event.TicketsAvailable)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Event.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Event.Price)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Event.CreatedByClub)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Event.CreatedByClub.Name)
+            @Html.DisplayFor(model => model.Event.CreatedByClub.Id)
         </dd>
     </dl>
     

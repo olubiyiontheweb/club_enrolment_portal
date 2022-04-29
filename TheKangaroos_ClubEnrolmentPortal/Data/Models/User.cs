@@ -60,6 +60,10 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
 
         public ICollection<Notice> Notices {get; set;} 
 
+        public ICollection<Ticket> Tickets {get; set;}
+
+        // public ICollection<Attendee> Attendees {get; set;}
+
         public bool IsAdmin { get; set; } = false;
     }
 

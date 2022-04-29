@@ -28,7 +28,10 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
         // no of seats available
         public int TicketsAvailable { get; set; } = 0;
 
-        //public Venue Venue { get; set; }
+        [Required]
+        [StringLength(250, ErrorMessage = "You must enter a valid event price")]
+        [DataType(DataType.Currency)]
+        public float Price { get; set; } = 0.0f;
 
         // events belong to a club and are created by the club
         [Required]
@@ -38,7 +41,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
         #nullable disable
         public Club CreatedByClub { get; set; }
 
-        public ICollection<Ticket> Tickets { get; set; }
+        public Ticket Ticket { get; set; }
 
         public ICollection<Attendee> Attendees { get; set; }
     }

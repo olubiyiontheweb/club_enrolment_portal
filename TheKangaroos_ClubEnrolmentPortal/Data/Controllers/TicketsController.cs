@@ -10,23 +10,23 @@ using TheKangaroos_ClubEnrolmentPortal.Data.Models;
 
 namespace TheKangaroos_ClubEnrolmentPortal.Data.Controllers
 {
-    public class EventsController : Controller
+    public class TicketsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public EventsController(ApplicationDbContext context)
+        public TicketsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Events
+        // GET: Tickets
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Events.Include(e => e.CreatedByClub);
+            var applicationDbContext = _context.Tickets.Include(t => t.Event).Include(t => t.User);
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Events/Details/5
+        // GET: Tickets/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -34,42 +34,45 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Controllers
                 return NotFound();
             }
 
-            var @event = await _context.Events
-                .Include(e => e.CreatedByClub)
+            var ticket = await _context.Tickets
+                .Include(t => t.Event)
+                .Include(t => t.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (@event == null)
+            if (ticket == null)
             {
                 return NotFound();
             }
 
-            return View(@event);
+            return View(ticket);
         }
 
-        // GET: Events/Create
+        // GET: Tickets/Create
         public IActionResult Create()
         {
-            ViewData["CreatedByClubId"] = new SelectList(_context.Clubs, "Id", "Id");
+            ViewData["EventId"] = new SelectList(_context.Events, "Id", "Id");
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
             return View();
         }
 
-        // POST: Events/Create
+        // POST: Tickets/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,StartDate,EndDate,Location,Image,TicketsAvailable,Price,CreatedByClubId")] Event @event)
+        public async Task<IActionResult> Create([Bind("Id,EventId,UserId")] Ticket ticket)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(@event);
+                _context.Add(ticket);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CreatedByClubId"] = new SelectList(_context.Clubs, "Id", "Id", @event.CreatedByClubId);
-            return View(@event);
+            ViewData["EventId"] = new SelectList(_context.Events, "Id", "Id", ticket.EventId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", ticket.UserId);
+            return View(ticket);
         }
 
-        // GET: Events/Edit/5
+        // GET: Tickets/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -77,23 +80,24 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Controllers
                 return NotFound();
             }
 
-            var @event = await _context.Events.FindAsync(id);
-            if (@event == null)
+            var ticket = await _context.Tickets.FindAsync(id);
+            if (ticket == null)
             {
                 return NotFound();
             }
-            ViewData["CreatedByClubId"] = new SelectList(_context.Clubs, "Id", "Id", @event.CreatedByClubId);
-            return View(@event);
+            ViewData["EventId"] = new SelectList(_context.Events, "Id", "Id", ticket.EventId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", ticket.UserId);
+            return View(ticket);
         }
 
-        // POST: Events/Edit/5
+        // POST: Tickets/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,Name,Description,StartDate,EndDate,Location,Image,TicketsAvailable,Price,CreatedByClubId")] Event @event)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,EventId,UserId")] Ticket ticket)
         {
-            if (id != @event.Id)
+            if (id != ticket.Id)
             {
                 return NotFound();
             }
@@ -102,12 +106,12 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Controllers
             {
                 try
                 {
-                    _context.Update(@event);
+                    _context.Update(ticket);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EventExists(@event.Id))
+                    if (!TicketExists(ticket.Id))
                     {
                         return NotFound();
                     }
@@ -118,11 +122,12 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CreatedByClubId"] = new SelectList(_context.Clubs, "Id", "Id", @event.CreatedByClubId);
-            return View(@event);
+            ViewData["EventId"] = new SelectList(_context.Events, "Id", "Id", ticket.EventId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", ticket.UserId);
+            return View(ticket);
         }
 
-        // GET: Events/Delete/5
+        // GET: Tickets/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -130,31 +135,32 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Controllers
                 return NotFound();
             }
 
-            var @event = await _context.Events
-                .Include(e => e.CreatedByClub)
+            var ticket = await _context.Tickets
+                .Include(t => t.Event)
+                .Include(t => t.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (@event == null)
+            if (ticket == null)
             {
                 return NotFound();
             }
 
-            return View(@event);
+            return View(ticket);
         }
 
-        // POST: Events/Delete/5
+        // POST: Tickets/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var @event = await _context.Events.FindAsync(id);
-            _context.Events.Remove(@event);
+            var ticket = await _context.Tickets.FindAsync(id);
+            _context.Tickets.Remove(ticket);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EventExists(string id)
+        private bool TicketExists(string id)
         {
-            return _context.Events.Any(e => e.Id == id);
+            return _context.Tickets.Any(e => e.Id == id);
         }
     }
 }

@@ -11,6 +11,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
     public class Payment
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
     }
 }

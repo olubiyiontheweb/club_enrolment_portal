@@ -108,7 +108,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data
                 .HasMany(m => m.Members)
                 .WithOne(m => m.Club)
                 .HasForeignKey(c => c.ClubId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Cascade);
 
             // memberships has one user
             modelBuilder.Entity<Membership>()
@@ -145,14 +145,34 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data
                 .HasMany(c => c.Notices)
                 .WithOne(n => n.CreatedByClub)
                 .HasForeignKey(n => n.CreatedByClubId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // events have one ticket
+            modelBuilder.Entity<Event>()
+                .HasOne(e => e.Ticket)
+                .WithOne(t => t.Event)
+                .HasForeignKey<Ticket>(t => t.EventId)
+                .OnDelete(DeleteBehavior.Cascade);            
+
+            // tickets belong to one event
+            modelBuilder.Entity<Ticket>()
+                .HasOne(t => t.Event)
+                .WithOne(e => e.Ticket)
+                .HasForeignKey<Ticket>(t => t.EventId)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            // events have many tickets
-           /*  modelBuilder.Entity<Event>()
-                .HasMany(e => e.Tickets)
-                .WithOne(t => t.Event)
-                .HasForeignKey(t => t.EventId)
-                .OnDelete(DeleteBehavior.NoAction);      */       
+            // users have many tickets
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.Tickets)
+                .WithOne(t => t.User)
+                .HasForeignKey(t => t.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // tickets belong to one user
+            modelBuilder.Entity<Ticket>()
+                .HasOne(t => t.User)
+                .WithMany(u => u.Tickets)
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }
