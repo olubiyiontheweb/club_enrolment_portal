@@ -1,0 +1,85 @@
+@page "/clubDetail/{id}/createNotice"
+@using TheKangaroos_ClubEnrolmentPortal.Data.Models
+@using TheKangaroos_ClubEnrolmentPortal.Data.Services
+@inject NoticeService NoticeService
+@inject NavigationManager NavManager
+@using System.Security.Claims
+
+
+<h3 class="text-center font-weight-bold text-secondary">Create a Notice</h3>
+
+<div class="row justify-content-center mt-5">
+    <div class="col-12 col-lg-6">
+        <div class="card p-4">
+            <EditForm Model="@newnotice" OnValidSubmit="@HandleValidSubmit">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+
+                <div class="form-group">
+                    <label for="Title" class="control-label text-secondary font-weight-bold">Notice Title</label>
+                    <InputText id="Title" class="form-control" @bind-Value="newnotice.Title" />
+                </div>
+                <div class="form-group">
+                    <label for="Description" class="control-label text-secondary font-weight-bold">
+                        Description</label>
+                    <InputTextArea id="Description" class="form-control" @bind-Value="newnotice.Description" />
+                </div>
+                <div class="form-group">
+                    <label for="Announcement" class="control-label text-secondary font-weight-bold">
+                        Announcement</label>
+                    <InputCheckbox @bind-Value="newnotice.isAnnouncement"></InputCheckbox>
+                </div>
+                <div class="form-group">
+                    <label for="Enquiry" class="control-label text-secondary font-weight-bold">
+                        Enquiry</label>
+                    <InputCheckbox @bind-Value="newnotice.isEnquiry"></InputCheckbox>
+                </div>
+                <div class="form-group">
+                    <label for="Image" class="control-label text-secondary font-weight-bold">
+                        Image</label>
+                    @*<InputFile type="file" @bind-Value="newclub.Image" class="form-control-file" />*@
+                    <InputText @bind-Value="newnotice.Image" class="form-control" />
+
+                </div>
+                <InputText @bind-Value="newnotice.CreatedByUserId" class="form-control d-none" />
+                <div class="form-group text-center">
+                    <input type="submit" value="Register" class="btn btn-primary" />
+                </div>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string id { get; set; }
+
+    private Notice newnotice = new();
+
+    [CascadingParameter]
+    private Task<AuthenticationState> AuthenticationStateTask { get; set; }
+
+    private string userId { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateTask;
+        userId = authState.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        newnotice.CreatedByUserId = userId;
+    }
+    private void HandleValidSubmit()
+    {
+        Console.WriteLine("Valid");
+        Notice notice = new Notice
+        {
+            Title = newnotice.Title,
+            Description = newnotice.Description,
+            isAnnouncement = newnotice.isAnnouncement,
+            isEnquiry = newnotice.isEnquiry,
+            Image = newnotice.Image,
+            CreatedByClubId = id,
+            CreatedByUserId = userId,
+        };
+        NoticeService.CreateNoticeAsync(notice);
+        NavManager.NavigateTo($"/clubDetail/{id}", true);
+    }
+}

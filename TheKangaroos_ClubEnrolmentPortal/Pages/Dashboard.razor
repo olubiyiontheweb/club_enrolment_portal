@@ -11,13 +11,13 @@
         <hr>
         <div class="club-news">
             <h4 class="font-weight-bold text-secondary mb-3">Latest Club News</h4>
-            <div class="row">
-                @if (news.Count < 0)
-                {
-                    @for (int i = 0; i < 7 && i < news.Count; i++)
+            @if (news.Count > 0)
+            {
+                <div class="row">
+                    @for (int i = 0; i < 5 && i < news.Count; i++)
                     {
                         Item item = news[i];
-                        <div class="col-6 col-lg-3">
+                        <div class="col-6 col-lg-4">
                             <div class="card mb-3 p-3">
                                 <h5>@item.Title</h5>
                                 <p class="mb-0">
@@ -26,8 +26,12 @@
                             </div>
                         </div>
                     }
-                }
-            </div>
+                </div>
+            }
+            else
+            {
+                <p>Your news section is unfortunately empty :(</p>
+            }
         </div>
         <hr>
         <div class="events">
@@ -39,9 +43,12 @@
                 @for (int i = 0; i < 5 && i < events.Count(); i++)
                 {
                     Event item = events[i];
-                    <EventItem id="@item.Id" Name="@item.Name" StartDate="@item.StartDate" EndDate="@item.EndDate"
+                    @if (item.StartDate > DateTime.Now)
+                    {
+                        <EventItem id="@item.Id" Name="@item.Name" StartDate="@item.StartDate" EndDate="@item.EndDate"
                     Location="@item.Location" Image="@item.Image" CreatedByClub="@item.CreatedByClub"
                     TicketsAvailable="@item.TicketsAvailable" />
+                    }
                 }
             </div>
         </div>

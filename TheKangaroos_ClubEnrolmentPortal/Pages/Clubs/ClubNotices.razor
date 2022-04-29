@@ -1,0 +1,49 @@
+@page "/clubDetail/{id}/noticeList"
+
+@using TheKangaroos_ClubEnrolmentPortal.Data.Models
+@using TheKangaroos_ClubEnrolmentPortal.Data.Services
+@inject NoticeService NoticeService
+@inject ClubService ClubService
+
+
+<h3 class="text-secondary font-weight-bold">@club.Name - All Notices</h3>
+
+<div>
+    @foreach (var item in notices)
+    {
+        <div class="card border-none shadow px-3 pt-3 mb-4">
+            <div class="row">
+                <div class="col-12 col-lg-9">
+                    <p class="font-weight-bold">@item.Title
+                        @if (item.isAnnouncement)
+                        {
+                            <span class="ml-3 badge badge-success">Announcement</span>
+                        }
+                        else if (item.isEnquiry)
+                        {
+                            <span class="ml-3 badge badge-secondary">Enquiry</span>
+                        }
+                    </p>
+                    <p>Created By - @item.CreatedByClub.Name</p>
+                    <p>@item.Description</p>
+                </div>
+                <div class="col-12 col-lg-3 d-flex align-items-center justify-content-end">
+                    <a href="notice/@item.Id" class="btn btn-outline-secondary-color">Read Full Notice</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string id { get; set; }
+    private Club club;
+    private List<Notice> notices;
+
+    protected override void OnInitialized()
+    {
+        club = ClubService.GetClubByIdAsync(id);
+        notices = NoticeService.GetNoticesByClubIdAsync(id);
+    }
+}
