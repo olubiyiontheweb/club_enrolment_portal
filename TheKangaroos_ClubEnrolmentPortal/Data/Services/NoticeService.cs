@@ -22,10 +22,17 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
             return _context.Notices.ToList();
         }
 
-        /* public Notice GetNoticesFromAllMembershipsAsync()
+        public List<Notice> GetNoticesFromAllUserMembershipsAsync(string userId)
         {
-            return _context.Notices.not
-        } */
+            List<Notice> allNotices = new List<Notice>();
+            List<Membership> memberships = _context.Memberships.Where(e => e.UserId == userId).ToList();
+            foreach (Membership membership in memberships)
+            {
+                allNotices.AddRange(_context.Notices.Where(e => e.CreatedByClubId == membership.ClubId).ToList());
+            }
+            
+            return allNotices;
+        }
 
         public List<Notice> GetNoticesByClubIdAsync(string id)
         {
