@@ -1,10 +1,8 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using TheKangaroos_ClubEnrolmentPortal.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
 {

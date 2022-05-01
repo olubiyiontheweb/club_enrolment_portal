@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Principal;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
 using TheKangaroos_ClubEnrolmentPortal.Data.Models;
