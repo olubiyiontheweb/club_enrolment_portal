@@ -397,3 +397,4 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 clubenrolmentportal_kangaroos/obj/*
+TheKangaroos_ClubEnrolmentPortal/obj/*

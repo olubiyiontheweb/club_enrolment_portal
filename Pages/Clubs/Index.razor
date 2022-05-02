@@ -1,0 +1,48 @@
+@page "/clubList"
+
+@using TheKangaroos_ClubEnrolmentPortal.Data.Models
+@using TheKangaroos_ClubEnrolmentPortal.Data.Services
+@inherits OwningComponentBase<ClubService>
+@* @inject EventService GetList *@
+
+<h3 class="font-weight-bold text-secondary">Club List</h3>
+
+<p class="font-weight-bold"> Browse through all the clubs we have available. If you want to start your own club, you can
+<a href="club/register" class="text-secondary">Register one here</a>.</p>
+<hr>
+<div class="row">
+        @foreach (var item in clubs)
+        {
+            <div class="col-12 col-lg-6 col-xl-3 mb-4">
+                    <div class="card">
+                        <div class="card-banner">
+                            @if (@item.Image != null)
+                            {
+                                <img class="card-img-top" src="@item.Image" alt="@item.Name">
+                            }
+                            else{
+                                <img src="../images/casual-life-3d-reward-badge-with-two-ribbons.png" class="card-img-top">
+                            }
+                        </div>
+                       
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Name</h5>
+                                <p class="card-text">@item.Description</p>
+                                <div class="text-center"> 
+                                    <a href="clubDetail/@item.Id" class="btn btn-outline-secondary-color">Find out more</a>
+                                </div>
+                            </div>
+                    </div>
+            </div>
+        }
+</div>
+
+@code {
+    private List<Club> clubs;
+
+    protected override void OnInitialized()
+    {
+        clubs = Service.GetClubsAsync();
+    }
+
+}

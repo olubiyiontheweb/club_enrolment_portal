@@ -1,0 +1,66 @@
+@page "/clubDetail/{id}/members"
+
+@using TheKangaroos_ClubEnrolmentPortal.Data.Models
+@using TheKangaroos_ClubEnrolmentPortal.Data.Services
+@inject MembershipService MembershipService
+
+
+<h3 class="text-secondary font-weight-bold text-center">Member List</h3>
+@if (members.Count() == 0)
+{
+    <p class="text-center font-weight-bold">Unfortunately, there are no members in this club :(</p>
+}
+else
+{
+    <div class="row justify-content-center mt-5">
+        <div class="col-12 col-lg-6">
+            <p class="font-weight-bold">See all members of @members[0].Club.Name</p>
+
+            <div class="card">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < members.Count(); i++)
+                        {
+                            Membership item = members[i];
+                            <tr>
+                                <th>@(i+1)</th>
+                                <th>@item.User.UserName</th>
+                                <th><button @onclick="()=>removeMembership(item)" class="btn btn-outline-danger">Delete
+                                    </button></th>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    
+    [Parameter]
+    public string id { get; set; }
+    
+
+    private List<Membership> members;
+
+    protected override void OnInitialized()
+    {
+        members = MembershipService.GetMembersByClubIdAsync(id);
+    }
+
+    private void removeMembership(Membership membershipId)
+    {
+        MembershipService.DeleteMembershipAsync(membershipId);
+        members = MembershipService.GetMembersByClubIdAsync(id);
+    }
+}

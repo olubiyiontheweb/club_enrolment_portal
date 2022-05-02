@@ -1,0 +1,30 @@
+@page "/clubDetail/{id}/events"
+@using TheKangaroos_ClubEnrolmentPortal.Data.Models
+@using TheKangaroos_ClubEnrolmentPortal.Data.Services
+@inherits OwningComponentBase<ClubService>
+<h3 class="text-secondary font-weight-bold">@club.Name - All Events</h3>
+<div class="events">
+    <div class="row">
+        @foreach (var item in events)
+        {
+            <EventItem id="@item.Id" Name="@item.Name" StartDate="@item.StartDate" EndDate="@item.EndDate"
+            Location="@item.Location" Image="@item.Image" CreatedByClub="@item.CreatedByClub"
+            TicketsAvailable="@item.TicketsAvailable" Price="@item.Price"/>
+        }
+    </div>
+</div>
+
+
+@code {
+    [Parameter]
+    public string id { get; set; }
+
+    private Club club;
+    private List<Event> events;
+
+    protected override void OnInitialized()
+    {
+        club = Service.GetClubByIdAsync(id);
+        events = Service.GetEventsByClubIdAsync(id);
+    }
+}

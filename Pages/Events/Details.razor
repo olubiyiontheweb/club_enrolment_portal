@@ -1,0 +1,106 @@
+@page "/eventDetail/{id}"
+@* @page "/event" *@
+
+@using TheKangaroos_ClubEnrolmentPortal.Data.Models
+@using TheKangaroos_ClubEnrolmentPortal.Data.Services
+@inherits OwningComponentBase<EventService>
+
+<div class="detail-page">
+    <div class="header shadow">
+        <div class="content">
+            <h1 class="page-heading">@eventItem.Name</h1>
+        </div>
+        @if (@eventItem.Image != null)
+        {
+            <img class="header-img" src="@eventItem.Image">
+        }
+    </div>
+    <div class="row">
+        <div class="col-12 col-xl-9">
+            <div class="card border-none shadow px-3 pt-3 mb-4">
+                <div class="row">
+                    <div class="col-12 col-lg-4 col-lg-text-left">
+                        <p>Date</p>
+                        <p>
+                        <h6 class="font-weight-bold">
+                                @eventItem.StartDate.DayOfWeek
+                                @eventItem.StartDate.ToLongDateString()
+                        </h6>
+                        </p>
+                    </div>
+                    <div class="col-12 col-lg-2 col-lg-text-center">
+                        <p>Time</p>
+                        <p>
+                        <h6 class="font-weight-bold">
+                                @eventItem.StartDate.ToString("hh:mm") @eventItem.StartDate.ToString("tt")
+                        </h6>
+                        </p>
+                    </div>
+                    <div class="col-12 col-lg-2 col-lg-text-center">
+                        <p>Venue</p>
+                        <p>
+                        <h6 class="font-weight-bold">@eventItem.Location</h6>
+                        </p>
+                    </div>
+                    <div class="col-12 col-lg-2 col-lg-text-center">
+                        <p>Price</p>
+                        <p>
+                        <h6 class="font-weight-bold">
+                                @if (eventItem.Price.Length != 0)
+                                {
+                                <span>@eventItem.Price</span>
+                                }
+                                else
+                                {
+                                <span>Free</span>
+                                }
+                        </h6>
+                        </p>
+                    </div>
+                    <div class="col-12 col-lg-2 col-lg-text-right">
+                        <p>Tickets Available</p>
+                        <p>
+                        <h6 class="font-weight-bold">
+                                @*<i class="fa-solid fa-user"></i>*@
+                                @if (@eventItem.TicketsAvailable > 0)
+                                {
+                                <span>@eventItem.TicketsAvailable</span>
+                                }
+                                else
+                                {
+                                <span>Unlimited</span>
+                                }
+                        </h6>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <h5 class="font-weight-bold text-secondary">Organized By</h5>
+            <p class="description">
+                @eventItem.CreatedByClub.Name
+            </p>
+            <hr>
+            <h5 class="font-weight-bold text-secondary">Event Details</h5>
+            <p class="description">
+                @eventItem.Description
+            </p>
+        </div>
+        <div class="col-12 col-xl-3">
+            <div class="sidebar bg-fifth-color-light shadow p-3">
+                <h4 class="font-weight-bold text-secondary text-center mb-4">Get Tickets</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string id { get; set; }
+
+    private Event eventItem;
+
+    protected override void OnInitialized()
+    {
+        eventItem = Service.GetEventByIdAsync(id);
+    }
+}

@@ -29,7 +29,7 @@ Install the following packages for applying database migrations:
 > dotnet ef migrations add Event --namespace clubEnrolmentPortal_TheKangaroos.Data.Event --output-dir Data/Migrations
 
 > drop-database
-> dotnet ef database update
+> dotnet-ef database update
 > Add-Migration
 > Update-Database nameof(Migration)
 

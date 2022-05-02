@@ -1,0 +1,76 @@
+@page "/club/register"
+@page "/club/edit/{id}"
+@using TheKangaroos_ClubEnrolmentPortal.Data.Models
+@using TheKangaroos_ClubEnrolmentPortal.Data.Services
+@inject NavigationManager MyNavigationManager
+@inherits OwningComponentBase<ClubService>
+@inject NavigationManager NavManager
+
+
+
+@if (MyNavigationManager.Uri.Contains("register"))
+{
+    <h3 class="text-center font-weight-bold text-secondary">Register a New Club</h3>
+}
+else
+{
+    <h3 class="text-center font-weight-bold text-secondary">Edit Club</h3>
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-12 col-lg-6">
+        <div class="card p-4">
+            <EditForm Model="@newclub" OnValidSubmit="@HandleValidSubmit">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+
+                <div class="form-group">
+                    <label for="Name" class="control-label text-secondary font-weight-bold">Club Name</label>
+                    <InputText id="Name" class="form-control" @bind-Value="newclub.Name" />
+                </div>
+                <div class="form-group">
+                    <label for="Description" class="control-label text-secondary font-weight-bold">Club
+                        Description</label>
+                    <InputTextArea id="Description" class="form-control" @bind-Value="newclub.Description" />
+                </div>
+                <div class="form-group">
+                    <label for="Image" class="control-label text-secondary font-weight-bold">Club
+                        Image</label>
+                    @*<InputFile type="file" @bind-Value="newclub.Image" class="form-control-file" />*@
+                    <InputText @bind-Value="newclub.Image" class="form-control" />
+
+                </div>
+                <div class="form-group text-center">
+                    <input type="submit" value="Register" class="btn btn-primary" />
+                </div>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+@code {
+    private Club newclub = new();
+
+    private void HandleValidSubmit()
+    {
+        Console.WriteLine("Valid");
+        Club club = new Club{
+            Name = newclub.Name,
+            Description = newclub.Description,
+            Image = newclub.Image
+        };
+        if (MyNavigationManager.Uri.Contains("register"))
+        {
+            Service.PostClubAsync(club);
+            NavManager.NavigateTo("/clubList", true);
+        }
+        else
+        {
+            NavManager.NavigateTo("/clubDetail/{id}", true);
+        }
+
+    }
+
+    [Parameter]
+    public string id { get; set; }
+}

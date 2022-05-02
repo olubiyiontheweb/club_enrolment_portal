@@ -1,0 +1,32 @@
+@page "/eventList"
+
+@using TheKangaroos_ClubEnrolmentPortal.Data.Models
+@using TheKangaroos_ClubEnrolmentPortal.Data.Services
+@inherits OwningComponentBase<EventService>
+
+
+<h3 class="font-weight-bold text-secondary">Event List</h3>
+<div class="d-flex justify-content-between">
+    <p class="mb-0 font-weight-bold"> Here are all the events available at the moment</p>
+    <a href="event/create" class="font-weight-bold text-secondary">Create Event</a>
+</div>
+<hr>
+<div class="events">
+    <div class="row">
+        @foreach (var item in events)
+        {
+            <EventItem id="@item.Id" Name="@item.Name" StartDate="@item.StartDate" EndDate="@item.EndDate" Location="@item.Location"
+            Image="@item.Image"  CreatedByClub="@item.CreatedByClub" TicketsAvailable="@item.TicketsAvailable" Price="@item.Price"/>
+        }
+    </div>
+</div>
+
+@code {
+    private List<Event> events;
+
+    protected override void OnInitialized()
+    {
+        events = Service.GetEventsAsync();
+    }
+}
+

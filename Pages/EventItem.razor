@@ -1,0 +1,73 @@
+@using TheKangaroos_ClubEnrolmentPortal.Data.Models
+
+<div class="col-12 col-xl-6 mb-4">
+    <div class="event-card-big card">
+        <div class="card-contents">
+            <div class="d-flex align-items-center">
+                <div class="event-date">
+                    <h4 class="mb-0 text-white">@StartDate.Day</h4>
+                    <p class="mb-0">@StartDate.ToString("MMM")</p>
+                </div>
+                <div class="ml-1">
+                    <h5 class="text-white font-weight-bold ml-2">@Name</h5>
+                    <span class="ml-3"><i class="fa-solid fa-clock"></i>
+                        @StartDate.ToString("yyyy/MM/dd") &nbsp;
+                        @StartDate.ToString("hh:mm") @StartDate.ToString("tt")</span>
+                    <span class="ml-3"><i class="fa-solid fa-location-dot"></i> @Location</span>
+                    <span class="ml-3"> <span class="ml-3"><i class="fa-solid fa-sterling-sign"></i>&nbsp;
+                            @if (@Price.Length !=0 )
+                            {
+                                <span>@Price</span>
+                            }
+                            else
+                            {
+                                <span>Free</span>
+                            }
+                        </span>&nbsp;
+                    </span>
+                    <span class="ml-3"><i class="fa-solid fa-user"></i>&nbsp;
+                        @if (@TicketsAvailable > 0)
+                        {
+                            <span>@TicketsAvailable</span>
+                        }
+                        else
+                        {
+                            @*@Price.ToString("0.00");*@
+                            <span>Unlimited</span>
+                        }
+                    </span>
+                </div>
+            </div>
+            <div class="text-white text-center mt-2">
+                <a class="btn btn-outline-light font-weight-bold" href="eventDetail/@id.ToString()">Get Tickets</a>
+            </div>
+
+        </div>
+        @if (@Image != null)
+        {
+            <img src="@Image" class="event-banner" alt="">
+        }
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public string id { get; set; }
+    [Parameter]
+    public string Name { get; set; }
+    [Parameter]
+    public DateTime StartDate { get; set; }
+    [Parameter]
+    public DateTime EndDate { get; set; }
+    [Parameter]
+    public string Location { get; set; }
+    [Parameter]
+    public string Image { get; set; }
+    [Parameter]
+    public int TicketsAvailable { get; set; }
+    [Parameter]
+    public Club CreatedByClub { get; set; }
+    [Parameter]
+    public string Price { get; set; }
+}

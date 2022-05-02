@@ -1,0 +1,61 @@
+@page "/myclubs"
+
+@using TheKangaroos_ClubEnrolmentPortal.Data.Models
+@using TheKangaroos_ClubEnrolmentPortal.Data.Services
+@inject MembershipService MembershipService
+@using System.Security.Claims
+
+
+<h3 class="font-weight-bold text-secondary">My Clubs</h3>
+@if (clubs.Count == 0)
+{
+    <p class="font-weight-bold">Looks like you haven't joined any clubs. Browse and join the club you like <a
+        class="text-secondary" href="clubList">Here</a></p>
+}
+else
+{
+
+    <p class="font-weight-bold"> Here are all the clubs you are a member of</p>
+    <hr>
+    <div class="row">
+        @foreach (var item in clubs)
+        {
+            <div class="col-12 col-lg-6 col-xl-3 mb-4">
+                <div class="card">
+                    <div class="card-banner">
+                        @if (@item.Club.Image != null)
+                        {
+                            <img class="card-img-top" src="@item.Club.Image" alt="@item.Club.Name">
+                        }
+                        else
+                        {
+                            <img src="../images/casual-life-3d-reward-badge-with-two-ribbons.png" class="card-img-top">
+                        }
+                    </div>
+
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Club.Name</h5>
+                        <p class="card-text">@item.Club.Description</p>
+                        <div class="text-center">
+                            <a href="clubDetail/@item.Club.Id" class="btn btn-outline-secondary-color">Find out more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    [CascadingParameter]
+    private Task<AuthenticationState> AuthenticationStateTask { get; set; }
+
+    private string userId { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateTask;
+        userId = authState.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        clubs = MembershipService.GetClubsByUserIdAsync(userId);
+    }
+    private List<Membership> clubs;
+}
