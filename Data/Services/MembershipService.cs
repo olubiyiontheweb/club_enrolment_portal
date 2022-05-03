@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using TheKangaroos_ClubEnrolmentPortal.Data.Models;
 
 namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
@@ -11,10 +12,12 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
     public class MembershipService
     {
         private readonly ApplicationDbContext _context;
+        private readonly IEmailSender _emailSender;
 
-        public MembershipService(ApplicationDbContext context)
+        public MembershipService(ApplicationDbContext context, IEmailSender emailSender)
         {
             _context = context;
+            _emailSender = emailSender;
         }
 
         public List<Membership> GetMembershipsAsync()
@@ -40,6 +43,14 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
         {
             _context.Memberships.Add(@membership);
             _context.SaveChanges();
+
+            // send email to user
+            _emailSender.SendEmailAsync(@membership.User.Email, "Membership Confirmation",
+                $"Dear {@membership.User.FirstName},\n\n" +
+                $"You have been added to the {@membership.Club.Name} club.\n\n" +
+                $"Thank you for your support.\n\n" +
+                $"The Kangaroos Club");
+
             return @membership;
         }
 

@@ -3,10 +3,13 @@
 
 @using TheKangaroos_ClubEnrolmentPortal.Data.Models
 @using TheKangaroos_ClubEnrolmentPortal.Data.Services
+@using TheKangaroos_ClubEnrolmentPortal.ExternalServices
 @inherits OwningComponentBase<ClubService>
 @inject NavigationManager MyNavigationManager
 @inject MembershipService MembershipService
 @inject NoticeService NoticeService
+@inject EmailSender EmailSender
+
 
 @using System.Security.Claims
 
@@ -134,7 +137,7 @@
         return MembershipService.IsMember(userId, id);
     }
 
-    private void ApplyMembership()
+    private async void ApplyMembership()
     {
         Membership membership = new Membership
         {

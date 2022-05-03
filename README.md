@@ -32,6 +32,7 @@ Install the following packages for applying database migrations:
 > dotnet-ef database update
 > Add-Migration
 > Update-Database nameof(Migration)
+> dotnet ef migrations add
 
 # blazor sample repo
 https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/blazor/samples/5.0/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/AddContact.razor

@@ -65,6 +65,7 @@ namespace TheKangaroos_ClubEnrolmentPortal
             services.AddScoped<TicketService>();
             services.AddScoped<UserService>();
             services.AddScoped<RoleService>();
+            services.AddScoped<EmailSender>();
             services.AddAntDesign();
 
         }
