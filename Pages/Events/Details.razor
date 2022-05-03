@@ -1,6 +1,6 @@
 @page "/eventDetail/{id}"
 @* @page "/event" *@
-
+@using System.Globalization;
 @using TheKangaroos_ClubEnrolmentPortal.Data.Models
 @using TheKangaroos_ClubEnrolmentPortal.Data.Services
 @inherits OwningComponentBase<EventService>
@@ -46,7 +46,7 @@
                         <p>Price</p>
                         <p>
                         <h6 class="font-weight-bold">
-                                @if (eventItem.Price.Length != 0)
+                                @if (float.Parse(eventItem.Price, CultureInfo.InvariantCulture.NumberFormat) > 0)
                                 {
                                 <span>@eventItem.Price</span>
                                 }
@@ -84,6 +84,10 @@
             <p class="description">
                 @eventItem.Description
             </p>
+            @if (@eventItem.Image != null)
+        {
+            <img class="img-fluid" src="@eventItem.Image">
+        }
         </div>
         <div class="col-12 col-xl-3">
             <div class="sidebar bg-fifth-color-light shadow p-3">

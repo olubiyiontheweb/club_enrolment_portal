@@ -1,5 +1,5 @@
-@page "/event/create"
-@page "/event/edit/{id}"
+@page "/event/create/{club_id}"
+@page "/event/edit/{event_id}"
 @using TheKangaroos_ClubEnrolmentPortal.Data.Models
 @using TheKangaroos_ClubEnrolmentPortal.Data.Services
 @inherits OwningComponentBase<EventService>
@@ -60,7 +60,7 @@ else
                     <label for="Price" class="control-label  text-secondary font-weight-bold">Price</label>
                     <InputText id="Price" class="form-control" @bind-Value="newevents.Price" />
                 </div>
-                <div class="form-group">
+                @*<div class="form-group">
                     <label for="CreatedByClubId" class="control-label">Club</label>
                     <InputSelect id="department" @bind-Value="@newevents.CreatedByClubId" class="form-control">
                         <option>----</option>
@@ -69,7 +69,8 @@ else
                             <option value="@club.ClubId">@club.Club.Name</option>
                         }
                     </InputSelect>
-                </div>
+                </div>*@
+                <InputText @bind-Value="newevents.CreatedByClubId" class="form-control d-none" />
                 <div class="form-group text-center">
                     <input type="submit" value="Create" class="btn btn-primary" />
                 </div>
@@ -98,11 +99,11 @@ else
         if (MyNavigationManager.Uri.Contains("create"))
         {
             Service.PostEventAsync(events);
-            NavManager.NavigateTo("/eventList", true);
+            NavManager.NavigateTo($"/clubDetail/{club_id}/events", true);
         }
         else
         {
-            NavManager.NavigateTo("/eventDetail/{id}", true);
+            NavManager.NavigateTo($"/eventDetail/{event_id}", true);
         }
 
     }
@@ -114,13 +115,16 @@ else
     {
         var authState = await AuthenticationStateTask;
         userId = authState.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        clubs = MembershipService.GetClubsByUserIdAsync(userId);
+        @*clubs = MembershipService.GetClubsByUserIdAsync(userId);*@
         newevents.StartDate = DateTime.Now;
         newevents.EndDate = DateTime.Now;
+        newevents.CreatedByClubId = club_id;
     }
 
-    private List<Membership> clubs;
  
     [Parameter]
-    public string id { get; set; }
+    public string club_id { get; set; }
+
+    [Parameter]
+    public string event_id { get; set; }
 }

@@ -2,14 +2,18 @@
 @using TheKangaroos_ClubEnrolmentPortal.Data.Models
 @using TheKangaroos_ClubEnrolmentPortal.Data.Services
 @inherits OwningComponentBase<ClubService>
-<h3 class="text-secondary font-weight-bold">@club.Name - All Events</h3>
+<div class="d-flex justify-content-between">
+    <h3 class="text-secondary font-weight-bold">@club.Name - All Events</h3>
+    <a href="event/create/@id" class="font-weight-bold text-secondary align-self-center">Create Event</a>
+</div>
+<hr>
 <div class="events">
     <div class="row">
         @foreach (var item in events)
         {
             <EventItem id="@item.Id" Name="@item.Name" StartDate="@item.StartDate" EndDate="@item.EndDate"
             Location="@item.Location" Image="@item.Image" CreatedByClub="@item.CreatedByClub"
-            TicketsAvailable="@item.TicketsAvailable" Price="@item.Price"/>
+            TicketsAvailable="@item.TicketsAvailable" Price="@item.Price" />
         }
     </div>
 </div>
