@@ -51,7 +51,7 @@
                 <a class="text-secondary font-weight-bold" href="eventList">View All Events</a>
             </div>
             <div class="row">
-                @for (int i = 0; i < 5 && i < allevents.Count(); i++)
+                @for (int i = 0; i < 6 && i < allevents.Count(); i++)
                 {
                     Event item = allevents[i];
                     @if (item.StartDate >= DateTime.Now.Date)

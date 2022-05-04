@@ -320,6 +320,7 @@
 @media screen and (min-width: 1200px) {
     .dashboard-right {
         min-height: 90vh;
+        height: 100%;
     }
 }
 
