@@ -10,21 +10,21 @@
                     <p class="mb-0">@StartDate.ToString("MMM")</p>
                 </div>
                 <div class="ml-1">
-                    <h5 class="text-white font-weight-bold ml-2">@Name</h5>
-                    <span class="ml-3"><i class="fa-solid fa-clock"></i>
+                    <h5 class="text-white font-weight-bold">@Name</h5>
+                    <span><i class="fa-solid fa-clock"></i>
                         @StartDate.ToString("yyyy/MM/dd") &nbsp;
                         @StartDate.ToString("hh:mm") @StartDate.ToString("tt")</span>
                     <span class="ml-3"><i class="fa-solid fa-location-dot"></i> @Location</span>
-                    <span class="ml-3"> <span class="ml-3"><i class="fa-solid fa-sterling-sign"></i>&nbsp;
-                            @if (float.Parse(Price, CultureInfo.InvariantCulture.NumberFormat) > 0)
-                            {
-                                <span>@Price</span>
-                            }
-                            else
-                            {
-                                <span>Free</span>
-                            }
-                        </span>&nbsp;
+                    <span class="ml-3"><i class="fa-solid fa-sterling-sign"></i>&nbsp;
+                        @if (float.Parse(Price, CultureInfo.InvariantCulture.NumberFormat) > 0)
+                        {
+                            <span>@Price</span>
+                        }
+                        else
+                        {
+                            <span>Free</span>
+                        }
+                        &nbsp;
                     </span>
                     <span class="ml-3"><i class="fa-solid fa-user"></i>&nbsp;
                         @if (@TicketsAvailable > 0)

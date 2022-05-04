@@ -31,18 +31,23 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
             return _context.Tickets.FirstOrDefault();
         }
 
+        public bool HasTicket(string userId, string eventId)
+        {
+            return _context.Tickets.Any(e => e.UserId == userId && e.EventId == eventId);
+        }
+
         public Ticket CreateTicketAsync(Ticket ticket)
         {
             _context.Tickets.Add(ticket);
             _context.SaveChanges();
 
             // send email to user
-            _emailSender.SendEmailAsync(ticket.User.Email, "Ticket Confirmation",
-                $"Dear {ticket.User.FirstName},\n\n" +
-                $"Your ticket has been created for {ticket.Event.Name}.\n\n" +
-                $"Please note that your ticket number is {ticket.Id}.\n\n" +
-                $"Thank you for your support.\n\n" +
-                $"The Kangaroos Club");
+            //_emailSender.SendEmailAsync(ticket.User.Email, "Ticket Confirmation",
+            //    $"Dear {ticket.User.UserName},\n\n" +
+            //    $"Your ticket has been created for {ticket.Event.Name}.\n\n" +
+            //    $"Please note that your ticket number is {ticket.Id}.\n\n" +
+            //    $"Thank you for your support.\n\n" +
+            //    $"The Kangaroos Club");
             return ticket;
         }
     }

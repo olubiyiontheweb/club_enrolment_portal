@@ -24,15 +24,17 @@
                         Description</label>
                     <InputTextArea id="Description" class="form-control" @bind-Value="newnotice.Description" />
                 </div>
-                <div class="form-group">
-                    <label for="Announcement" class="control-label text-secondary font-weight-bold">
-                        Announcement</label>
-                    <InputCheckbox @bind-Value="newnotice.isAnnouncement"></InputCheckbox>
-                </div>
-                <div class="form-group">
-                    <label for="Enquiry" class="control-label text-secondary font-weight-bold">
-                        Enquiry</label>
-                    <InputCheckbox @bind-Value="newnotice.isEnquiry"></InputCheckbox>
+                <div class="form-row justify-content-center">
+                    <div class="form-group">
+                        <InputCheckbox @bind-Value="newnotice.isAnnouncement"></InputCheckbox>
+                        <label for="Announcement" class="ml-2 control-label text-secondary font-weight-bold">
+                            Announcement</label>
+                    </div>
+                    <div class="form-group ml-5">
+                        <InputCheckbox @bind-Value="newnotice.isEnquiry"></InputCheckbox>
+                        <label for="Enquiry" class="ml-2 control-label text-secondary font-weight-bold">
+                            Enquiry</label>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="Image" class="control-label text-secondary font-weight-bold">

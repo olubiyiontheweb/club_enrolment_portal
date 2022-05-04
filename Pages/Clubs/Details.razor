@@ -9,8 +9,6 @@
 @inject MembershipService MembershipService
 @inject NoticeService NoticeService
 @inject EmailSender EmailSender
-
-
 @using System.Security.Claims
 
 
@@ -51,7 +49,7 @@
                     }
                     @foreach (var item in events)
                     {
-                        @if (item.StartDate > DateTime.Now)
+                        @if (item.StartDate >= DateTime.Now.Date)
                         {
                             count += 1;
                             <EventItem id="@item.Id" Name="@item.Name" StartDate="@item.StartDate" EndDate="@item.EndDate"

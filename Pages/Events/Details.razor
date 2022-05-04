@@ -4,6 +4,10 @@
 @using TheKangaroos_ClubEnrolmentPortal.Data.Models
 @using TheKangaroos_ClubEnrolmentPortal.Data.Services
 @inherits OwningComponentBase<EventService>
+@inject TicketService TicketService
+@inject MembershipService MembershipService
+@using System.Security.Claims
+
 
 <div class="detail-page">
     <div class="header shadow">
@@ -85,19 +89,71 @@
                 @eventItem.Description
             </p>
             @if (@eventItem.Image != null)
-        {
-            <img class="img-fluid" src="@eventItem.Image">
-        }
+            {
+                <img class="img-fluid mt-3" src="@eventItem.Image">
+            }
         </div>
         <div class="col-12 col-xl-3">
             <div class="sidebar bg-fifth-color-light shadow p-3">
                 <h4 class="font-weight-bold text-secondary text-center mb-4">Get Tickets</h4>
+                <p class="text-center font-weight-bold">Ticket Details</p>
+                <div class="d-flex justify-content-between">
+                    <p>Ticket Price:</p>
+                    <p>
+                        <i class="fa-solid fa-sterling-sign mr-3"></i>
+                        @if (float.Parse(eventItem.Price, CultureInfo.InvariantCulture.NumberFormat) > 0)
+                        {
+                            <span>@eventItem.Price</span>
+                        }
+                        else
+                        {
+                            <span>Free</span>
+                        }
+                    </p>
+                </div>
+                @if (eventItem.StartDate < DateTime.Now.Date && eventItem.EndDate < DateTime.Now.Date)
+                {
+                    <p class="text-danger">This Event has already expired</p>
+                }
+                else
+                {
+                    @if (HasTicket())
+                    {
+                        <p>You have successfully bought a ticket to this Event</p>
+                    }
+                    else
+                    {
+                        @if (IsMember())
+                        {
+                            <button class="btn btn-lg btn-secondary-color w-100 my-2" @onclick="getTicket">Buy Tickets</button>
+
+                        }
+                        else
+                        {
+                            <button disabled class="btn btn-lg btn-secondary w-100 my-2" @onclick="getTicket">Buy
+                                Tickets</button>
+                            <p class="text-danger">You need to be a member of the @eventItem.CreatedByClub.Name to buy Tickets for
+                                its Events</p>
+                        }
+                    }
+                    <p class="text-secondary mt-3"><i class="fa-solid fa-circle-info mr-3"></i><b>Important Information</b>
+                    </p>
+                    <p>After purchasing the ticket, you can expect to get an email confirming the purchase of the ticket
+                        along with a ticket ID. Please take note of the ticket ID and save it safely. The ticket ID is
+                        required for entry to the event. The rules and regulations of the event are subject to change.
+                    </p>
+                }
+                <p>If you have any queries about purchasing tickets, please create an enquiry for the respective
+                    organizing clubs.</p>
             </div>
         </div>
     </div>
 </div>
 
 @code {
+    [CascadingParameter]
+    private Task<AuthenticationState> AuthenticationStateTask { get; set; }
+
     [Parameter]
     public string id { get; set; }
 
@@ -106,5 +162,34 @@
     protected override void OnInitialized()
     {
         eventItem = Service.GetEventByIdAsync(id);
+    }
+
+    private bool IsMember()
+    {
+        return MembershipService.IsMember(userId, eventItem.CreatedByClubId);
+    }
+
+    private bool HasTicket()
+    {
+        return TicketService.HasTicket(userId, id);
+    }
+
+
+    private string userId { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateTask;
+        userId = authState.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    }
+
+    private async void getTicket()
+    {
+        Ticket ticket = new Ticket
+        {
+            EventId = eventItem.Id,
+            UserId = userId,
+        };
+        TicketService.CreateTicketAsync(ticket);
+        @*MyNavigationManager.NavigateTo(MyNavigationManager.Uri, true);*@
     }
 }

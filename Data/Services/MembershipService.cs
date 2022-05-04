@@ -45,11 +45,11 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
             _context.SaveChanges();
 
             // send email to user
-            _emailSender.SendEmailAsync(@membership.User.Email, "Membership Confirmation",
-                $"Dear {@membership.User.FirstName},\n\n" +
-                $"You have been added to the {@membership.Club.Name} club.\n\n" +
-                $"Thank you for your support.\n\n" +
-                $"The Kangaroos Club");
+            //_emailSender.SendEmailAsync(@membership.User.Email, "Membership Confirmation",
+            //    $"Dear {@membership.User.UserName},\n\n" +
+            //    $"You have been added to the {@membership.Club.Name} club.\n\n" +
+            //    $"Thank you for your support.\n\n" +
+            //    $"The Kangaroos Club");
 
             return @membership;
         }

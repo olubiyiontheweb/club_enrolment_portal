@@ -53,7 +53,7 @@
                 @for (int i = 0; i < 5 && i < events.Count(); i++)
                 {
                     Event item = events[i];
-                    @if (item.StartDate > DateTime.Now)
+                    @if (item.StartDate >= DateTime.Now.Date)
                     {
                     <EventItem id="@item.Id" Name="@item.Name" StartDate="@item.StartDate" EndDate="@item.EndDate"
                     Location="@item.Location" Image="@item.Image" CreatedByClub="@item.CreatedByClub"
@@ -67,7 +67,7 @@
     <div class="col-12 col-xl-3">
         <div class="dashboard-right bg-fifth-color-light shadow p-3">
             <div class="event-list">
-                <h5 class="text-center font-weight-bold text-secondary mb-3">My Club Events</h5>
+                <h5 class="text-center font-weight-bold text-secondary mb-3">Events from My Clubs</h5>
                 @if (myclubevents.Count != 0)
                 {
 

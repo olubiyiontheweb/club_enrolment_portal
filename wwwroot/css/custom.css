@@ -19,6 +19,20 @@
 }
 
 /*buttons*/
+
+.btn-secondary-color {
+    color: #fff;
+    background-color: var(--secondary-color);
+    
+}
+
+.btn-secondary-color:hover, .btn-secondary-color:focus {
+    color: var(--secondary-color);
+    background-color: #fff;
+    border-color: var(--secondary-color);
+    
+}
+
 .btn-outline-secondary-color {
     color: var(--secondary-color);
     border-color: var(--secondary-color);
