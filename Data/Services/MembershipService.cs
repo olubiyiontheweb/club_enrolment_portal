@@ -45,6 +45,19 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
             return _context.Memberships.Any(e => e.UserId == userId && e.ClubId == clubId && e.IsApproved == true);
         }
 
+        public bool IsAdmin(string userId, string clubId)
+        {
+            return _context.Memberships.Any(e => e.UserId == userId && e.ClubId == clubId && e.IsAdmin == true);
+        }
+
+        public void MakeAdmin(string userId, Membership @membership){
+            Membership member = _context.Memberships.Where(e=> e.Id == @membership.Id).FirstOrDefault();
+            member.IsApproved = true;
+            member.IsAdmin = true;
+            _context.SaveChanges();
+            
+        }
+
         public Membership ApproveMembershipAsync(Membership @membership)
         {
             Membership member = _context.Memberships.Where(e=> e.Id == @membership.Id).FirstOrDefault();

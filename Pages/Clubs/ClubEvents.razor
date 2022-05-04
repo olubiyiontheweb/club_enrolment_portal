@@ -1,10 +1,16 @@
 @page "/clubDetail/{id}/events"
 @using TheKangaroos_ClubEnrolmentPortal.Data.Models
 @using TheKangaroos_ClubEnrolmentPortal.Data.Services
+@inject MembershipService MembershipService
 @inherits OwningComponentBase<ClubService>
+@using System.Security.Claims
+
 <div class="d-flex justify-content-between">
     <h3 class="text-secondary font-weight-bold">@club.Name - All Events</h3>
-    <a href="event/create/@id" class="font-weight-bold text-secondary align-self-center">Create Event</a>
+    @if (IsAdmin())
+    {
+        <a href="event/create/@id" class="font-weight-bold text-secondary align-self-center">Create Event</a>
+    }
 </div>
 <hr>
 <div class="events">
@@ -20,8 +26,17 @@
 
 
 @code {
+    [CascadingParameter]
+    private Task<AuthenticationState> AuthenticationStateTask { get; set; }
     [Parameter]
     public string id { get; set; }
+    private string userId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateTask;
+        userId = authState.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    }
 
     private Club club;
     private List<Event> events;
@@ -30,5 +45,10 @@
     {
         club = Service.GetClubByIdAsync(id);
         events = Service.GetEventsByClubIdAsync(id);
+    }
+
+    private bool IsAdmin()
+    {
+        return MembershipService.IsAdmin(userId, id);
     }
 }

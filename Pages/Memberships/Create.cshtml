@@ -22,6 +22,14 @@
                 <select asp-for="Membership.ClubId" class ="form-control" asp-items="ViewBag.ClubId"></select>
             </div>
             <div class="form-group">
+                <label asp-for="Membership.IsApproved" class="control-label"></label>
+                <input asp-for="Membership.IsApproved" asp-items="ViewBag.IsApproved">
+            </div>
+            <div class="form-group">
+                <label asp-for="Membership.IsAdmin" class="control-label"></label>
+                <input asp-for="Membership.IsAdmin" asp-items="ViewBag.IsAdmin">
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>

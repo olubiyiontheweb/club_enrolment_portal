@@ -23,6 +23,8 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
 
         public Boolean IsApproved { get; set; } = false;
 
+        public Boolean IsAdmin { get; set; } = false;
+
         [Required]
         [ForeignKey("Club")]
         #nullable enable 

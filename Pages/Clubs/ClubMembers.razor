@@ -3,82 +3,112 @@
 @using TheKangaroos_ClubEnrolmentPortal.Data.Models
 @using TheKangaroos_ClubEnrolmentPortal.Data.Services
 @inject MembershipService MembershipService
+@using System.Security.Claims
 
 
-<h3 class="text-secondary font-weight-bold text-center">Member List</h3>
-@if (members.Count() == 0)
+@if (IsAdmin())
 {
-    <p class="text-center font-weight-bold">Unfortunately, there are no members in this club :(</p>
+    <h3 class="text-secondary font-weight-bold text-center">Member List</h3>
+    @if (members.Count() == 0)
+    {
+        <p class="text-center font-weight-bold">Unfortunately, there are no members in this club :(</p>
+    }
+    else
+    {
+        <div class="row justify-content-center mt-5">
+            <div class="col-12 col-lg-8">
+                <p class="font-weight-bold">See all members of <a href="/clubDetail/@id"><u>@members[0].Club.Name</u> </a></p>
+
+                <div class="card">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Membership Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < members.Count(); i++)
+                            {
+                                Membership item = members[i];
+                                <tr>
+                                    <th>@(i+1)</th>
+                                    <th>
+                                        @if (item.User.FirstName != null)
+                                        {
+                                            <span>@item.User.FirstName @item.User.LastName</span>
+                                        }
+                                        else
+                                        {
+                                            <span>@item.User.UserName (No Name Details)</span>
+                                        }
+                                    </th>
+                                    <th>@item.User.Email</th>
+                                    <th>
+                                        @if (item.IsApproved)
+                                        {
+                                            <span class="text-success">Approved</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-warning">Pending</span>
+                                        }
+                                    </th>
+                                    <th>
+                                        @if (!item.IsApproved)
+                                        {
+                                            <button @onclick="()=>approveMembership(item)" class="btn btn-outline-success ">Approve
+                                            </button>
+                                        }
+                                        <button @onclick="()=>removeMembership(item)" class="btn btn-outline-danger ml-3">Delete
+                                        </button>
+                                        @if (!item.IsAdmin)
+                                        {
+                                            <button @onclick="()=>MakeAdmin(item.UserId,item)" class="btn btn-outline-secondary-color ml-3">
+                                                Make Admin
+                                            </button>
+                                        }
+                                    </th>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    }
 }
 else
 {
-    <div class="row justify-content-center mt-5">
-        <div class="col-12 col-lg-8">
-            <p class="font-weight-bold">See all members of <a href="/clubDetail/@id"><u>@members[0].Club.Name</u> </a></p>
-
-            <div class="card">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Membership Status</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @for (int i = 0; i < members.Count(); i++)
-                        {
-                            Membership item = members[i];
-                            <tr>
-                                <th>@(i+1)</th>
-                                <th>
-                                    @if (item.User.FirstName != null)
-                                    {
-                                        <span>@item.User.FirstName @item.User.LastName</span>
-                                    }
-                                    else
-                                    {
-                                        <span>@item.User.UserName (No Name Details)</span>
-                                    }
-                                </th>
-                                <th>@item.User.Email</th>
-                                <th>
-                                    @if (item.IsApproved)
-                                    {
-                                        <span class="text-success">Approved</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="text-warning">Pending</span>
-                                    }
-                                </th>
-                                <th>
-                                    @if (!item.IsApproved)
-                                    {
-                                        <button @onclick="()=>approveMembership(item)" class="btn btn-outline-success">Approve
-                                        </button>
-                                    }
-                                    <button @onclick="()=>removeMembership(item)" class="btn btn-outline-danger ml-3">Delete
-                                    </button>
-                                </th>
-                            </tr>
-                        }
-
-                    </tbody>
-                </table>
-
-            </div>
-        </div>
-    </div>
+    <Forbidden></Forbidden>
 }
+
 
 @code {
 
+    [CascadingParameter]
+    private Task<AuthenticationState> AuthenticationStateTask { get; set; }
+
+    private string userId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateTask;
+        userId = authState.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    }
+
+    private bool IsAdmin()
+    {
+        return MembershipService.IsAdmin(userId, id);
+    }
+
     [Parameter]
     public string id { get; set; }
-
 
     private List<Membership> members;
 
@@ -96,6 +126,12 @@ else
     private async void approveMembership(Membership membershipId)
     {
         MembershipService.ApproveMembershipAsync(membershipId);
+        members = MembershipService.GetMembersByClubIdAsync(id);
+    }
+
+    private async void MakeAdmin(string userID, Membership membershipId)
+    {
+        MembershipService.MakeAdmin(userID, membershipId);
         members = MembershipService.GetMembersByClubIdAsync(id);
     }
 }

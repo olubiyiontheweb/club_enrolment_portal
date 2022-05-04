@@ -138,7 +138,7 @@
 
 /*end sidebar css*/
 
-/*404 page css*/
+/*404 page and forbidden page css*/
 .page_not_found {
     display: flex;
     flex-direction: column;
@@ -147,12 +147,27 @@
     align-items: center;
 }
 
+.forbidden{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.forbidden img,
 .page_not_found img {
     max-height: 50vh;
 }
-
-.page_not_found h4 {
+.forbidden,
+.page_not_found h1{
     margin-top: 2vh;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--tertiary-color);
+}
+
+.forbidden,
+.page_not_found h4 {
     font-weight: 700;
     color: var(--tertiary-color);
 }
