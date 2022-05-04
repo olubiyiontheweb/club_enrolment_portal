@@ -54,12 +54,12 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
             _context.SaveChanges();
 
             // send email to user
-            //_emailSender.SendEmailAsync(ticket.User.Email, "Ticket Confirmation",
-            //    $"Dear {ticket.User.UserName},\n\n" +
-            //    $"Your ticket has been created for {ticket.Event.Name}.\n\n" +
-            //    $"Please note that your ticket number is {ticket.Id}.\n\n" +
-            //    $"Thank you for your support.\n\n" +
-            //    $"The Kangaroos Club");
+            _emailSender.SendEmailAsync(ticket.User.Email, "Ticket Confirmation",
+                $"Dear {ticket.User.UserName},\n\n" +
+                $"Your ticket has been created for {ticket.Event.Name}.\n\n" +
+                $"Please note that your ticket number is {ticket.Id}.\n\n" +
+                $"Thank you for your support.\n\n" +
+                $"The Kangaroos Club");
             return ticket;
         }
     }
