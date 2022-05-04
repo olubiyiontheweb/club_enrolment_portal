@@ -32,12 +32,25 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
 
         public List<Membership> GetClubsByUserIdAsync(string id)
         {
-            return _context.Memberships.Include(e => e.Club).Include(e => e.User).Where(e => e.UserId == id).ToList();
+            return _context.Memberships.Include(e => e.Club).Include(e => e.User).Where(e => e.UserId == id && e.IsApproved == true).ToList();
         }
 
         public bool IsMember(string userId, string clubId)
         {
             return _context.Memberships.Any(e => e.UserId == userId && e.ClubId == clubId);
+        }
+
+        public bool IsApproved(string userId, string clubId)
+        {
+            return _context.Memberships.Any(e => e.UserId == userId && e.ClubId == clubId && e.IsApproved == true);
+        }
+
+        public Membership ApproveMembershipAsync(Membership @membership)
+        {
+            Membership member = _context.Memberships.Where(e=> e.Id == @membership.Id).FirstOrDefault();
+            member.IsApproved = true;
+            _context.SaveChanges();
+            return @membership;
         }
         public Membership PostMembershipAsync(Membership @membership)
         {

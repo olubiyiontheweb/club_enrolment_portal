@@ -81,7 +81,8 @@
             </div>
             <h5 class="font-weight-bold text-secondary">Organized By</h5>
             <p class="description">
-                @eventItem.CreatedByClub.Name
+                @eventItem.CreatedByClub.Name 
+                <a class="ml-3" href="/clubDetail/@eventItem.CreatedByClubId">Goto Club Page</a>
             </p>
             <hr>
             <h5 class="font-weight-bold text-secondary">Event Details</h5>
@@ -123,7 +124,7 @@
                     }
                     else
                     {
-                        @if (IsMember())
+                        @if (IsApproved())
                         {
                             <button class="btn btn-lg btn-secondary-color w-100 my-2" @onclick="getTicket">Buy Tickets</button>
 
@@ -164,9 +165,9 @@
         eventItem = Service.GetEventByIdAsync(id);
     }
 
-    private bool IsMember()
+    private bool IsApproved()
     {
-        return MembershipService.IsMember(userId, eventItem.CreatedByClubId);
+        return MembershipService.IsApproved(userId, eventItem.CreatedByClubId);
     }
 
     private bool HasTicket()

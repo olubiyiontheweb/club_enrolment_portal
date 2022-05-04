@@ -26,10 +26,10 @@
         }
     </p>
     <p>@notice.Description</p>
-    @*@if (notice.Image.Length != 0)
+    @if (notice.Image != null)
     {
         <img src="@notice.Image" class="img-fluid" />
-    }*@
+    }
 </div>
 
 @code {

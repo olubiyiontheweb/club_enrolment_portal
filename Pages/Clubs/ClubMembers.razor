@@ -13,8 +13,8 @@
 else
 {
     <div class="row justify-content-center mt-5">
-        <div class="col-12 col-lg-6">
-            <p class="font-weight-bold">See all members of @members[0].Club.Name</p>
+        <div class="col-12 col-lg-8">
+            <p class="font-weight-bold">See all members of <a href="/clubDetail/@id"> @members[0].Club.Name </a></p>
 
             <div class="card">
                 <table class="table">
@@ -22,6 +22,8 @@ else
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Membership Status</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -31,9 +33,36 @@ else
                             Membership item = members[i];
                             <tr>
                                 <th>@(i+1)</th>
-                                <th>@item.User.UserName</th>
-                                <th><button @onclick="()=>removeMembership(item)" class="btn btn-outline-danger">Delete
-                                    </button></th>
+                                <th>
+                                    @if (item.User.FirstName != null)
+                                    {
+                                        <span>@item.User.FirstName @item.User.LastName</span>
+                                    }
+                                    else
+                                    {
+                                        <span>@item.User.UserName (No Name Details)</span>
+                                    }
+                                </th>
+                                <th>@item.User.Email</th>
+                                <th>
+                                    @if (item.IsApproved)
+                                    {
+                                        <span class="text-success">Approved</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-warning">Pending</span>
+                                    }
+                                </th>
+                                <th>
+                                    @if (!item.IsApproved)
+                                    {
+                                        <button @onclick="()=>approveMembership(item)" class="btn btn-outline-success">Approve
+                                        </button>
+                                    }
+                                    <button @onclick="()=>removeMembership(item)" class="btn btn-outline-danger ml-3">Delete
+                                    </button>
+                                </th>
                             </tr>
                         }
 
@@ -46,10 +75,10 @@ else
 }
 
 @code {
-    
+
     [Parameter]
     public string id { get; set; }
-    
+
 
     private List<Membership> members;
 
@@ -61,6 +90,12 @@ else
     private void removeMembership(Membership membershipId)
     {
         MembershipService.DeleteMembershipAsync(membershipId);
+        members = MembershipService.GetMembersByClubIdAsync(id);
+    }
+
+    private void approveMembership(Membership membershipId)
+    {
+        MembershipService.ApproveMembershipAsync(membershipId);
         members = MembershipService.GetMembersByClubIdAsync(id);
     }
 }

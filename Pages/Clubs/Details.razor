@@ -19,7 +19,15 @@
             <div class="membership">
                 @if (IsMember())
                 {
-                    <span><i class="fa-solid fa-circle-check text-success mr-2"></i>Member</span>
+                    @if (IsApproved())
+                    {
+
+                        <span><i class="fa-solid fa-circle-check text-success mr-2"></i>Member</span>
+                    }
+                    else
+                    {
+                        <span><i class="fa-solid fa-circle-xmark text-warning mr-2"></i>Non-Member Waiting for Approval</span>
+                    }
                 }
                 else
                 {
@@ -54,7 +62,7 @@
                             count += 1;
                             <EventItem id="@item.Id" Name="@item.Name" StartDate="@item.StartDate" EndDate="@item.EndDate"
                         Location="@item.Location" Image="@item.Image" CreatedByClub="@item.CreatedByClub"
-                        TicketsAvailable="@item.TicketsAvailable" Price="@item.Price"/>
+                        TicketsAvailable="@item.TicketsAvailable" Price="@item.Price" />
                         }
                     }
 
@@ -88,7 +96,7 @@
                                 </p>
                             </div>
                             <div class="hover-card-view-all">
-                                <a href="notice/@item.Id"  class="text-white">Read More</a>
+                                <a href="notice/@item.Id" class="text-white">Read More</a>
                             </div>
                         </div>
                     }
@@ -135,6 +143,11 @@
         return MembershipService.IsMember(userId, id);
     }
 
+    private bool IsApproved()
+    {
+        return MembershipService.IsApproved(userId, id);
+    }
+
     private async void ApplyMembership()
     {
         Membership membership = new Membership
@@ -144,6 +157,5 @@
             ClubId = id,
         };
         MembershipService.PostMembershipAsync(membership);
-        @*MyNavigationManager.NavigateTo(MyNavigationManager.Uri, true);*@
     }
 }
