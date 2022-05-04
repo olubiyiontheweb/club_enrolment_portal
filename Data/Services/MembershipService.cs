@@ -50,20 +50,20 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
             Membership member = _context.Memberships.Where(e=> e.Id == @membership.Id).FirstOrDefault();
             member.IsApproved = true;
             _context.SaveChanges();
+            
+            // send email to user
+            _emailSender.SendEmailAsync(@membership.User.Email, "Membership Confirmation",
+                $"Dear {@membership.User.UserName},\n\n" +
+                $"You have been added to the {@membership.Club.Name} club.\n\n" +
+                $"Thank you for Joining.\n\n" +
+                $"{@membership.Club.Name}");
+
             return @membership;
         }
         public Membership PostMembershipAsync(Membership @membership)
         {
             _context.Memberships.Add(@membership);
             _context.SaveChanges();
-
-            // send email to user
-            _emailSender.SendEmailAsync(@membership.User.Email, "Membership Confirmation",
-                $"Dear {@membership.User.UserName},\n\n" +
-                $"You have been added to the {@membership.Club.Name} club.\n\n" +
-                $"Thank you for your support.\n\n" +
-                $"The Kangaroos Club");
-
             return @membership;
         }
 

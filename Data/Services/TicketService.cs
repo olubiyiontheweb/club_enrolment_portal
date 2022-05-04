@@ -52,12 +52,15 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
         {
             _context.Tickets.Add(ticket);
             _context.SaveChanges();
+            Ticket tick = _context.Tickets.Where(e=> e.Id == ticket.Id).FirstOrDefault();
+            User user = _context.Users.Where(e => e.Id == tick.UserId).FirstOrDefault();
+            Event eventt = _context.Events.Where(e => e.Id == tick.EventId).FirstOrDefault();
 
             // send email to user
-            _emailSender.SendEmailAsync(ticket.User.Email, "Ticket Confirmation",
-                $"Dear {ticket.User.UserName},\n\n" +
-                $"Your ticket has been created for {ticket.Event.Name}.\n\n" +
-                $"Please note that your ticket number is {ticket.Id}.\n\n" +
+            _emailSender.SendEmailAsync(user.Email, "Ticket Confirmation",
+                $"Dear {user.UserName},\n\n" +
+                $"Your ticket has been created for {eventt.Name}.\n\n" +
+                $"Please note that your ticket number is {tick.Id}.\n\n" +
                 $"Thank you for your support.\n\n" +
                 $"The Kangaroos Club");
             return ticket;

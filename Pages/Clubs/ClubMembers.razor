@@ -93,7 +93,7 @@ else
         members = MembershipService.GetMembersByClubIdAsync(id);
     }
 
-    private void approveMembership(Membership membershipId)
+    private async void approveMembership(Membership membershipId)
     {
         MembershipService.ApproveMembershipAsync(membershipId);
         members = MembershipService.GetMembersByClubIdAsync(id);
