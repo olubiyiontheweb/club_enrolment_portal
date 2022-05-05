@@ -148,17 +148,23 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data
                 .OnDelete(DeleteBehavior.Cascade);
 
             // events have one ticket
-            modelBuilder.Entity<Event>()
+            /*modelBuilder.Entity<Event>()
                 .HasOne(e => e.Ticket)
                 .WithOne(t => t.Event)
                 .HasForeignKey<Ticket>(t => t.EventId)
-                .OnDelete(DeleteBehavior.Cascade);            
+                .OnDelete(DeleteBehavior.Cascade);    */
+
+            modelBuilder.Entity<Event>()
+                .HasMany(e => e.Ticket)
+                .WithOne(t => t.Event)
+                .HasForeignKey(t => t.EventId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             // tickets belong to one event
             modelBuilder.Entity<Ticket>()
                 .HasOne(t => t.Event)
-                .WithOne(e => e.Ticket)
-                .HasForeignKey<Ticket>(t => t.EventId)
+                .WithMany(e => e.Ticket)
+                .HasForeignKey(t => t.EventId)
                 .OnDelete(DeleteBehavior.NoAction);
 
             // users have many tickets

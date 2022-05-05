@@ -41,7 +41,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
         #nullable disable
         public Club CreatedByClub { get; set; }
 
-        public Ticket Ticket { get; set; }
+        public ICollection<Ticket>  Ticket { get; set; }
 
         public ICollection<Attendee> Attendees { get; set; }
     }
