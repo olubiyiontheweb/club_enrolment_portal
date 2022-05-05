@@ -7,77 +7,85 @@
 @inject ClubService ClubService
 @inject MembershipService MembershipService
 @using System.Security.Claims
-
-
 @inject NavigationManager NavManager
 
-@if (MyNavigationManager.Uri.Contains("create"))
-{
-    <h3 class="text-center font-weight-bold text-secondary">Create an Event</h3>
-}
-else
-{
-    <h3 class="text-center font-weight-bold text-secondary">Edit Event</h3>
-}
 
-<div class="row justify-content-center mt-5">
-    <div class="col-12 col-lg-6">
-        <div class="card p-4">
-            <EditForm Model="@newevents" OnValidSubmit="@HandleValidSubmit">
-                <DataAnnotationsValidator />
-                <ValidationSummary />
+@if (IsAdmin())
+{
+    @if (MyNavigationManager.Uri.Contains("create"))
+    {
+        <h3 class="text-center font-weight-bold text-secondary">Create an Event</h3>
+    }
+    else
+    {
+        <h3 class="text-center font-weight-bold text-secondary">Edit Event</h3>
+    }
 
-                <div class="form-group">
-                    <label for="Name" class="control-label  text-secondary font-weight-bold">Event Name</label>
-                    <InputText id="Name" class="form-control" @bind-Value="newevents.Name" />
-                </div>
-                <div class="form-group">
-                    <label for="Description" class="control-label  text-secondary font-weight-bold">Event
-                        Description</label>
-                    <InputTextArea id="Description" class="form-control" @bind-Value="newevents.Description" />
-                </div>
-                <div class="form-group">
-                    <label for="StartDate" class="control-label  text-secondary font-weight-bold">Start Date</label>
-                    <InputDate type="datetime-local" id="StartDate" class="form-control"
+    <div class="row justify-content-center mt-5">
+        <div class="col-12 col-lg-6">
+            <div class="card p-4">
+                <EditForm Model="@newevents" OnValidSubmit="@HandleValidSubmit">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+
+                    <div class="form-group">
+                        <label for="Name" class="control-label  text-secondary font-weight-bold">Event Name</label>
+                        <InputText id="Name" class="form-control" @bind-Value="newevents.Name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Description" class="control-label  text-secondary font-weight-bold">Event
+                            Description</label>
+                        <InputTextArea id="Description" class="form-control" @bind-Value="newevents.Description" />
+                    </div>
+                    <div class="form-group">
+                        <label for="StartDate" class="control-label  text-secondary font-weight-bold">Start Date</label>
+                        <InputDate type="datetime-local" id="StartDate" class="form-control"
                         @bind-Value="newevents.StartDate" />
-                </div>
-                <div class="form-group">
-                    <label for="EndDate" class="control-label  text-secondary font-weight-bold">End Date</label>
-                    <InputDate type="datetime-local" id="EndDate" class="form-control"
+                    </div>
+                    <div class="form-group">
+                        <label for="EndDate" class="control-label  text-secondary font-weight-bold">End Date</label>
+                        <InputDate type="datetime-local" id="EndDate" class="form-control"
                         @bind-Value="newevents.EndDate" />
-                </div>
-                <div class="form-group">
-                    <label for="Location" class="control-label  text-secondary font-weight-bold">Event Location</label>
-                    <InputText id="Location" class="form-control" @bind-Value="newevents.Location" />
-                </div>
-                <div class="form-group">
-                    <label for="Image" class="control-label  text-secondary font-weight-bold">Event Banner</label>
-                    @*<InputFile id="Image" class="form-control-file" @bind-Value="newevents.Image" />*@
-                    <InputText id="Image" class="form-control" @bind-Value="newevents.Image" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Location" class="control-label  text-secondary font-weight-bold">Event Location</label>
+                        <InputText id="Location" class="form-control" @bind-Value="newevents.Location" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Image" class="control-label  text-secondary font-weight-bold">Event Banner</label>
+                        @*<InputFile id="Image" class="form-control-file" @bind-Value="newevents.Image" />*@
+                        <InputText id="Image" class="form-control" @bind-Value="newevents.Image" />
 
-                </div>
-                <div class="form-group">
-                    <label for="Price" class="control-label  text-secondary font-weight-bold">Price</label>
-                    <InputText id="Price" class="form-control" @bind-Value="newevents.Price" />
-                </div>
-                @*<div class="form-group">
-                    <label for="CreatedByClubId" class="control-label">Club</label>
-                    <InputSelect id="department" @bind-Value="@newevents.CreatedByClubId" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="Price" class="control-label  text-secondary font-weight-bold">Price</label>
+                        <InputText id="Price" class="form-control" @bind-Value="newevents.Price" />
+                    </div>
+                    @*<div class="form-group">
+                        <label for="CreatedByClubId" class="control-label">Club</label>
+                        <InputSelect id="department" @bind-Value="@newevents.CreatedByClubId" class="form-control">
                         <option>----</option>
                         @foreach (var club in clubs)
                         {
-                            <option value="@club.ClubId">@club.Club.Name</option>
+                        <option value="@club.ClubId">@club.Club.Name</option>
                         }
-                    </InputSelect>
-                </div>*@
-                <InputText @bind-Value="newevents.CreatedByClubId" class="form-control d-none" />
-                <div class="form-group text-center">
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                </div>
-            </EditForm>
+                        </InputSelect>
+                        </div>*@
+                    <InputText @bind-Value="newevents.CreatedByClubId" class="form-control d-none" />
+                    <div class="form-group text-center">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </EditForm>
+            </div>
         </div>
     </div>
-</div>
+}
+else
+{
+    <Forbidden></Forbidden>
+}
+
+
 
 @code {
     private Event newevents = new Event();
@@ -115,13 +123,17 @@ else
     {
         var authState = await AuthenticationStateTask;
         userId = authState.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        @*clubs = MembershipService.GetClubsByUserIdAsync(userId);*@
         newevents.StartDate = DateTime.Now;
         newevents.EndDate = DateTime.Now;
         newevents.CreatedByClubId = club_id;
     }
 
- 
+    private bool IsAdmin()
+    {
+        return MembershipService.IsAdmin(userId, club_id);
+    }
+
+
     [Parameter]
     public string club_id { get; set; }
 

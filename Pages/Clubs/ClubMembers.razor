@@ -37,14 +37,16 @@
                                 <tr>
                                     <th>@(i+1)</th>
                                     <th>
-                                        @if (item.User.FirstName != null)
-                                        {
-                                            <span>@item.User.FirstName @item.User.LastName</span>
-                                        }
-                                        else
-                                        {
-                                            <span>@item.User.UserName (No Name Details)</span>
-                                        }
+                                        <a href="/user/@item.UserId">
+                                            @if (item.User.FirstName != null)
+                                            {
+                                                <span>@item.User.FirstName @item.User.LastName</span>
+                                            }
+                                            else
+                                            {
+                                                <span>@item.User.UserName (No Name Details)</span>
+                                            }
+                                        </a>
                                     </th>
                                     <th>@item.User.Email</th>
                                     <th>
@@ -67,7 +69,8 @@
                                         </button>
                                         @if (!item.IsAdmin)
                                         {
-                                            <button @onclick="()=>MakeAdmin(item.UserId,item)" class="btn btn-outline-secondary-color ml-3">
+                                            <button @onclick="()=>MakeAdmin(item.UserId,item)"
+                                class="btn btn-outline-secondary-color ml-3">
                                                 Make Admin
                                             </button>
                                         }

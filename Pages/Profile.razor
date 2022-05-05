@@ -1,0 +1,69 @@
+@page "/profile"
+@page "/user/{id}"
+@using TheKangaroos_ClubEnrolmentPortal.Data.Models
+@using TheKangaroos_ClubEnrolmentPortal.Data.Services
+@inject UserService UserService
+@using System.Security.Claims
+@inject NavigationManager NavManager
+
+@if (NavManager.Uri.Contains("profile"))
+{
+    user = UserService.GetUserById(userId);
+    <h1 class="text-secondary font-weight-bold text-center">Profile</h1>
+
+}
+else if (NavManager.Uri.Contains("user"))
+{
+    user = UserService.GetUserById(id);
+    <h1 class="text-secondary font-weight-bold text-center">User Details</h1>
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-12 col-lg-8">
+        <div class="card">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Name</th>
+                        <th>@user.FirstName @user.LastName</th>
+                    </tr>
+                    <tr>
+                        <th>Username</th>
+                        <th>@user.UserName</th>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <th>@user.Email</th>
+                    </tr>
+                    <tr>
+                        <th>Gender</th>
+                        <th>@user.Gender</th>
+                    </tr>
+                    <tr>
+                        <th>Date of Birth</th>
+                        <th>@user.DateOfBirth</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+@code {
+    [Parameter]
+    public string id { get; set; }
+
+    [CascadingParameter]
+    private Task<AuthenticationState> AuthenticationStateTask { get; set; }
+
+    private User user;
+
+    private string userId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateTask;
+        userId = authState.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    }
+}
