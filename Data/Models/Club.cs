@@ -22,6 +22,8 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Models
 
         public string Image { get; set; }
 
+        public Boolean IsApproved { get; set; } = false;
+
         public ICollection<Membership> Members { get; set; }
 
         public ICollection<Event> Events { get; set; }

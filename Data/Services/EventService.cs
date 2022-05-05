@@ -19,7 +19,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
 
         public List<Event> GetEventsAsync()
         {
-            return _context.Events.Include(e => e.CreatedByClub).ToList();
+            return _context.Events.Include(e => e.CreatedByClub).Where(e=> e.StartDate.Date >= DateTime.Now.Date).OrderBy(e => e.StartDate).ToList();
         }
 
         public Event GetEventByIdAsync(string id)

@@ -3,11 +3,12 @@
 
 @using TheKangaroos_ClubEnrolmentPortal.Data.Models
 @using TheKangaroos_ClubEnrolmentPortal.Data.Services
+@using TheKangaroos_ClubEnrolmentPortal.ExternalServices
 @inherits OwningComponentBase<ClubService>
 @inject NavigationManager MyNavigationManager
 @inject MembershipService MembershipService
 @inject NoticeService NoticeService
-
+@inject EmailSender EmailSender
 @using System.Security.Claims
 
 
@@ -16,9 +17,21 @@
         <div class="content">
             <h1 class="page-heading">@club.Name</h1>
             <div class="membership">
-                @if (IsMember())
+                @if (IsAdmin())
                 {
-                    <span><i class="fa-solid fa-circle-check text-success mr-2"></i>Member</span>
+                    <span><i class="fa-solid fa-circle-check text-success mr-2"></i>Admin</span>
+                }
+                else if (IsMember())
+                {
+                    @if (IsApproved())
+                    {
+
+                        <span><i class="fa-solid fa-circle-check text-success mr-2"></i>Member</span>
+                    }
+                    else
+                    {
+                        <span><i class="fa-solid fa-circle-xmark text-warning mr-2"></i>Non-Member Waiting for Approval</span>
+                    }
                 }
                 else
                 {
@@ -48,12 +61,12 @@
                     }
                     @foreach (var item in events)
                     {
-                        @if (item.StartDate > DateTime.Now)
+                        @if (item.StartDate >= DateTime.Now.Date)
                         {
                             count += 1;
                             <EventItem id="@item.Id" Name="@item.Name" StartDate="@item.StartDate" EndDate="@item.EndDate"
                         Location="@item.Location" Image="@item.Image" CreatedByClub="@item.CreatedByClub"
-                        TicketsAvailable="@item.TicketsAvailable" Price="@item.Price"/>
+                        TicketsAvailable="@item.TicketsAvailable" Price="@item.Price" />
                         }
                     }
 
@@ -63,16 +76,23 @@
                     <p class="text-secondary">No Upcoming events for this club</p>
                 }
             </div>
-            <hr>
-            <div>
-                <a href="clubDetail/@club.Id/members">See All Members</a>
-            </div>
+            @if (IsAdmin())
+            {
+                <hr>
+                <div>
+                    <a href="clubDetail/@club.Id/members">See All Members</a>
+                </div>
+            }
+
         </div>
         <div class="col-12 col-xl-3">
             <div class="sidebar bg-fifth-color-light shadow p-3">
                 <div class="d-flex justify-content-between">
                     <h4 class="font-weight-bold text-secondary mb-4">Notices</h4>
-                    <a href="clubDetail/@club.Id/createNotice">Create a Notice</a>
+                    @if (IsAdmin())
+                    {
+                        <a href="clubDetail/@club.Id/createNotice">Create a Notice</a>
+                    }
                 </div>
                 @if (notices.Count > 0)
                 {
@@ -87,7 +107,7 @@
                                 </p>
                             </div>
                             <div class="hover-card-view-all">
-                                <a href="notice/@item.Id"  class="text-white"   >Read More</a>
+                                <a href="notice/@item.Id" class="text-white">Read More</a>
                             </div>
                         </div>
                     }
@@ -134,6 +154,16 @@
         return MembershipService.IsMember(userId, id);
     }
 
+    private bool IsApproved()
+    {
+        return MembershipService.IsApproved(userId, id);
+    }
+
+    private bool IsAdmin()
+    {
+        return MembershipService.IsAdmin(userId, id);
+    }
+
     private void ApplyMembership()
     {
         Membership membership = new Membership
@@ -143,6 +173,5 @@
             ClubId = id,
         };
         MembershipService.PostMembershipAsync(membership);
-        @*MyNavigationManager.NavigateTo(MyNavigationManager.Uri, true);*@
     }
 }

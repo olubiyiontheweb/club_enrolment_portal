@@ -19,6 +19,20 @@
 }
 
 /*buttons*/
+
+.btn-secondary-color {
+    color: #fff;
+    background-color: var(--secondary-color);
+    
+}
+
+.btn-secondary-color:hover, .btn-secondary-color:focus {
+    color: var(--secondary-color);
+    background-color: #fff;
+    border-color: var(--secondary-color);
+    
+}
+
 .btn-outline-secondary-color {
     color: var(--secondary-color);
     border-color: var(--secondary-color);
@@ -124,7 +138,7 @@
 
 /*end sidebar css*/
 
-/*404 page css*/
+/*404 page and forbidden page css*/
 .page_not_found {
     display: flex;
     flex-direction: column;
@@ -133,12 +147,27 @@
     align-items: center;
 }
 
+.forbidden{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.forbidden img,
 .page_not_found img {
     max-height: 50vh;
 }
-
-.page_not_found h4 {
+.forbidden,
+.page_not_found h1{
     margin-top: 2vh;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--tertiary-color);
+}
+
+.forbidden,
+.page_not_found h4 {
     font-weight: 700;
     color: var(--tertiary-color);
 }
@@ -306,6 +335,7 @@
 @media screen and (min-width: 1200px) {
     .dashboard-right {
         min-height: 90vh;
+        height: 100%;
     }
 }
 
@@ -357,7 +387,7 @@
     }
 
     .detail-page .sidebar {
-        min-height: calc(100vh - 365px);
+        min-height: 100%;
     }
 }
 

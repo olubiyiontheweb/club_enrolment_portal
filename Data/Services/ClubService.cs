@@ -15,7 +15,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
         public ClubService(ApplicationDbContext context)
         {
             _context = context;
-        }    
+        }
 
         public List<Club> GetClubsAsync()
         {
@@ -43,7 +43,7 @@ namespace TheKangaroos_ClubEnrolmentPortal.Data.Services
 
         public List<Event> GetEventsByClubIdAsync(string id)
         {
-            return _context.Events.Where(e => e.CreatedByClubId == id).ToList();
+            return _context.Events.Where(e => e.CreatedByClubId == id).OrderBy(e => e.StartDate).ToList();
         }
 
         // public List<Notice> GetNoticeByClubIdAsync(string id)

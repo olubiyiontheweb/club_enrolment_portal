@@ -4,7 +4,9 @@
 @using TheKangaroos_ClubEnrolmentPortal.Data.Services
 @inject NavigationManager MyNavigationManager
 @inherits OwningComponentBase<ClubService>
+@inject MembershipService MembershipService
 @inject NavigationManager NavManager
+@using System.Security.Claims
 
 
 
@@ -49,7 +51,22 @@ else
 </div>
 
 @code {
+    [CascadingParameter]
+    private Task<AuthenticationState> AuthenticationStateTask { get; set; }
     private Club newclub = new();
+
+    private string userId { get; set; }
+
+    private void AdminMembership(Club c)
+    {
+        Membership membership = new Membership
+        {
+            UserId = userId,
+            ClubId = c.Id,
+        };
+        Membership m = MembershipService.PostMembershipAsync(membership);
+        MembershipService.MakeAdmin(userId,m);
+    }
 
     private void HandleValidSubmit()
     {
@@ -61,7 +78,8 @@ else
         };
         if (MyNavigationManager.Uri.Contains("register"))
         {
-            Service.PostClubAsync(club);
+            Club c = Service.PostClubAsync(club);
+            AdminMembership(c);
             NavManager.NavigateTo("/clubList", true);
         }
         else
@@ -69,6 +87,12 @@ else
             NavManager.NavigateTo("/clubDetail/{id}", true);
         }
 
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateTask;
+        userId = authState.User.FindFirst(ClaimTypes.NameIdentifier).Value;
     }
 
     [Parameter]
