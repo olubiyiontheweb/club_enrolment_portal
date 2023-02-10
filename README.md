@@ -1,7 +1,4 @@
-# 700111-2122-group-project-kangaroos
-700111-2122-group-project-kangaroos created by GitHub Classroom
-
-## The Kangaroos are building a Club Enrolment Portal on this Repo using Blazor(C#)
+# Building a Club Enrolment Portal on this Repo using Blazor(C#)
 
 ### Project images
 
@@ -11,20 +8,13 @@ UML diagram for the project ![https://github.com/olubiyiontheweb/club_enrolment_
 
 Login page ![https://github.com/olubiyiontheweb/club_enrolment_portal/blob/main/login%20page.png?raw=true](https://github.com/olubiyiontheweb/club_enrolment_portal/blob/main/login%20page.png?raw=true)
 
-> https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/managing?tabs=dotnet-core-cli
+Club detail page ![https://github.com/olubiyiontheweb/club_enrolment_portal/blob/main/club%20detail%20page.png?raw=true](https://github.com/olubiyiontheweb/club_enrolment_portal/blob/main/club%20detail%20page.png?raw=true)
 
-> https://docs.microsoft.com/en-us/aspnet/core/?utm_source=aspnet-start-page&utm_campaign=vside&view=aspnetcore-6.0
+Event page ![https://github.com/olubiyiontheweb/club_enrolment_portal/blob/main/event%20page.png?raw=true](https://github.com/olubiyiontheweb/club_enrolment_portal/blob/main/event%20page.png?raw=true)
 
-> https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing?view=aspnetcore-6.0
+Event page ![https://github.com/olubiyiontheweb/club_enrolment_portal/blob/main/event%20page.png?raw=true](https://github.com/olubiyiontheweb/club_enrolment_portal/blob/main/event%20page.png?raw=true)
 
-> https://github.com/dotnet/aspnetcore/tree/1dcf7acfacf0fe154adcc23270cb0da11ff44ace/src/Identity/UI/src/Areas/Identity
-
-> https://docs.microsoft.com/en-us/aspnet/core/security/authorization/secure-data?view=aspnetcore-6.0#rau
-
-> https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-6.0&tabs=visual-studio
-
-Identity tutorial to learn more about Identity and implement
-> https://www.tektutorialshub.com/asp-net-core/asp-net-core-identity-tutorial/
+Create an event form ![https://github.com/olubiyiontheweb/club_enrolment_portal/blob/main/create%20event.png?raw=true](https://github.com/olubiyiontheweb/club_enrolment_portal/blob/main/create%20event.png?raw=true)
 
 ### Setting up the Repo
 
