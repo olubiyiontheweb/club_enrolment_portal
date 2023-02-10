@@ -5,11 +5,11 @@
 
 ### Project images
 
-Use case diagram for the project ([[https://github.com/malliva/malliva/blob/master/malliva_api_docs.png](https://github.com/olubiyiontheweb/club_enrolment_portal/blob/main/Use%20Case%20Diagram.png?raw=true)](https://github.com/olubiyiontheweb/club_enrolment_portal/blob/main/Use%20Case%20Diagram.png?raw=true))
+Use case diagram for the project ![https://github.com/olubiyiontheweb/club_enrolment_portal/blob/main/Use%20Case%20Diagram.png?raw=true](https://github.com/olubiyiontheweb/club_enrolment_portal/blob/main/Use%20Case%20Diagram.png?raw=true)
 
-UML diagram for the project ([[https://github.com/malliva/malliva/blob/master/malliva_api_docs.png](https://github.com/olubiyiontheweb/club_enrolment_portal/blob/main/UML%20Class%20Diagram.png?raw=true)](https://github.com/olubiyiontheweb/club_enrolment_portal/blob/main/UML%20Class%20Diagram.png?raw=true))
+UML diagram for the project ![https://github.com/olubiyiontheweb/club_enrolment_portal/blob/main/UML%20Class%20Diagram.png?raw=true](https://github.com/olubiyiontheweb/club_enrolment_portal/blob/main/UML%20Class%20Diagram.png?raw=true)
 
-Login page ([[https://github.com/malliva/malliva/blob/master/malliva_api_docs.png](https://github.com/olubiyiontheweb/club_enrolment_portal/blob/main/login%20page.png?raw=true)]([https://github.com/olubiyiontheweb/club_enrolment_portal/blob/main/Use%20Case%20Diagram.png?raw=true](https://github.com/olubiyiontheweb/club_enrolment_portal/blob/main/login%20page.png?raw=true)))
+Login page ![https://github.com/olubiyiontheweb/club_enrolment_portal/blob/main/login%20page.png?raw=true](https://github.com/olubiyiontheweb/club_enrolment_portal/blob/main/login%20page.png?raw=true)
 
 > https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/managing?tabs=dotnet-core-cli
 
